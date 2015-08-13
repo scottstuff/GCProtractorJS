@@ -1,0 +1,256 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="content">
+
+    <div id="fb-root"></div>
+    <script> (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="main padded tabbed">
+        <ul class="nav nav-tabs" id="scholarship-tabs">
+            <li class="active"><a href="#about" id="tab_about" data-toggle="tab">About the Contest</a>
+            </li>
+            <li><a href="#prev" id="tab_prev" data-toggle="tab">Past Seasons</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+            <!--
+            ABOUT TAB
+            -->
+
+            <div class="tab-pane active" id="about">
+                <p style="margin: 0px auto;width:250px;"><img
+                            src="{{ asset('bundles/gotchosensite/images/video_contest_season_2.png') }}" alt=""
+                            style="margin: 0 auto 10px; width: 250px;"/></p>
+
+                <p> Our contest is now closed for video submissions and public voting.</p>
+
+                <p> GotChosen is giving away 5 scholarships for this contest. </p>
+
+                <p> Are you ready to use your writing, acting, musical or directing talents to create a video to win a
+                    scholarship? Set your lights, get your camera, and start the action now.</p>
+
+                <p> Open to <span id="spanTab1">United States and International students, 18 years and older.</span> The
+                    contest is offered to all fields of study.</p>
+
+                <p> Here are the 5 categories: </p>
+
+                <p>
+                <ol>
+                    <li>Best Original Music: Share your talent with an original musical piece (song or instrumental).
+                    </li>
+                    <li>Friends: Create a video about what the word "friends" means to you.</li>
+                    <li>Best Trip Ever: Make a video about your favorite travel adventures.</li>
+                    <li>Nature: Show us the beauty of nature.</li>
+                    <li>Helping Hands: What are you doing to make a difference?</li>
+                </ol>
+                <p> The contest will have two phases: </p>
+
+                <p><strong>Phase One</strong>: Is now closed. </p>
+
+                <p><strong>Phase Two</strong>: A panel of judges will vote on the Top 20 videos and GotChosen will award
+                    one grand prize winner a $3000 scholarship and 4 runner-ups a $250 scholarship each. </p>
+
+                <p> "Like" us on Facebook and let us know that our Video Scholarship Contest is cool.</p>
+
+                <div class="fb-like" data-href="http://www.facebook.com/GotChosen" data-send="false" data-width="200"
+                     data-show-faces="false"></div>
+            </div>
+
+            <!--
+            PREV TAB
+            -->
+
+            <div class="tab-pane" id="prev">
+                <p> GotChosen wanted to offer a platform for college students around the world to showcase their talent
+                    and capture their best moments on video with the incentive of winning a scholarship. The opportunity
+                    to win a $3000 scholarship was launched with the introduction of the Lights, Camera, Action Video
+                    Scholarship Contest in February 2013.</p>
+
+                <p> Empowering students to control their ability to win - the winner was decided by voting. Students
+                    were encouraged to be creative in their videos and with their marketing savvy by getting others to
+                    vote for them.</p>
+
+                <p> In the first contest, 516 students created, uploaded and got their friends and families to vote for
+                    them. The five categories from the first contest were: Dreams Come True, Comedy, School Spirit, Your
+                    Hero, and Best Performance. </p>
+
+                <p> The first winner, Kirk Saechao was awarded a US $3000 scholarship. Kirk's story detailing how he
+                    learned about the contest, the process he went through to create his video, and how he used social
+                    media to get votes can be found <a
+                            href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                            target="_blank">here</a>.</p>
+
+                <p> Check out the Top 10 videos from the past season with the most votes, including the winner's Maple
+                    Love Story below:</p>
+
+                <div style="padding: 10px; border: 1px solid #dddddd; font-family: Arial, Helvetica, Sans-Serif; -moz-border-radius: 15px; border-radius: 15px; width: 580px;">
+                    <div class="vid-entry"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: GotChosen Dreams Come True Video<br/> <span
+                                    class="vidCat">Category: Dreams Come True<br/> </span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/OznL2rs3Ync?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/OznL2rs3Ync?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Blind Makeup Tutorial!<br/> <span class="vidCat">Category: Comedy<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/l6DcIBE6Iy0?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/l6DcIBE6Iy0?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Free Your Dreams<br/> <span class="vidCat">Category: Dreams Come True<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/nlKKBL6E03s?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/nlKKBL6E03s?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: "My name is Shelby Steingraeber, and my hero.....is
+                            Cassidy-Rae"<br/> <span class="vidCat">Category: Your Hero<br/> </span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/h-h5InvW1oQ?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/h-h5InvW1oQ?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Snap<br/> <span
+                                    class="vidCat">Category: Comedy<br/>  </span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/Q37qyEwwKC8?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/Q37qyEwwKC8?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: World Hunger PSA<br/> <span class="vidCat">Category: Best Performance<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/0W2Ic5hV28w?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/0W2Ic5hV28w?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Passion for Film<br/> <span class="vidCat">Category: Best Performance<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/EGC2dF6r-gc?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/EGC2dF6r-gc?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: My Hero<br/> <span class="vidCat">Category: Your Hero<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/vL9Ue48svbI?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/vL9Ue48svbI?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Love Triangle Music Video<br/> <span
+                                    class="vidCat">Category: Best Performance<br/> </span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="http://www.youtube.com/v/XYQ0NdbCKkA?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="http://www.youtube.com/v/XYQ0NdbCKkA?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sb-block">
+            <p> Like us on Facebook!</p>
+
+            <div class="fb-like" data-href="http://www.facebook.com/GotChosen" data-send="false" data-width="200"
+                 data-show-faces="false"></div>
+        </div>
+        <div class="sb-block">
+            <a href="{{ path('monthly_scholarship') }}"> <img
+                        src="{{ asset('bundles/gotchosensite/images/monthlyhome.png') }}" width="250" alt=""></a>
+        </div>
+        <div class="sb-block">
+            <a href="{{ path('scholarship') }}"> <img
+                        src="{{ asset('bundles/gotchosensite/images/20K_give_away_blue.png') }}" width="250" alt=""></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            var curTab = "{{ tab }}";
+            $('#scholarship-tabs').find('a#tab_' + curTab).tab('show');
+        });
+    </script>
+
+{% endblock %}

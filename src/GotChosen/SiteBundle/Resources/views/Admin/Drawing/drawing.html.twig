@@ -1,0 +1,28 @@
+{% extends 'GotChosenSiteBundle::layout_admin_content.html.twig' %}
+
+{% block title %}Admin Drawing Pages | {{ parent() }}{% endblock %}
+
+{% block box_title %}Drawing Pages{% endblock %}
+
+{% block box_body %}
+    <ul>
+        {% for scholarship in scholarships %}
+            {% if scholarship.is40k or scholarship.isMonthly %}
+                <li>{{ scholarship.scholarshipName }} -
+                    {% if date(scholarship.endDate) > date() %}
+                        <em>Scholarship Hasn't Ended Yet</em>
+                    {% elseif scholarship.isDrawingComplete %}
+                        <em>Scholarship Drawing Completed</em>
+                    {% else %}
+                        {% if scholarship.is40k %}
+                            <a href="{{ path('admin_drawing_40k', {'scholarshipId': scholarship.id}) }}">Go to Drawing</a> -
+                        {% elseif scholarship.isMonthly %}
+                            <a href="{{ path('admin_drawing_monthly', {'scholarshipId': scholarship.id}) }}">Go to Drawing</a> -
+                        {% endif %}
+                        <a href="{{ path('admin_drawing_complete', {'scholarshipId': scholarship.id}) }}">Mark Drawing Complete</a>    
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,6 @@
+0 5 * * * root php /var/www/vhosts/gotchosen-dev/current/app/console gotchosen:give-tokens
+0 5 * * * root php /var/www/vhosts/gotchosen-dev/current/app/console gotchosen:process-game-results --process
+
+# minute later, so after game results are processed
+1 * * * * root php /var/www/vhosts/gotchosen-dev/current/app/console gotchosen:build-game-rank
+1 * * * * root php /var/www/vhosts/gotchosen-dev/current/app/console gotchosen:build-player-rank

@@ -1,0 +1,16 @@
+<ul class="property-groups">
+    <li class="group-title">
+        Admin Tools
+    </li>
+    {% set tab = app.request.attributes.get('_route') %}
+    <li {{ tab == 'admin_home' ? 'class="active"' : '' }}>
+        <a href="{{ path('admin_home') }}">Dashboard</a></li>
+    <li {{ tab == 'admin_drawing' ? 'class="active"' : '' }}>
+        <a href="{{ path('admin_drawing') }}">Drawing Pages</a></li>
+    <li {{ 'admin_news' in tab ? 'class="active"' : ''}}>
+        <a href="{{ path('admin_news') }}">Manage News</a></li>
+    <li {{ 'admin_mail' in tab ? 'class="active"' : '' }}>
+        <a href="{{ path('admin_mail') }}">E-Mail Users</a></li>
+    <li {{ tab == 'admin_users' ? 'class="active"' : '' }}>
+        <a href="{{ path('admin_users') }}">Manage Users</a></li>
+</ul>

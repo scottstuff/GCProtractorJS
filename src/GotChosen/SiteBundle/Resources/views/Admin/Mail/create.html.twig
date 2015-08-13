@@ -1,0 +1,97 @@
+{% extends 'GotChosenSiteBundle::layout_admin_content.html.twig' %}
+
+{% block title %}Mass Mail Queue | {{ parent() }}{% endblock %}
+
+{% block box_title -%}
+    <a class="btn" href="{{ path('admin_mail') }}">&laquo; Back</a> &nbsp; New Mass E-mail
+{%- endblock %}
+
+{% block box_body %}
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.template) }}
+    {{ form_row(form.subject) }}
+    {{ form_row(form.body, {attr: {rows: 8, style: 'width:440px;'}}) }}
+    {{ form_row(form.isPreview) }}
+    {{ form_row(form.previewEmail) }}
+    {{ form_row(form.language) }}
+    {{ form_row(form.notificationType) }}
+    {{ form_row(form.userStatus) }}
+    {{ form_row(form.scholarships) }}
+    {{ form_row(form.hasSubmittedGame) }}
+
+    {{ form_rest(form) }}
+
+    <div class="alert alert-danger" id="warning" style="display:none">
+        <strong>WARNING:</strong> You are about to send to a LOT of people, either skipping language
+        preferences or ignoring user notification settings. PLEASE MAKE SURE THIS IS YOUR INTENTION
+        by checking the following box before clicking Send.
+        <br />
+        <br />
+        <label for="warning_check"><input type="checkbox" id="warning_check" /> This is my intention</label>
+    </div>
+
+    <div class="form-actions">
+        <button tabindex="100" type="submit" id="send_btn" class="btn btn-primary">Send</button>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+
+    {# not using assetic for this #}
+    <script src="{{ asset('bundles/gotchosensite/js/ckeditor/ckeditor.js') }}"></script>
+
+    <script>
+        $(function() {
+            CKEDITOR.replace('form_body');
+
+            var getControlGroup = function(name, elts) {
+                var ids = [];
+                for ( var i = 0; i < elts.length; i++ ) {
+                    ids.push('#' + name + '_' + elts[i] + '_control_group');
+                }
+                return $(ids.join(', '));
+            };
+
+            var $previewFields = getControlGroup('form', ['previewEmail']);
+            var $nonPreviewFields = getControlGroup('form',
+                    ['language', 'notificationType', 'userStatus', 'scholarships', 'hasSubmittedGame']);
+            $nonPreviewFields.hide();
+
+            $('#form_isPreview').change(function(e) {
+                if ( $(this).prop('checked') ) {
+                    $previewFields.show();
+                    $nonPreviewFields.hide();
+                } else {
+                    $previewFields.hide();
+                    $nonPreviewFields.show();
+                }
+
+                checkDanger();
+            });
+
+            var checkDanger = function() {
+                var $isPreview = $('#form_isPreview');
+                var $language = $('#form_language');
+                var $notType = $('#form_notificationType');
+
+                if ( !$isPreview.prop('checked') && ($language.val() == 'ANY' || $notType.val() == '0') ) {
+                    $('#warning').show();
+                    $('#send_btn').prop('disabled', !$('#warning_check').prop('checked'));
+                } else {
+                    $('#warning').hide();
+                    $('#send_btn').prop('disabled', false);
+                }
+            };
+
+            $('#form_language').change(checkDanger);
+            $('#form_notificationType').change(checkDanger);
+            $('#warning_check').change(checkDanger);
+        });
+    </script>
+
+{% endblock %}

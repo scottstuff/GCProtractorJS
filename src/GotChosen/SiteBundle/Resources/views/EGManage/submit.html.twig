@@ -1,0 +1,32 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}submit{% endblock %}
+
+{% form_theme form _self %}
+{% block label_asterisk %}{% if required %}<span class="req">*</span>{% endif %}{% endblock %}
+
+{% block eg_content %}
+
+    <h1 class="title">Submit Your Game Info <span class="title-bar" style="width:585px;"></span></h1>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {{ form_row(form.studioName, {'attr': {'class': 'span4'}}) }}
+    {{ form_row(form.studioProfile, {'attr': {'class': 'span4', 'rows': 3}}) }}
+    {{ form_row(form.gameName, {'attr': {'class': 'span4'}}) }}
+    {{ form_row(form.gameSynopsis, {'attr': {'class': 'span4', 'rows': 3}}) }}
+    {{ form_row(form.gameGenre, {'attr': {'class': 'span4'}}) }}
+
+    <p class="form-inline"><a href="{{ path('eg_rules_developers') }}" target="_blank">Click here to read the rules and regulations.</a></p>
+
+    {{ form_row(form.accept) }}
+
+    <div class="submit-row">
+        <input type="submit" class="btn btn-primary" value="Submit Entry" />
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

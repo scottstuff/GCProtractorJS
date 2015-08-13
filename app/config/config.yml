@@ -1,0 +1,146 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+parameters:
+    translator.class: GotChosen\SiteBundle\Localization\Translator
+    security.user_checker.class: GotChosen\SiteBundle\Security\UserChecker
+    twig.loader.filesystem.class: GotChosen\SiteBundle\Localization\LocalizedTemplateLoader
+
+framework:
+    #esi:             ~
+    translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_proxies: ['10.0.0.0/16']
+    session:
+        handler_id: gotchosen.session.memcache
+    fragments:       ~
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        [GotChosenSiteBundle]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        lessphp:
+            apply_to: "\.less$"
+        #less:
+        #    node: /usr/local/bin/node
+        #    node_paths: [/usr/local/lib/node_modules]
+        #    apply_to: "\.less$"
+        #closure:
+        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #yui_css:
+        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: %kernel.root_dir%/data/data.db3
+        # path:     %database_path%
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    spool:     { type: memory }
+    
+jms_i18n_routing:
+    default_locale: en
+    locales: [en, pt, es]
+    strategy: prefix
+    
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: GotChosen\SiteBundle\Entity\User
+    from_email:
+        address:        noreply@gotchosen.com
+        sender_name:    GotChosen
+
+    resetting:
+        token_ttl: 86400
+        email:
+            from_email:
+                address:     noreply@gotchosen.com
+                sender_name: GotChosen - automated message, do not reply
+    #group:
+        #group_class: GotChosen\SiteBundle\Entity\Group
+
+knp_gaufrette:
+    adapters:
+        game_uploads:
+            aws_s3:
+                service_id: gotchosen.s3.client
+                bucket_name: %aws_s3_bucket%
+                options:
+                    directory: evogames/games
+                    
+        screenshot_uploads:
+            aws_s3:
+                service_id: gotchosen.s3.client
+                bucket_name: %aws_s3_bucket%
+                options:
+                    directory: evogames/screenshots
+                    
+        avatar_uploads:
+            aws_s3:
+                service_id: gotchosen.s3.client
+                bucket_name: %aws_s3_bucket%
+                options:
+                    directory: evogames/studio_avatars
+
+        property_uploads:
+            aws_s3:
+                service_id: gotchosen.s3.client
+                bucket_name: %aws_s3_bucket%
+                options:
+                    directory: profile_properties
+        
+    filesystems:
+        game_storage:
+            adapter: game_uploads
+            alias: game_storage_filesystem
+            
+        screenshot_storage:
+            adapter: screenshot_uploads
+            alias: screenshot_storage_filesystem
+            
+        avatar_storage:
+            adapter: avatar_uploads
+            alias: avatar_storage_filesystem
+
+        property_storage:
+            adapter: property_uploads
+            alias: property_storage_filesystem

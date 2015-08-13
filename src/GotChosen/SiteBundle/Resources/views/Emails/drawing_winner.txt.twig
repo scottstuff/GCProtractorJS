@@ -1,0 +1,21 @@
+GotChosen Winner Information
+
+Scholarship: {{ scholarship.scholarshipName }}
+
+Member Info
+-----------
+
+User ID: {{ user.id }}
+Full Name: {{ user.fullName }}
+E-mail: {{ user.email }}
+Birthday: {{ user.getPropertyValue('BirthDay') }}
+
+Address:
+{{ user.getPropertyValue('Address') }}
+{{ user.getPropertyValue('Address2')|default('') }}
+{{ user.getPropertyValue('City') }}, {{ user.getPropertyValue('State') }} {{ user.getPropertyValue('PostalCode') }}
+
+Country: {{ user.getPropertyValue('Country') }}
+Phone #: {{ user.getPropertyValue('Telephone') }}
+
+Profile URL: {{ url('user_profile', {username: user.username}) }}

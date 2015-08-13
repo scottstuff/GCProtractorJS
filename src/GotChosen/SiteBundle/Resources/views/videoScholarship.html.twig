@@ -1,0 +1,65 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="content">
+
+    <div id="fb-root"></div>
+    <script> (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="main padded tabbed staticpage" style="width:800px;">
+        {% block vs_tabs %}
+
+        {% set active_tab = block('active_tab') %}
+        {% if active_tab is empty%}
+            {% set active_tab = 'about' %}
+        {% endif%}
+        <ul class="nav nav-tabs" id="scholarship-tabs">
+            <li {{ active_tab == 'about' ? 'class="active"' : '' }}><a href="{{ path('vs_about') }}">About the Contest</a></li>
+            <li {{ active_tab == 'videos' ? 'class="active"' : '' }}><a href="{{ path('vs_videos') }}">Videos</a></li>
+            {#
+            <li {{ active_tab == 'top20' ? 'class="active"' : '' }}><a href="{{ path('vs_top20') }}">Top 20</a></li>
+            {% if userHasVideo is defined %}
+                {% if app.user and userHasVideo %}
+                <!--<li {{ active_tab == 'manage' ? 'class="active"' : '' }}><a href="{{ path('vs_manage') }}">My Entry</a></li>                -->
+                {% else %}
+                <!--<li {{ active_tab == 'submit' ? 'class="active"' : '' }}><a href="{{ path('vs_submit') }}">Submit An Entry</a></li>-->
+                {% endif %}
+            {% else %}
+                    <!--<li {{ active_tab == 'submit' ? 'class="active"' : '' }}><a href="{{ path('vs_submit') }}">Submit An Entry</a></li>-->
+            {% endif %}
+            #}
+            <li {{ active_tab == 'pastseasons' ? 'class="active"' : '' }}><a href="{{ path('vs_pastseasons') }}">Past Seasons</a></li>
+            {#
+            <li {{ active_tab == 'rules' ? 'class="active"' : '' }}><a href="{{ path('vs_rules') }}">Rules</a></li>
+            <li {{ active_tab == 'faq' ? 'class="active"' : '' }}><a href="{{ path('vs_faq') }}">FAQ</a></li>
+            #}
+        </ul>
+        {% endblock %}
+
+
+            {% block vs_content %}
+            {% endblock %}
+
+    </div>
+    <div class="sidebar" style="width:100px;">
+
+        <div class="sb-block">
+            {% block vs_sidebar %}
+
+            {% endblock %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,190 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>GotChosen</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Webfonts -->
+  <link rel="stylesheet" href="https://s3.amazonaws.com/ProdContent/styles/webfonts/ss-gizmo.css">
+
+  <link rel="stylesheet" href="https://s3.amazonaws.com/ProdContent/styles/main.css">
+</head>
+<body>
+
+
+  <div class="container-fluid">
+
+    <div class="row section" id="take-control">
+
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">Menu</button>
+            <a class="navbar-brand scroller" href="/" data-scroll-target="body">GotChosen</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{ path('publisher') }}" class="active">Publishers</a></li>
+              <li><a href="{{ path('home') }}" target="_blank">GotChosen Scholarships</a></li>
+              <li><a href="#/about" class="launch-about">About GotChosen</a></li>
+              <li><a href="{{ path('contact_us') }}">Contact Us</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+      </div>
+
+
+      <div class="row section video-bg">
+        <div class="center-vertical">
+          <h1 id="main-title" style="margin-bottom:10px;">Publisher <strong>Exchange</strong> Network</h1>
+           <p>The GotChosen PEN seamlessly retains visitors on your website and increases social media engagement; bounce rates are significantly reduced as a result. Moreover, it provides a remarkably powerful e-commerce portal for superior monetization.</p>
+
+          <span class="video-play-btn" style="display:block; margin-top:auto;">
+              <img src="https://s3.amazonaws.com/ProdContent/images/play-btn-thumbnail.png" style="margin-top:10px;border: 5px solid white; border-radius: 3px;" onclick="javascript: document.getElementById('jen-video').play();"/></span>
+              <h2 class="video-play-btn">Click to Watch</h2>
+
+        </div>
+      </div>
+
+
+
+
+      <a href="javascript:;" class="tooltip scroller" id="take-action-tooltip" data-scroll-target="#click-and-leave-model">
+        Learn about the alternative to the click and leave model
+      </a>
+
+    </div>
+
+
+
+    <!-- Click and leave model -->
+    <div class="row section pattern-background" id="click-and-leave-model">
+      <img src="https://s3.amazonaws.com/ProdContent/images/tip-pattern.png" id="tip-white"
+      class="scroller hidden-xs tab-tip" data-scroll-target="#click-and-leave-model"/>
+
+      <div class="jumbotron jumbotron-transparent">
+        <h2>The Click &amp; Leave Model</h2>
+        <p>Banner ads and social media links are like exit doors on your web site.<br class="hidden-xs" />
+          When visitors see one that interests them, they click and leave.</p>
+        <p class="img-paragraph">
+          <img src="https://s3.amazonaws.com/ProdContent/images/graph-clickandleave.png" width="660" height="419"
+          alt="Click and leave model" class="clickandleave hidden-xs image-graph" id="click-and-leave-graph">
+          <img src="https://s3.amazonaws.com/ProdContent/images/graph-clickandleave-mobile.png" width="268" height="583"
+          alt="Click and leave model" class="clickandleave visible-xs">
+        </p>
+      </div>
+
+      <a href="javascript:;" class="tooltip scroller" id="click-and-leave-tooltip" data-scroll-target="#alternative-model">
+        Click to see the alternative
+      </a>
+
+    </div>
+
+
+
+
+    <!-- Alternative model -->
+    <div class="row section" id="alternative-model">
+      <img src="https://s3.amazonaws.com/ProdContent/images/tip-white.png" id="tip-pattern" class="scroller hidden-xs tab-tip" data-scroll-target="bottom"/>
+
+
+      <div class="container">
+        <div class="jumbotron jumbotron-transparent">
+          <!-- GotChosen Ecosystem -->
+          <h2 id="gotchosen-ecosystem">The Alternative to the Click &amp; Leave Model</h2>
+          <p>The GotChosen ecosystem is a unique opportunity that increases both user engagement and ad revenue. It brings an online marketplace to your website.</p>
+          <p class="img-paragraph">
+            <img src="https://s3.amazonaws.com/ProdContent/images/graph-gotchosenplatform.png" width="979" alt="GotChosen Platform" class="gotchosenplatform hidden-xs image-graph" id="gotchosen-ecosystem-graph">
+            <img src="https://s3.amazonaws.com/ProdContent/images/graph-gotchosenplatform-mobile.png" width="268" height="674" alt="GotChosen Platform" class="gotchosenplatform visible-xs" id="gotchosen-ecosystem-graph">
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="row">
+      <a href="javascript:;" class="scroller thumbsup" data-scroll-target="body"></a>
+
+      <div class="col-sm-6">
+        Copyright &copy; 2014 GotChosen, Inc. All rights reserved.
+      </div>
+      <div class="col-sm-6">
+
+        <div class="links">
+          <a href="#/about" class="launch-about">About GotChosen</a>
+          &nbsp;
+          <a href="{{ path('contact_us') }}">Contact Us</a>
+          &nbsp;
+          <a href="https://www.gotchosen.com/en/terms">Terms</a>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Video Modal -->
+  <div class="modal fade" id="video-modal" tabindex="-1" role="dialog" aria-labelledby="video-modal-title" aria-hidden="true">
+    <div class="modal-dialog jumbo-video">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="about-modal-title">Publisher Exchange Network</h4>
+        </div>
+        <div class="modal-body">
+         <video id="jen-video" width="100%" height="100%" controls poster="https://s3.amazonaws.com/gcprodvideos/polling.gif" preload="auto">
+             <source src="https://d1ut55tawko4h8.cloudfront.net/gcpromo_jen_new.mp4" type="video/mp4">
+              <source src="https://d1ut55tawko4h8.cloudfront.net/gcpromo_jen_new.webm" type="video/webm">
+
+				  Your browser does not support the video tag.
+			   </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="about-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="about-modal-title">About GotChosen</h4>
+        </div>
+        <div class="modal-body">
+          <h3 style="margin-top:0px;">GotChosen is an innovative company that is developing proprietary technologies based on choice and privacy.</h3>
+
+          <p>In October of 2014, you’re going to see the start of a new way of doing business on the internet. We’re replacing the current data-centric approach, which uses behavioral targeting and data brokering, with a cooperative model that both puts consumers in charge and produces superior results for websites and advertisers.</p>
+
+
+          <h4>It starts with three simple ideas.</h4>
+          <ol>
+            <li>Your data is your data. No one else has a right to it–not advertisers, not publishers, not even social media.</li>
+            <li>You are smart enough to decide what marketing you’d like to see. You don’t need someone watching every site you visit and trying to guess what you’d like to buy.</li>
+            <li>You have a right to quality content, free of all the noise and nonsense so common in today’s internet. </li>
+          </ol>
+
+          <p>Our business model is not data-driven. We don’t track your data in order to display ads. Instead, our model is consumer-driven. That means you have control over the ads you see. We respect your privacy, and will never share or sell your data to anyone, ever.</p>
+
+
+          <h4>What about the scholarships?</h4>
+          <p>For the past two years, GotChosen has been giving away scholarships. During this time, we’ve been building brand awareness and a web presence. We’ve also helped a lot of people pay for their education. We’re going to keep doing that. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://s3.amazonaws.com/ProdContent/scripts/vendor.js"></script>
+
+  <script src="https://s3.amazonaws.com/ProdContent/scripts/main.js"></script>
+
+</body>
+</html>

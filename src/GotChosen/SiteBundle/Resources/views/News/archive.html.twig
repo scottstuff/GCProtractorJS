@@ -1,0 +1,158 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}News | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main padded tabbed">
+            <ul class="nav nav-tabs" id="news-tabs">
+                {% for category in categories %}
+                <li {% if category.getShortName() == tab %}class="active"{% endif %}><a  href="{{ path('news', {'tab': category.getShortName, 'page': 1}) }}">{{ category.getName() }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active">
+                    {% for article in articles %}
+                    <div class="post">
+                        <h1>
+                            <a href="{{ path('news_article', {'id': article.id, 'slug': article.title|gc_slugify }) }}">
+                                {{ article.getTitle() }} &ndash; {{ article.getPublishDate() | date('m/d/Y') }}
+                            </a>
+                        </h1>
+
+                        <div class="news-content">
+                            {{ article.getContent().getContent() | raw }}
+                        </div>
+                        <div class="socialnetwork">
+                            </div>
+                        <div class="line">
+                        </div>
+                        <div class="footer">
+                            Posted
+                            {% if article.getAuthor() %}
+                            by {{ article.getAuthor().getFullName() }}
+                            {% endif %}
+                            on {{ article.publishDate | date('F dS, Y') }}
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    {% if numPages > 1 %}
+                    <div class="pagination" style="width:500px;float:left;">
+                        <ul>
+                            {% if page != 1 %}
+                            <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: page - 1, tab: currentCategory.getShortName() })) }}">&laquo;</a></li>
+                            {% endif %}
+
+                            {% if page == 1 %}
+                            <li class="disabled"><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: 1, tab: currentCategory.getShortName() })) }}">1</a></li>
+                            {% else %}
+                            <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: 1, tab: currentCategory.getShortName() })) }}">1</a></li>
+                            {% endif %}
+
+                            {% if (page > 3) and (numPages > 5) %}<li class="disabled"><a href="#">...</a></li>{% endif %}
+
+                            {% if page == 1 %}
+                            {% set prevPage = page - 1%}
+                            {% set nextPage = min(numPages, page + 3)%}
+                            {% elseif page == numPages %}
+                            {% set prevPage = max(1, page - 3)%}
+                            {% set nextPage = numPages%}
+                            {% elseif page == 2 %}
+                            {% set prevPage = page%}
+                            {% set nextPage = min(numPages,page + 2)%}
+                            {% elseif page == numPages - 1 %}
+                            {% set prevPage = max(1, numPages - 3)%}
+                            {% set nextPage = numPages%}
+                            {% else %}
+                            {% set prevPage = page - 1%}
+                            {% set nextPage = page + 1%}
+                            {% endif %}
+
+                            {% for p in prevPage..nextPage %}
+                                {% if p > 0 %}
+                                    {% if p == 1 %}
+                                    <!-- never output page 1 -->
+                                    {% elseif p == numPages %}
+                                    <!-- never output last page -->
+                                    {% else %}
+                                        <li{{ p == page ? ' class="active"' : '' }}>
+                                            <a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: p, tab: currentCategory.getShortName() })) }}">{{ p }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if (numPages > 5) and (page <= numPages - 3) %}<li class="disabled"><a href="#">...</a></li>{% endif %}
+
+                            {% if page == numPages %}
+                            <li class="disabled"><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: numPages, tab: currentCategory.getShortName() })) }}">{{ numPages }}</a></li>
+                            {% else %}
+                            <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: numPages, tab: currentCategory.getShortName() })) }}">{{ numPages }}</a></li>
+                            {% endif %}
+
+
+                            {% if page == numPages %}
+                            {% else %}
+                            <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: page + 1, tab: currentCategory.getShortName() })) }}">&raquo;</a></li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sb-block">
+                <h5>Most Recent Articles</h5>
+                <ul class="news-archive">
+                    {% for article in recentArticles %}
+                    <li>{{ article.getPublishDate() | date('F j') }}<sup>{{ article.getPublishDate() | date('S') }}</sup>, {{ article.getPublishDate() | date('Y') }}<br />
+                        <a href="{{ path('news_article', {'id': article.id, 'slug': article.title|gc_slugify }) }}">{{ article.getTitle() }}  &ndash; {{ article.getPublishDate() | date('m/d/Y') }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="sb-block">
+                <div id="fb-root"></div>
+                <script>(function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <p style="font-weight: bold; font-size: 14px;">Like us on Facebook!</p>
+
+                <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false" data-width="200"
+                     data-show-faces="false">
+                </div>
+            </div>
+
+            <div class="sb-block center">
+                <a href="{{ path('eg_qualifier') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/evolution_scholarship_home.png') }}"></a>
+            </div>
+
+            <div class="sb-block center">
+                <a href="{{ path('scholarship') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/20K_give_away_blue.png') }}" alt=""></a>
+            </div>
+            <div class="sb-block center">
+                <a href="{{ path('monthly_scholarship') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/monthlyhome.png') }}" alt=""></a>
+            </div>
+            <div class="sb-block">
+                <a href="{{ path('vs_videos') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/gotchosen_video_contest_home.png') }}"
+                            width="250" alt=""></a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

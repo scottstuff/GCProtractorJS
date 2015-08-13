@@ -1,0 +1,29 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}contest{% endblock %}
+
+{% block eg_content %}
+
+    <h1 class="title">Apply for Scholarship? <span class="title-bar" style="width:585px;"></span></h1>
+    
+    {% if not app.user %}
+        <div class="alert alert-error">
+            <strong>You are not logged in!</strong> You can't compete in the Evolution Games Scholarship Contest unless you are logged in. <a href="{{ path('fos_user_security_login') }}">Click here to login</a>.
+        </div>
+    {% endif %}
+    
+    <p>
+        You can choose to compete in our scholarship contest or play for fun. <strong>Please note</strong>, if you choose to play
+        for fun you will not be given any tokens for competition. You can apply for the scholarship at any time by visiting your
+        <a href="{{ path('user_profile_edit', {'tab': 'scholarships'}) }}">scholarship settings</a> in your user profile.
+    </p>
+    
+    <div align="center">
+        <a href="{{ path('user_profile_edit', {'tab': 'scholarships'}) }}" class="btn btn-large btn-primary">Apply for Scholarship</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{{ path('eg_contest_gate', {'forfun': 1}) }}" class="btn btn-large">Play for Fun</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% form_theme form _self %}
+{% block label_asterisk %}{% if required %}<span class="req">*</span>{% endif %}{% endblock %}
+
+{% block title %} {{ scholarship.scholarshipName }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <div class="main padded wide profile">
+        <h1 class="title">
+            {{ scholarship.scholarshipName|e|gc_autosuper }}
+            <span class="title-bar" style="width:700px;"></span>
+        </h1>
+
+        <p><span class="req-note">* Denotes required fields</span></p>
+
+        {{ form_start(form, {'attr': {'class': 'form-horizontal scholarship-app'}}) }}
+
+        <fieldset>
+            <legend>Contact Information</legend>
+
+            {% for propkey in contactPropKeys %}
+                <div id="form_{{ propkey }}_control_group" class="control-group">
+                    {{ form_label(form[propkey]) }}
+                    <div class="controls">
+                        {{ form_widget(form[propkey]) }}
+
+                        {% if form["privacy_" ~ propkey] is defined %}
+                            {{ form_widget(form["privacy_" ~ propkey], {'attr': {'class': 'privacy-setting'}}) }}
+                        {% endif %}
+
+                        {{ form_errors(form[propkey]) }}
+                    </div>
+                </div>
+            {% endfor %}
+        </fieldset>
+
+        <fieldset>
+            <legend>Education Information</legend>
+
+            {% for propkey in educationPropKeys %}
+                <div id="form_{{ propkey }}_control_group" class="control-group">
+                    {{ form_label(form[propkey]) }}
+                    <div class="controls">
+                        {{ form_widget(form[propkey]) }}
+
+                        {% if form["privacy_" ~ propkey] is defined %}
+                            {{ form_widget(form["privacy_" ~ propkey], {'attr': {'class': 'privacy-setting'}}) }}
+                        {% endif %}
+
+                        {{ form_errors(form[propkey]) }}
+                    </div>
+                </div>
+            {% endfor %}
+        </fieldset>
+
+        {{ form_rest(form) }}
+
+        {% set rules = scholarship.rulesRoute %}
+        <p class="rules-note">By clicking Submit Application, you agree to the
+            <a href="#terms-{{ rules[0] }}" data-toggle="modal">rules and regulations</a> for this scholarship.
+        </p>
+
+        <div class="submit-row">
+            <input class="btn btn-primary" type="submit" value="Submit Application" />
+            &nbsp;&nbsp;&nbsp;<a href="{{ path('user_my_profile') }}">Cancel</a>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+
+    <div id="terms-scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="scholarshipLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="scholarshipLabel">$20K Scholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_40k.html.twig' %}
+        </div>
+    </div>
+
+    <div id="terms-monthly_scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="monthScholarshipLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="monthScholarshipLabel">Monthly Scholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_monthly.html.twig' %}
+        </div>
+    </div>
+
+    <div id="terms-video_scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="modalLabel">VideoScholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_video.html.twig' %}
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+$(function(){
+    $('textarea.maxlength').maxCharacters('.controls');
+});
+</script>
+{% endblock %}

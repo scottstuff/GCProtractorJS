@@ -1,0 +1,351 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}Monthly Scholarship | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="content">
+
+    <div id="fb-root"></div>
+    <script> (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="main padded tabbed">
+        <ul class="nav nav-tabs" id="scholarship-tabs">
+            <li class="active"><a href="#about" id="tab_about" data-toggle="tab">About the Every Month Scholarship</a></li>
+            <li><a href="#rules" id="tab_rules" data-toggle="tab">Rules</a></li>
+            <li><a href="#faq" id="tab_faq" data-toggle="tab">FAQ</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+            <!--
+            ABOUT TAB
+            -->
+
+            <div class="tab-pane active" id="about">
+                <p><strong><span id="spanTab1OpenLine"></span></strong></p>
+
+                <p> Can you use an extra US $1000 this month for school? GotChosen is offering a recurring monthly scholarship to
+                    help college students. The GotChosen $1000 Every Month Scholarship is easy and free to enter. The scholarship is
+                    not awarded based on academic achievement or financial need. Instead, a new winner is selected every month by a
+                    random drawing. </p>
+
+                <p> Open to all fields of study, the US $1,000 must be used for educational expenses, this includes: tuition, fees,
+                    books, supplies, equipment required for study, or towards repayment of outstanding student loans. Virtually
+                    anyone 18 years old or older is eligible to participate. </p>
+
+                <p><span style="font-size: 14px;">Click&nbsp;</span><a
+                            href="{{ path('fos_user_registration_register') }}"><span
+                                style="font-size: 14px;">here</span></a><span style="font-size: 14px;"> to register or login to apply now! </span>
+                </p>
+
+                <p><img alt="" height="33" src="{{ asset('bundles/gotchosensite/images/notes_monthly2.jpg') }}"></p>
+                <ul>
+                    <li>Open to <span id="spanMonthlyTab1">United States and international students.</span></li>
+                    <li>No GPA, No Essay - No Long Forms to Fill - Just Register and Apply!</li>
+                    <li>You must apply for the GotChosen $1000 Every Month Scholarship each month to be eligible for the current
+                        month’s drawing.
+                    </li>
+                    <li>This is not a loan and there is no payback. This is a FREE scholarship.</li>
+                    <li>Privacy Disclosure: GotChosen will not sell or share any personal data from its registrants.</li>
+                    <li>Deadline: The last day of the month.</li>
+                    <li>NO FEE, AND NO PURCHASE IS NECESSARY TO ENTER OR WIN.</li>
+                </ul>
+                <p> If you would like GotChosen to offer more monthly scholarships then "Like" us on Facebook!</p>
+
+                <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false" data-width="200"
+                     data-show-faces="false"></div>
+            </div>
+
+            <!--
+            RULES TAB
+            -->
+
+            <div class="tab-pane" id="rules">
+                <p><strong>GotChosen $1000 Every Month Scholarship Rules and Regulations</strong>
+                </p>
+
+                <p><b>Highlights:<br/> </b></p>
+                <ul style="margin-top: 0; list-style-type: disc;">
+                    <li>The US $1,000 prize <i>must be used</i> for educational expenses.</li>
+                    <li>No purchase is required.</li>
+                    <li>Entrants must be 18 years or older.</li>
+                    <li>You must apply for the GotChosen $1000 Every Month Scholarship each month to be eligible for the current
+                        month’s drawing.
+                    </li>
+                    <li>A valid email address must be entered in your GotChosen’s Registration Profile for prize notification.</li>
+                </ul>
+                <p></p>
+
+                <p><b>Eligibility:</b></p>
+                <ul style="margin-top: 0; list-style-type: disc;">
+                    <li>The GotChosen $1000 Every Month Scholarship Drawing is open to <span id="spanMonthlyRules"> United States and international students, 18 years or older.</span>
+                        There is no cost to enter, and eligibility is not based on financial need or academic performance.
+                    </li>
+                    <li>You must apply each month to be eligible for the current month’s drawing.</li>
+                    <li>Employees of GotChosen, Inc., their respective parents, immediate family members, and persons living in the
+                        households of each of these individuals, whether related or not, are ineligible for this
+                        drawing.&nbsp; </li>
+                    <li>The drawing is subject to all applicable federal, state, and local laws and regulations, and the drawing or
+                        any offers herein is void where prohibited or restricted by law.&nbsp; </li>
+                </ul>
+                <p><span style="text-decoration: underline;">A new drawing begins</span> on the first day of each month. </p>
+
+                <p><span style="text-decoration: underline;">Deadline: </span>The last day of the month at 11:59PM, Eastern Standard
+                    Time.</p>
+
+                <p> A random drawing from among all eligible entries received in the current month will be conducted in the United
+                    States. The name of the winner will be announced on the 27th of the following month at <a>http://www.gotchosen.com</a>.
+                </p>
+
+                <p><b>To Enter:</b></p>
+
+                <p><b>Existing GotChosen users</b> simply need to Login, and click the &ldquo;Apply&rdquo; button in the Scholarship
+                    Panel for the GotChosen $1000 Every Month Scholarship.</p>
+
+                <p><b>New visitors</b> to GotChosen must complete an on-line registration and then click the “Apply” button under
+                    the Scholarship Panel for the GotChosen $1000 Every Month Scholarship.</p>
+
+                <p> Participants, who do not have access to the internet, see instructions below for details on how to mail in a
+                    registration form. A valid email address is required to qualify for the GotChosen $1000 Every Month
+                    Scholarship*.</p>
+
+                <p> By completing and submitting their registration, participants acknowledge and agree to the Rules and Regulations
+                    herein and to GotChosen’s Privacy Policy.</p>
+
+                <p><b>Odds of winning:</b>&nbsp; <br/> The winner of the drawing will receive a US $1000 scholarship. There will
+                    only be one winner per month. The actual odds will depend upon the total number of eligible entries received
+                    prior to 11:59PM Eastern Time on the last day of the month. Each eligible entry will have an equal chance of
+                    winning. </p>
+
+                <p><b>Prize Restrictions:</b></p>
+                <ul>
+                    <li>Scholarship funds must be used educational purposes, such as tuition, fees, books, supplies, equipment
+                        required for study or towards repayment of outstanding student loans.
+                    </li>
+                    <li>The winner must provide notarized proof of current enrollment or current outstanding student loans.</li>
+                    <li>If prize notification email is undeliverable, the prize will be awarded to an alternative winner.</li>
+                    <li>The winners’ name will be posted on <a href="http://www.gotchosen.com">http://www.gotchosen.com</a>. All
+                        information provided by eligible entrants will be verified.
+                    </li>
+                    <li>All federal, state, and local taxes and any other costs and expenses not specifically stated herein as being
+                        awarded are the winner’s sole responsibility.
+                    </li>
+                    <li>A participant is eligible to win the GotChosen $1000 Every Month Scholarship once in their life time.</li>
+                    <li>GotChosen reserves the right to change these terms and conditions at any time.</li>
+                </ul>
+                <p><b>Prize Notification</b>:<br/> The winner will be notified by <b>email only</b>. A valid email address is
+                    required in your user profile. The winner will be required to provide picture identification, sign an Affidavit
+                    of Eligibility and Liability Release, and (where not prohibited by law) a Publicity Release to be awarded the
+                    prize. In the event of noncompliance with the Official Rules, or the prize notification is unclaimed within 5
+                    days of the date of the first notification attempt, or if any of the prize notifications are returned as
+                    undeliverable, the prize will be forfeited and may be awarded to an alternate winner.</p>
+
+                <p><b>Additional Terms</b>:<br/> By participating, registrants agree to: (a.) the Official Rules and the decisions
+                    of the GotChosen, Inc., which shall be final in all respects; and (b.) release, discharge, indemnify, and hold
+                    harmless GotChosen, Inc., their respective trustee, financial institutions, affiliated advertising and promotion
+                    agencies, the respective officers, directors, agents, and employees of the aforementioned entities
+                    (collectively, the “Released Parties”) from any liability, claims, or damages arising out of their participation
+                    in the GotChosen drawing and the acceptance, use, misuse, or possession of any prize. </p>
+
+                <p> By accepting the prize, the winner agrees to, where legal, GotChosen Inc., and its designees’ use of his/her
+                    name and/or likeness for advertising and publicity purposes in any and all media now or hereafter known without
+                    compensation and hereby provides consent to such use. As a condition of entering the GotChosen drawing,
+                    participant agrees that a.) Under no circumstances will participant be permitted to obtain awards for, and
+                    participant hereby waives all rights to claim punitive, incidental, consequential, or any other damages; b.) All
+                    causes of action arising out of or connected with this drawing, or any prizes awarded, shall be resolved
+                    individually, without resort to any form of class action; and c.) Any and all claims, judgments, and awards
+                    shall be limited to actual out-of-pocket costs incurred, but in no event attorney’s fees. </p>
+
+                <p><b>Limitation of Liability</b>:&nbsp; <br/> Released Parties are not responsible for printing, typographical,
+                    human or other errors in any GotChosen-related materials; for stolen, lost, late, misdirected, damages,
+                    incomplete, illegible, or postage-due mail or entries; or for transactions that are processed late or
+                    incorrectly, or are lost due to computer or electronic malfunction or human error. GotChosen Inc. reserves the
+                    right to cancel, suspend or modify the drawing and award the prize from among all eligible non-suspect entries
+                    received prior to action taken if fraud or technical failures or other events compromise the integrity of the
+                    drawing as determined by GotChosen Inc. in its sole discretion. The drawing is governed by the laws of the State
+                    of Florida for the resolution of all claims and disputes.</p>
+
+                <p> * Participants, who do not have access to the internet may hand-print or type (in English only) their name,
+                    e-mail address, date of birth, street address, city, state, zip, phone number on a 3” x 5” card and mail it in a
+                    first-class stamped envelope to:<br/> GotChosen $1000 Every Month Scholarship<br/> 12472 Lake Underhill Road
+                    #397<br/> Orlando, FL 32828 USA <br/> All mail in registrations must be postmarked no later than the last day of
+                    the month of the drawing. (Mail in registrations do not renew for the next month drawing, therefore must be
+                    submitted each month). Please be sure to include all information requested. Incomplete mail in registrations
+                    will be disregarded and you WILL NOT be eligible to participate in this drawing. GotChosen is not responsible
+                    for mailing costs. A valid email address is required to qualify for the GotChosen $1000 Every Month Scholarship.
+                </p>
+
+                <p> CONSUMER DISCLOSURE:&nbsp; NO PURCHASE IS NECESSARY TO ENTER OR WIN.</p> <br/> <b>Glossary:<br/> </b>Visitor:&nbsp;
+                (1) An individual with access only to the public portions of the website. (2)&nbsp; Also, an individual who does not
+                register on the website.<b></b> <p></p>
+
+                <p style="margin: 0 0 10pt;"> Registered User (same as &ldquo;User&rdquo;): An individual who registers on the
+                    site, but who has not necessarily applied to or enrolled in any (or any particular) GotChosen, Inc., drawing or
+                    contest.</p>
+
+                <p></p>
+
+                <p style="margin: 0 0 10pt;"> Participant: An individual who has successfully applied to or enrolled in one or
+                    more GotChosen, Inc. drawings or contests.</p>
+
+                <p style="margin: 0 0 10pt;"> &nbsp;</p>
+            </div>
+
+            <!--
+            FAQ TAB
+            -->
+
+            <div class="tab-pane" id="faq">
+                <p><strong><span
+                                style="text-decoration: underline;">Who is GOTCHOSEN?</span></strong></p>
+
+                <p> GotChosen is an innovative startup in multimedia technology, advertising, and business development headquartered
+                    in Orlando, Florida. The company is developing an unparalleled informational exchange experience for users in
+                    ways that build new levels of involvement, brand loyalty, and profitability. Its proprietary technologies will
+                    begin to be rolled out in late 2013. </p>
+
+                <p><strong><span
+                                style="text-decoration: underline;">What is the GotChosen $1000 Every Month Scholarship drawing?</span></strong><br/>
+                    Through the drawing, GotChosen will award one (1) lucky winner a US $1000 SCHOLARSHIP every month. Funds must be
+                    used for educational expenses; tuition, fees, books, supplies, equipment required for study, or towards
+                    repayment of outstanding student loans. This is not a loan and there is no payback. The GotChosen US $1000 Every
+                    Month Scholarship is a FREE Scholarship. </p>
+
+                <p><strong><span style="text-decoration: underline;">How do I enter the GotChosen $1000 Every Month Scholarship drawing?</span></strong>
+                </p>
+
+                <p><strong>Existing GotChosen users</strong> simply need to Login, and click the &ldquo;Apply&rdquo; button in the
+                    Scholarship Panel for the GotChosen $1000 Every Month Scholarship.</p>
+
+                <p><strong> <br/> New visitors</strong> to GotChosen must complete an on-line registration and then click on the
+                    “Apply” button under the Scholarship Panel for the GotChosen $1000 Every Month Scholarship. </p>
+
+                <p> You must apply for the GotChosen $1000 Every Month Scholarship each month to be eligible for the current month’s
+                    drawing. </p>
+
+                <p><strong><span style="text-decoration: underline;">How do I win?</span></strong></p>
+
+                <p> A random drawing from among all eligible entries received in the current month will be conducted in the United
+                    States. </p>
+
+                <p><strong><span
+                                style="text-decoration: underline;">What if I don&rsquo;t win? Do I get another chance?</span></strong>
+                </p>
+
+                <p> Of course! There will be a new drawing every month. You must apply for the GotChosen $1000 Every Month
+                    Scholarship each month to be eligible for the current month’s drawing.</p>
+
+                <p><strong><span style="text-decoration: underline;">Who can participate in the GotChosen $1000 Every Month Scholarship drawing?</span></strong>
+                </p>
+
+                <p> The GotChosen Scholarship Drawing is open to <span id="spanMonthlyFAQ">United States and international students. All participants must be 18 years or older.</span>
+                    <br/></p>
+
+                <p><strong><span
+                                style="text-decoration: underline;">How many people can register for the scholarship?</span></strong>
+                </p>
+
+                <p> There are no limits to the number of registrants we can accept between the first and the last day day of the
+                    month.</p>
+
+                <p><strong><span
+                                style="text-decoration: underline;">How does the winner receive the scholarship winnings? </span></strong>
+                </p>
+
+                <p> The US $1,000 scholarship award will be issued after eligibility of the winner is confirmed.</p>
+
+                <p> Scholarship funds must be used for educational expenses; tuition, fees, books, supplies, equipment required for
+                    study, or towards repayment of outstanding student loans. </p>
+
+                <p><strong><span style="text-decoration: underline;">How much does it cost to enter the drawing?</span></strong></p>
+
+                <p> NO PURCHASE IS NECESSARY TO ENTER OR WIN. Simply register at <a
+                            href="{{ path('fos_user_registration_register') }}">
+                        www.gotchosen.com</a> then apply to enter the drawing for your chance to win the <em>GotChosen $1000 Every
+                        Month Scholarship</em> drawing.</p>
+
+                <p><strong><span style="text-decoration: underline;">How many drawing entries can I get?</span></strong></p>
+
+                <p> One entry per month.</p>
+
+                <p><strong><span style="text-decoration: underline;">What are the odds of winning the <em> GotChosen $1000 Every
+                                Month Scholarship </em>drawing?</span></strong></p>
+
+                <p> The odds of winning are unknown and conditioned upon the number of participants.</p>
+
+                <p><strong><span style="text-decoration: underline;">When does the <em>GotChosen $1000 Every Month Scholarship</em> registration start and end?</span></strong>
+                </p>
+
+                <p> The registration begins on the first of every month and ends at 11:59PM Eastern Time on the last day of the
+                    month.</p>
+
+                <p><strong><span style="text-decoration: underline;">When will the winner be announced?</span></strong></p>
+
+                <p> The name of the winner will be announced on 27th of the following month at http://www.gotchosen.com.</p>
+
+                <p><strong><span style="text-decoration: underline;">Do I have to be present to win?</span></strong></p>
+
+                <p> NO – We will contact you by the <b>email</b> provided in your user profile.</p>
+
+                <p></p>
+
+                <p><strong><span style="text-decoration: underline;">Is the <em>GotChosen $1000 Every Month Scholarship</em> scholarship considered income?</span></strong>
+                </p>
+
+                <p> YES – All federal, state, and local taxes and any other costs and expenses not specifically stated herein as
+                    being awarded are the winner’s sole responsibility.</p>
+
+                <p><strong><span style="text-decoration: underline;">How do I get more information on GOTCHOSEN?</span></strong></p>
+
+                <p> Please visit www.gotchosen.com and see the <a href="{{ path('about_us') }}">About Us</a> section.</p>
+
+                <p><strong><span style="text-decoration: underline;">What if I still have questions about the <em>GotChosen $1000
+                                Every Month Scholarship</em> drawing that aren't answered here?</span></strong></p>
+
+                <p> Please visit the <span style="text-decoration: underline;"><a href="{{ path('monthly_scholarship', {'tab': 'rules'}) }}">Rules</a></span> section of this
+                    website or send an email to info@gotchosen.com.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <div class="sb-block">
+            <a href="http://www.smarterbucks.com/partner03?tfc_src=483&amp;utm_source=partner_gotchosen&amp;utm_medium=ad_bucks&amp;utm_campaign=gotchosen_feb"
+               target="_blank"><img
+                        src="{{ asset('bundles/gotchosensite/images/smarterbucks_250_x_100.png') }}"
+                        width="250" alt=""></a>
+        </div>
+        <div class="sb-block">
+            <a href="http://www.valorebooks.com/affiliate/url/siteID=cuReXk?url=http://www.valorebooks.com/sell-textbooks"
+                    target="_blank"><img
+                        src="{{ asset('bundles/gotchosensite/images/valore_sell_your_books_250x400.jpg') }}"
+                        width="250" alt=""></a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            var curTab = "{{ tab }}";
+            $('#scholarship-tabs').find('a#tab_' + curTab).tab('show');
+        });
+    </script>
+
+{% endblock %}

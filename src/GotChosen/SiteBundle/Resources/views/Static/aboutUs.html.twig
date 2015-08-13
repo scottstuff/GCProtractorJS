@@ -1,0 +1,94 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}About Us | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main staticpage">
+            <h1 class="title">About GotChosen <span class="title-bar" style="width: 490px;"></span></h1>
+
+            <p>GotChosen is an innovative startup in multimedia technology, advertising, and
+               business development headquartered in Orlando, Florida. We are developing our
+               proprietary technologies based on choice and privacy.</p>
+
+            <p>GotChosen’s efforts are focused on scholarship programs. We
+                encourage you to register to benefit from our programs:
+                <a href="{{ path('scholarship') }}" target="_blank">GotScholarship $20K Give Away</a>,
+                <a href="{{ path('monthly_scholarship') }}" target="_blank">GotChosen
+                $1000 Every Month Scholarship</a>,
+                <a href="{{ path('video_scholarship') }}" target="_blank">The Lights,
+                Camera, Action Video Scholarship</a>, and
+                <a href="{{ path('eg_scholarship') }}" target="_blank">Evolution Games</a>.</p>
+
+            <p>Why is GotChosen giving away scholarships? Two reasons:</p>
+
+            <ol>
+                <li>We like helping people like you get started.</li>
+                <li>Build brand awareness and a web presence.</li>
+            </ol>
+
+            <p>What we are working on?</p>
+
+            <p>When you browse the internet today, you are being tagged, tracked, packaged, and sold.
+                Big data algorithms designed to maximize advertising revenues are determining what
+                appears on your screens. Check out what really is happening with your data online:
+                <a href="{{ path('privacy_issue') }}">The Data Brokers: Selling your personal information</a>.</p>
+            <p>We think there is a better way.</p>
+
+            <p>Our solution: GotChosen‘s new technology will give you control of the <strong>content</strong> on
+                your screen. The technology will provide you with a privacy-protected way of
+                interacting with the people and businesses that you choose.</p>
+
+            <p>We respect your privacy. We will never sell your data to anyone, ever.</p>
+
+            <p>It’s easy and free to <a href="{{ path('fos_user_registration_register') }}"
+               target="_blank">register</a> and apply to win our scholarships.</p>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="sb-block">
+                <p><a href="{{ path('scholarship') }}"><img alt=""
+                    src="{{ asset('bundles/gotchosensite/images/20K_give_away_blue.png') }}"
+                    style="width: 250px;" /></a></p>
+            </div>
+
+            <div class="sb-block">
+                <h1 class="title">Follow Us <span class="title-bar orange" style="width:170px;"></span></h1>
+            </div>
+
+            <div class="sb-block">
+                <div id="fb-root"></div>
+                <script>(function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=190989744285875";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-like-box" data-href="http://www.facebook.com/GotChosen" data-width="248"
+                                 data-show-faces="true" data-stream="false" data-header="true"></div>
+            </div>
+
+            <div class="sb-block">
+                <a class="twitter-timeline" href="https://twitter.com/GotChosen" data-widget-id="395642516751400960"
+                        width="290" height="350">Tweets
+                    by @GotChosen</a>
+                <script>!function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + "://platform.twitter.com/widgets.js";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, "script", "twitter-wjs");</script>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}wall{% endblock %}
+
+{% block eg_content %}
+    <div class="standings">
+<div class="alert alert-error">
+ <strong>Our first season of Evolution Games has ended. The next season will start in the Fall.</strong>
+</div>
+        <h4 style="border-bottom: 1px solid #eee">Top 10 Ranks For June</h4>
+
+        <!--
+        {% if currentChamps is not empty %}
+        <div class="standings-col">
+            <div class="col-head">
+                {# <img src="http://placehold.it/80x80&text=Trophy" alt="Trophy" /> #}
+                <h4>Game Scholarship</h4>
+            </div>
+            <ol>
+                {% for u in currentChamps %}
+                    <li>
+                        {% if u.player.getPropertyValue('PhotoURL') %}
+                            <img src="{{ u.player.getPropertyValue('PhotoURL') }}" alt="Avatar" class="wall-mini" />
+                        {% endif %}
+                        <a href="{{ path('user_profile', {username: u.player.username}) }}">{{ u.player.username }}</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
+
+        <div class="standings-col">
+            <div class="col-head">
+                {# <img src="http://placehold.it/80x80&text=Trophy" alt="Trophy" /> #}
+                <h4>Qualifier</h4>
+            </div>
+            <ol>
+                {% for g in currentQualifier %}
+                    <li>
+                        {% if g.avatarFile %}
+                            <img src="{{ g.avatarFile }}" alt="Avatar" class="wall-mini" />
+                        {% endif %}
+                        <a href="{{ path('eg_game', {'id': g.id, 'slug': g.gameName|gc_slugify}) }}" data-toggle="tooltip" title="{{ g.gameName }}">{{ g.gameName|length > 15 ? g.gameName[:15] ~ '...' : g.gameName }}</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+
+        {% if currentDev is not empty %}
+        <div class="standings-col">
+            <div class="col-head">
+                {# <img src="http://placehold.it/80x80&text=Trophy" alt="Trophy" /> #}
+                <h4>Game Devs Contest</h4>
+            </div>
+            <ol>
+                {% for g in currentDev %}
+                    <li>
+                        {% if g.avatarFile %}
+                            <img src="{{ g.avatarFile }}" alt="Avatar" class="wall-mini" />
+                        {% endif %}
+                        <a href="{{ path('eg_game', {'id': g.id, 'slug': g.gameName|gc_slugify}) }}" data-toggle="tooltip" title="{{ g.gameName }}">{{ g.gameName|length > 15 ? g.gameName[:15] ~ '...' : g.gameName }}</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="past">
+        <h4>Past Results</h4>
+
+        {% if prevChamps|length == 0 and prev2Champs|length == 0 and prevQualifier|length == 0
+              and prev2Qualifier|length == 0 and prevDev|length == 0 and prev2Dev|length == 0 %}
+            No past results available.
+        {% endif %}
+
+        {% if prevChamps|length > 0 or prev2Champs|length > 0 %}
+        <div class="past-block">
+            <h4>Game Scholarship</h4>
+
+            {% if prevChamps|length > 0 %}
+            <h5><a href="#" data-gc-toggle="gs_{{ prevMonth }}">{{ prevMonth|date('F') }}</a></h5>
+            <ul class="month" id="gs_{{ prevMonth }}">
+                {% for u in prevChamps %}
+                    <li>
+                        {% if u.player.getPropertyValue('PhotoURL') %}
+                            <img src="{{ u.player.getPropertyValue('PhotoURL') }}" alt="Avatar" class="wall-mini" />
+                        {% endif %}
+                        <a href="{{ path('user_profile', {username: u.player.username}) }}">{{ u.player.username }}</a> <span>({{ u.totalPoints }})</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if prev2Champs|length > 0 %}
+            <h5><a href="#" data-gc-toggle="gs_{{ prev2Month }}">{{ prev2Month|date('F') }}</a></h5>
+            <ul class="month" id="gs_{{ prev2Month }}">
+                {% for u in prev2Champs %}
+                    <li>
+                        {% if u.player.getPropertyValue('PhotoURL') %}
+                            <img src="{{ u.player.getPropertyValue('PhotoURL') }}" alt="Avatar" class="wall-mini" />
+                        {% endif %}
+                        <a href="{{ path('user_profile', {username: u.player.username}) }}">{{ u.player.username }}</a> <span>({{ u.totalPoints }})</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endif %}
+    -->
+
+    <div class="standings-col" style="width:200px;">
+        <div class="col-head">
+            {# <img src="http://placehold.it/80x80&text=Trophy" alt="Trophy" /> #}
+            <h4>Game Scholarship</h4>
+        </div>
+        <ol>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/Couchey188">Couchey188</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/Anonymous314">Anonymous314</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/garyfrogg23">garyfrogg23</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/alymariecastillo">alymariecastillo</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/brocmacfee">brocmacfee</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/mely195">mely195</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/sonicspeed123">sonicspeed123</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/Zorca99">Zorca99</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/LinktotheFuture">LinktotheFuture</a>
+            </li>
+            <li>
+                <a href="https://www.gotchosen.com/en/profile/riannon">riannon</a>
+            </li>
+        </ol>
+    </div>
+
+</div>
+    <div class="past">
+        <h4>Past Results</h4>
+        <div class="past-block">
+            <h4>Game Scholarship</h4>
+
+            <h5><a href="#" data-gc-toggle="gs_2014-06">June</a></h5>
+            <ul class="month" id="gs_2014-06">
+                <li>
+                    <a href="https://www.gotchosen.com/en/profile/Couchey188">Couchey188</a> <span>(123)</span>
+                </li>
+            </ul>
+
+            <h5><a href="#" data-gc-toggle="gs_2014-05">May</a></h5>
+            <ul class="month" id="gs_2014-05">
+                <li>
+                    <a href="https://www.gotchosen.com/en/profile/ACF25">ACF25</a> <span>(180)</span>
+                </li>
+            </ul>
+        </div>
+        <div class="past-block">
+            <h4>Game Devs Contest</h4>
+
+            <h5><a href="#" data-gc-toggle="gd_2014-05">June</a></h5>
+            <ul class="month" id="gd_2014-05" style="display: block;">
+                <li>
+                    <img src="https://s3.amazonaws.com/ProdContent/evogames/screenshots/2014/02/22/530971dd402bd.png" alt="Avatar" class="wall-mini" />
+                    <a href="https://www.gotchosen.com/en/evolution-games/game/4/marble-droid-2">Marble Droid 2</a>
+                </li>
+            </ul>
+            <h5><a href="#" data-gc-toggle="gd_2014-05">May</a></h5>
+            <ul class="month" id="gd_2014-05" style="display: block;">
+                <li>
+                    <img src="https://s3.amazonaws.com/ProdContent/evogames/studio_avatars/2014/02/18/5303b8346ebf9.png" alt="Avatar" class="wall-mini" />
+                    <a href="https://www.gotchosen.com/en/evolution-games/game/1/boy-and-pup">Boy and Pup</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+
+{% endblock %}

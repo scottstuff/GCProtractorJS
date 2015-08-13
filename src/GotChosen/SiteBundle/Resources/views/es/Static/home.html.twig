@@ -1,0 +1,32 @@
+{% extends 'GotChosenSiteBundle::layout_front_slides.html.twig' %}
+
+{% block title %}Home | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="home-sections">
+        <div class="home-third">
+            <a href="http://www.valorebooks.com/affiliate/url/siteID=cuReXk?url=http://www.valorebooks.com" target="_blank"><img alt="" src="{{ asset('bundles/gotchosensite/images/Valore_ad_buybooks2_250x200.jpg') }}" style="width:250px; height:200px;"></a>
+        </div>
+
+        <div class="home-third">
+            <h2><a href="{{ path('scholarship') }}">$20K Scholarship</a></h2>
+
+            <p>Open to all fields of study, the US $20,000 scholarship is not awarded based on
+                academic achievement or financial need. Instead, the winner is selected by a
+                random drawing.</p>
+
+            <p><a href="{{ path('scholarship') }}"><img alt="" src="{{ asset('bundles/gotchosensite/images/btn_learnmore.jpg') }}"></a></p>
+        </div>
+
+        <div class="home-third home-news">
+            <h2><a href="{{ path('news') }}">News</a></h2>
+            <p class="home-news-title">Winners of the 2nd GotScholarship</p>
+
+            <p><img alt="" style="width: 185px;" src="{{ asset('bundles/gotchosensite/images/carmela-and-daniel2.jpg') }}"></p>
+            <p>Click <a href="{{ path('news_article', {"id": 29, "slug": "the-winners-story-from-the-second-gotscholarship"}) }}">here</a> to read their story...</p>
+
+        </div>
+    </div>
+
+{% endblock %}

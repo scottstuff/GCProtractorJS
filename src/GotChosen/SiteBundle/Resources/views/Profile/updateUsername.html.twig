@@ -1,0 +1,36 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}Update Username | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main padded wide tabbed">
+            <h1 class="title">
+                Update Username
+                <span class="title-bar" style="width:740px;"></span>
+            </h1>
+
+            <p class="spaced">Welcome, thank you for signing in. In order to continue to the site,
+                please enter a new username for yourself.</p>
+
+            {{ form_start(form, {'attr': {'class': 'form-horizontal ChosenTTForm'}}) }}
+
+            {{ form_row(form.username, {'error_type': 'inline', 'attr': {
+                'class': 'ChosenExistsCheck', 'data-path': path('check_username'),
+                'data-error': 'This username is not available', 'data-success': 'This username is available'
+            }}) }}
+
+            {{ form_row(form.BirthDay) }}
+
+            {{ form_rest(form) }}
+
+            <div class="submit-row">
+                <input type="submit" class="btn btn-primary" value="Set Username">
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,162 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block eg_tabs %}{% endblock %}
+
+{% block eg_content %}
+
+    <div class="game-container">
+        {% if game.type == "unity" %}
+        <div id="unityWarning" class="alert alert-warning" align="left">
+            <h4>Unity Web Player Required</h4>
+            <div>
+                This game requires the Unity Web Player to be installed. To install, click the button on the
+                screen below to start the download. Once the download is complete, run the installer and it
+                will add the Unity Player to your system. If the player doesn't load automatically after
+                install, please refresh the page.
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="game-btn-top">
+            <a class="btn" href="{{ path('eg_game', {'id': gameId, 'slug': game.gameName|gc_slugify}) }}"><i class="icon icon-backward"></i> Go Back</a>
+        </div>
+        
+        {% if freePlay %}
+            <div class="alert alert-info">
+                <strong>This appears to be the first time you've played this game.</strong> This play session will not use any tokens and its score won't count toward the contest.
+            </div>
+        {% endif %}
+        
+        {% if noTokens %}
+            <div class="alert alert-warning">
+                <strong>You don't have any tokens!</strong> This play session will be considered a free play and its score won't count toward the contest.
+            </div>
+        {% endif %}
+        
+        {% if not app.user and gc_egContestActive() and not game.isInQualifier() %}
+            <div class="alert alert-error">
+                <strong>You are not logged in!</strong> You can't compete in the Evolution Games Scholarship Contest unless you are logged in. <a href="{{ path('fos_user_security_login') }}">Click here to login</a>.
+            </div>
+        {% endif %}
+        
+        <div id="loading" class="alert alert-info" style="font-size: 18px; font-weight: bold">The game is loading - please wait</div>
+        
+        {% if game.type == "flash" %}
+
+        <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="900" height="600"
+                id="gameObject" align="middle">
+            <param name="movie" value="{{ game.swfFile }}" />
+            <param name="flashvars" value="{{ flashVars|raw }}" />
+            <param name="allowFullScreen" value="true" />
+            <!--[if !IE]>-->
+            <object type="application/x-shockwave-flash" data="{{ game.swfFile }}" width="900" height="600">
+                <param name="movie" value="{{ game.swfFile }}" />
+                <param name="flashvars" value="{{ flashVars|raw }}" />
+                <param name="allowFullScreen" value="true" />
+            <!--<![endif]-->
+                <a href="http://www.adobe.com/go/getflash">
+                    <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                </a>
+            <!--[if !IE]>-->
+            </object>
+            <!--<![endif]-->
+        </object>
+        
+        {% elseif game.type == "unity" %}
+        
+        <div id="unityPlayer">
+            <div class="missing">
+                <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+                    <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                </a>
+            </div>
+        </div>
+        
+        {% endif %}
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+
+{% if game.type == "unity" %}
+
+{% javascripts '@GotChosenSiteBundle/Resources/public/js/UnityObject2.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<script type="text/javascript">
+    var config = {
+            width: 900, 
+            height: 600,
+            params: { enableDebugging:"0" }
+
+    };
+    
+    var u = new UnityObject2(config);
+    
+    function initUnityGame(args)
+    {
+        u.getUnity().SendMessage("EvolutionGames", "setSessionID", "{{ gameParameters.session_id }}");
+        u.getUnity().SendMessage("EvolutionGames", "setApiEndpoint", "{{ gameParameters.api_endpoint }}");
+        u.getUnity().SendMessage("EvolutionGames", "setRedirectUrl", "{{ gameParameters.completion_url }}");
+        
+        jQuery("#loading").hide();
+    }
+
+    jQuery(function() {
+
+            var $missingScreen = jQuery("#unityPlayer").find(".missing");
+            var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+            var $unityWarning = jQuery("#unityWarning");
+            var $loading = jQuery("#loading");
+            $missingScreen.hide();
+            $brokenScreen.hide();
+            
+            i = 0;
+            setInterval(function() {
+                i = ++i % 8;
+                jQuery("#loading").html("The game is loading - please wait<br />" + Array(i + 2).join("."));
+            }, 300);
+
+            u.observeProgress(function (progress) {
+                    switch(progress.pluginStatus) {
+                            case "broken":
+                                    $brokenScreen.find("a").click(function (e) {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                            u.installPlugin();
+                                            return false;
+                                    });
+                                    $brokenScreen.show();
+                            break;
+                            case "missing":
+                            case "unsupported":
+                                    $missingScreen.find("a").click(function (e) {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                            u.installPlugin();
+                                            return false;
+                                    });
+                                    $missingScreen.show();
+                                    $unityWarning.show();
+                                    $loading.hide();
+                            break;
+                            case "installed":
+                                    $missingScreen.remove();
+                                    $unityWarning.remove();
+                            break;
+                            case "first":
+                            break;
+                    }
+            });
+            u.initPlugin(jQuery("#unityPlayer")[0], "{{ game.swfFile }}");
+    });
+</script>
+
+{% endif %}
+{% endblock %}

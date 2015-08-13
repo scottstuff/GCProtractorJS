@@ -1,0 +1,144 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block eg_tabs %}{% endblock %}
+
+{% block eg_content %}
+
+    <div class="game-container" style="text-align:left;">
+        <div class="game-btn-top">
+            <a class="btn" href="{{ path('eg_faq') }}"><i class="icon icon-backward"></i> Go Back</a>
+        </div>
+            <div style="border: 1px solid #DDDDDD;border-radius:15px;padding:5px;">
+
+<p style="text-decoration:underline;font-weight:bold;">What is the Evolution Games Developers Contest?</p>
+<p>It’s a platform for indie game developers to upload their games, receive feedback from players, and compete
+    for seed money.  Our players are incentivized to play the games and provide useful feedback to you as a part
+    of our Evolution Games Scholarship contest.</p>
+<p style="text-decoration:underline;font-weight:bold;">Who can submit a game for the Evolution Games Developers Contest?</p>
+<p>The Evolution Games Developers Contest is open to all participants 18 years or older. </p>
+<p style="text-decoration:underline;font-weight:bold;">Where are the games coming from?</p>
+<p>Games can be uploaded from anywhere in the world. </p>
+<p style="text-decoration:underline;font-weight:bold;">Does GotChosen take ownership over my game when I submit it for the Evolution Games contest?</p>
+<p>No. GotChosen does NOT take ownership and does NOT claim any rights of any games uploaded/submitted for the Evolution Games contest.</p>
+<p style="text-decoration:underline;font-weight:bold;">How much does it cost to upload a game?</p>
+<p>Nothing - it is free for a developer to submit any of their games.</p>
+<p style="text-decoration:underline;font-weight:bold;">Does a game have to be original?</p>
+<p>All games must be original, and the developer must have the rights to any and all material used.  Games must not
+    infringe on any third-party rights or copyrights. If GotChosen receives a notice of copyright infringements from the owner of the material, the game in violation will be removed.</p>
+<p style="text-decoration:underline;font-weight:bold;">How do I submit a game for the Evolution Games Developers Contest?</p>
+<p>Existing GotChosen members simply need to Login, and submit a game for the "Qualifier Round”.</p>
+<p>New visitors to GotChosen must complete an on-line registration and then submit a game for the "Qualifier Round”.</p>
+<p style="text-decoration:underline;font-weight:bold;">What are the requirements in order to submit a game?</p>
+<ul>
+<li><strong>The game must</strong> not be larger than 650 MB.</li>
+<li><strong>The game must</strong> include a scoring mechanic so that players can reasonably receive a different ranking based on their scores.</li>
+    <li><strong>Your game must</strong> be a "single session" type of game. Each play session by a player must be a new game. </li>
+        <ul>
+            <li><strong>Your game must</strong> automatically send a score at the end of each session.</li>
+            <li><strong>Your game must not </strong>have a “Restart”, “Try again”, or “Play Again” mechanism when the player completes a play session.</li>
+            <li><strong>Do not </strong>store long-term session or state information on players.</li>
+        </ul>
+    <li><strong>The game must</strong> implement our API which requires a Secret Key. <a href="{{ path('eg_submit_gate') }}" target="_blank">Check details here</a>.</li>
+<li><strong>The game must</strong> be in one of our supported formats: <strong><em>Unity</em></strong> or <strong><em>Flash</em></strong></li>
+</ul>
+<p style="text-decoration:underline;font-weight:bold;">What is the Manage Game page?</p>
+<p>When you submit a game, the “Submit Game” tab will become the “Manage Game” tab.  When you click it, it will show
+    you your Manage Game page, where you can find your Secret Key, manage feedback, edit game details, update your game, and see your game
+    statistics.</p>
+<p style="text-decoration:underline;font-weight:bold;">How long is the Evolution Games Developers Contest?</p>
+<p>Each contest will last one calendar month and be called a Round.</p>
+<p style="text-decoration:underline;font-weight:bold;">Are there different kinds of Rounds in the Evolution Games
+    Developers Contest?</p>
+<p>Yes. There are 2 different types of contests for the developers - the Qualifier Round and the Contest.</p>
+<p style="text-decoration:underline;font-weight:bold;">What is a Qualifier Round?</p>
+<p>This is a month long contest where developers will submit their games for anyone to play, vote for and offer
+    feedback on.  The top games with the highest rank at the end of the each round will advance into the next Contest Round.</p>
+<p style="text-decoration:underline;font-weight:bold;">How many Qualifier Rounds will there be?</p>
+<p>There will be mutiple Qualifier Rounds.</p>
+<p style="text-decoration:underline;font-weight:bold;">What is the deadline to submit a game in the Qualifier Round?</p>
+<p>The last day of the month.</p>
+<p style="text-decoration:underline;font-weight:bold;">How do developers let people know their games are competing
+    on GotChocsen.com?</p>
+<p>Every developer is responsible for marketing their games to get people to vote and play. You can use all forms
+    of social media (YouTube, Facebook, Twitter, Instagram, LinkedIn, SnapChat, Pinterest, Tumblr, Google+, Reditt,
+    chat rooms, Gaming site, Blogs, friends and family, classmates, coworkers etc. - the key is to drive as many
+    players to your individual game page as possible.</p>
+<p style="text-decoration:underline;font-weight:bold;">Is there a way to prevent voting fraud?</p>
+<p>GotChosen will allow games to be voted on once a day per IP address. </p>
+<p style="text-decoration:underline;font-weight:bold;">How does a game win a Qualifier Round?</p>
+<p>The top games with the highest rank at the end of the each round will advance into the next Contest Round.</p>
+<p style="text-decoration:underline;font-weight:bold;">How does GotChosen calculate my rank in the Qualifier Round?</p>
+<p>The developer’s rank is generated at the end of every day and be posted on your Manage Game page.</p>
+<p>The criteria used to generate the developer’s rank are applied in the exact order below:</p>
+<ol>
+<li>Number of votes.</li>
+<li>Number of plays.</li>
+<li>Number of feedback rated by the developer received from the players.</li>
+</ol>
+<p>Note: The three criteria listed in the order above were designed to resolve any tie in the rank position between
+    developers.</p>
+<p style="text-decoration:underline;font-weight:bold;">What if a game does not get a high enough rank to move on to
+    the Contest Round?</p>
+<p>The developers that did not advance will automatically compete in the next Qualifier Round.</p>
+
+<p style="text-decoration:underline;font-weight:bold;">Can a developer make changes to their games based on the feedback
+    received during the Qualifier Round?</p>
+ <p>Yes - at any time a developer can work on their games and re-submit them. GotChosen's platform is offering a test
+     audience opportunity for that very reason. </p>
+<p style="text-decoration:underline;font-weight:bold;">How will I know if my game will advance to the Contest Round?</p>
+ <p>You will be able to see this information on your Manage Game page.</p>
+<p style="text-decoration:underline;font-weight:bold;">How many Contest Rounds will there be?</p>
+<p>There will be a multiple Contest Rounds.</p>
+<p style="text-decoration:underline;font-weight:bold;">How does a developer's game win the Contest Round?</p>
+<p>The top developer with the highest rank at the end of each Contest Round will be the winner. </p>
+<p style="text-decoration:underline;font-weight:bold;">Are there any prizes for winning the Contest Round?</p>
+<p>Yes - The developer with the highest rank will receive a US $1,000 seed money award.</p>
+<p style="text-decoration:underline;font-weight:bold;">How does GotChosen calculate my Rank in the Contest Round?</p>
+<p>The Contest Ranking System is a computer generated number that determines the position of each developer
+    in the Contest Round. </p>
+<p>The developer’s rank is generated at the end of each day. The top developers with the highest rank at the end of
+    each Contest Round will win.</p>
+<p>The criteria used to generate the developer’s rank are applied in the exact order below:</p>
+<ol>
+<li>Number of plays.</li>
+<li>Number of feedbacks rated by the developer received from the players.</li>
+<li>The developer rank position in the Qualifier Round.</li>
+</ol>
+<p style="text-decoration:underline;font-weight:bold;">Why will the players be interested in our games?</p>
+<p>GotChosen is incentivizing players to play and provide useful feedback to the developers by offering scholarship
+    awards in each monthly round to college students. </p>
+<p style="text-decoration:underline;font-weight:bold;">Is it important to rate the feedback from the game players?</p>
+<p>Yes - the number of feedback you rate is used in the calculations of your rank in the Qualifier and Contest Round. </p>
+<p style="text-decoration:underline;font-weight:bold;">How does the winner receive the winnings? </p>
+<p>The winner will be notified by email only. A valid email address is required in order to register an account. Instructions
+    will be provided to the winner. The winner will be required to provide picture identification, sign an Affidavit of
+    Eligibility and Liability Release, and (where not prohibited by law) a Publicity Release to be awarded the prize. In the
+    event of noncompliance with the Official Rules, or the prize notification is unclaimed within 3 calendar days of the date
+    of the first notification attempt, or if any of the prize notifications are returned as undeliverable, the prize will be
+    forfeited and may be awarded to an alternate winner.</p>
+<p style="text-decoration:underline;font-weight:bold;">What are the odds of winning the Evolution Games Developers Contest?</p>
+<p>The odds of winning are unknown and conditioned upon the number of developers submitting games.</p>
+<p style="text-decoration:underline;font-weight:bold;">When will the winners be announced?</p>
+<p>The name of the winners for the Contest Round will be announced by the 27th of the following month after each Contest Round at http://www.gotchosen.com.</p>
+<p style="text-decoration:underline;font-weight:bold;">Is the Evolution Games Scholarship Developers Contest considered income?</p>
+<p><strong>Yes</strong> – All federal, state, and local taxes and any other costs and expenses not specifically stated herein as
+    being awarded are the winner’s sole responsibility.</p>
+<p style="text-decoration:underline;font-weight:bold;">Will GotChosen issue a 1099 Misc form?</p>
+<p>Yes - GotChosen will provide a 1099 form for the tax year 2014 at the appropriate time.</p>
+<p style="text-decoration:underline;font-weight:bold;">Are there any legal rules and regulations?</p>
+<p><strong>Yes</strong> – These may be viewed in the <a href="{{ path('eg_rules_developers') }}">Rules</a> section of the website.</p>
+
+<p style="text-decoration:underline;font-weight:bold;">How do I get more information on GOTCHOSEN?</p>
+<p>Please visit www.gotchosen.com and see the <a href="{{ path('about_us') }}">About Us</a> section.</p>
+
+<p style="text-decoration:underline;font-weight:bold;">What if I still have questions about the Evolution Games Developer Contest that
+aren't answered here?</p>
+
+<p>Please visit the <a href="{{ path('eg_rules') }}">Rules</a> section of this website or send an email
+    to <a href="mailto:developer@gotchosen.com">developer@gotchosen.com.</a></p>
+            </div>
+        </div>
+
+{% endblock %}

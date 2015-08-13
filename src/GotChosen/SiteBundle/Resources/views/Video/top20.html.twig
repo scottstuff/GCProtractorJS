@@ -1,0 +1,61 @@
+{% extends 'GotChosenSiteBundle::videoScholarship.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block active_tab %}top20{% endblock %}
+
+{% block vs_content %}
+<div class="alert alert-error">
+ <strong>Season 3 is finished.  Season 4 will begin in the Fall.</strong>
+</div>
+
+<div style="width:565px; text-align:left;margin: 5px 0px 0px 20px;"><p>Note: The videos are displayed randomly, and the number of views does not reflect the number of votes.</p></div>
+<div style="padding: 5px; border: 1px solid #dddddd; font-family: Arial, Helvetica, Sans-Serif; -moz-border-radius: 15px; border-radius: 15px; width: 785px;">
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        {% if videos|length > 0 %}
+                            {% for video in videos %}
+                        <li style="display:inline-block; border-bottom:1px solid #AAAAAA;">
+                            <div class="vid-entry" style="width:175px; padding: 5px; line-height:12px;">
+                                <p class="vidHead" style=" line-height:12px;margin-bottom:2px;font-size:12px;">
+                                    <a href="{{ path('vs_video', {'id': video.id}) }}">{{ video.title|length > 55 ? video.title[:55] ~ '...' : video.title }}</a>
+                                    </p>
+                                    <span class="vidCat" style="font-size:11px; line-height:11px;">Cat: {{ video.category.categoryName }}<br/>
+                                        By: <em><a href="{{ path('user_profile', {'username': video.user.username}) }}">{{ video.user.fullName }}</a></em></span>
+                                                <div class="vote-btn" style="padding:5px;">
+                                                    <a class="btn btn-success btn-block"
+
+                                                       href="{{ path('vs_video', {'id': video.id}) }}" id="vote_button_{{ video.id }}">
+                                                        <strong>Click to View!</strong>
+                                                    </a>
+                                                </div>
+
+                                <a href="{{ path('vs_video', {'id': video.id}) }}"><img src="https://img.youtube.com/vi/{{ video.youtubeURL }}/0.jpg" width=175 alt="{{ video.title }}" /></a>
+
+                            </div>
+                        </li>
+
+                            {% endfor %}
+                         {% endif %}
+                    </ul>
+        <div id="voteModal" class="modal hide fade "
+     tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-header">Thank you!
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        <h3 id=""></h3>
+    </div>
+    <div class="modal-body">
+        <p>Thank you for your support. Please help me win the contest by sharing my game with your
+            friends and coming back tomorrow to vote again!</p>
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+{% endblock %}

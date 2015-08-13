@@ -1,0 +1,61 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}developers{% endblock %}
+
+{% block eg_content %}
+<div class="alert alert-error">
+ <strong>Our first season of Evolution Games has ended. The next season will start in the Fall.</strong>
+</div>
+
+    <div class="evoleft" style="border: 1px solid #DDDDDD;border-radius:15px;padding:5px 5px 5px 10px;">
+
+        <p>Our first season of Evolution Games ended on June 30, 2014. The next season will start in the Fall.</p>
+
+        <p>Indie game developers are still invited to join our Evolution Games Developers platform. This is also a
+            great opportunity for you to get global exposure.</p>
+
+        <p>Please email <a href="mailto:developer@gotchosen.com">developer@gotchosen.com</a> for the details on uploading your game.</p>
+
+         <p>Game Ownership Disclaimer: GotChosen does NOT take ownership and does NOT claim any rights of any games
+             uploaded/submitted for the Evolution Games contest.</p>
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <p> If you would like to receive updates about Evolution Games, like us on Facebook!</p>
+
+        <div class="fb-like" data-href="https://www.facebook.com/GotChosenEvolutionGames" data-send="false"
+             data-width="200" data-show-faces="false" data-colorscheme="light"></div>
+
+    </div>
+
+    <div class="sidebar">
+        <!--<p class="alert alert-developers centered">Winners will receive personalized coaching with instructors from top gaming schools</p>
+        <p>Winning games from the Monthly Contest will have five independent reviews by professors from the top gaming schools in
+           the following categories:</p>
+        <ol>
+            <li>Programming</li>
+            <li>Art</li>
+            <li>Audio</li>
+            <li>Design</li>
+            <li>Production</li>
+        </ol>
+
+        <p>The team at GotChosen understands the enormous effort you have invested in your games and now is providing a free venue
+           to upload your games to be played.  This will give you international publicity, exposure to game players that are looking
+           to be engaged and most importantly, tailored reviews by five educators from elite gaming programs to make your games even better.</p>
+
+        <p>Ready to get started? Please click <a href="{{ path('eg_submit_gate') }}">HERE</a> to review our game submission requirements.</p>
+-->
+        <p>About Evolution Games</p>
+        <iframe width="280" height="170" src="//www.youtube.com/embed/xchAAw1f5lQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+{% endblock %}

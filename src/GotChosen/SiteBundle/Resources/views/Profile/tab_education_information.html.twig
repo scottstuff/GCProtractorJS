@@ -1,0 +1,33 @@
+<div class="shadowed-box property-edit">
+    <h2 class="box-title">Education Information <span style='float:right'>Privacy Settings</span></h2>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    <div class="box-body form">
+
+        {% for propkey in properties %}
+            <div id="form_{{ propkey }}_control_group" class="control-group">
+                {{ form_label(form[propkey]) }}
+                <div class="controls">
+                    {{ form_widget(form[propkey]) }}
+                    {{ form_errors(form[propkey]) }}
+
+                    {% if form["privacy_" ~ propkey] is defined %}
+                    {{ form_widget(form["privacy_" ~ propkey], {'attr': {'class': 'privacy-setting'}}) }}
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+        {{ form_rest(form) }}
+
+    </div>
+
+    <div class="box-footer submit">
+        <button type="submit" class="btn btn-primary">Update Settings</button>
+        <span class="req-note"><strong>*</strong> Denotes required fields</span>
+    </div>
+
+    {{ form_end(form) }}
+
+</div>

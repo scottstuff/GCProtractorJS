@@ -1,0 +1,199 @@
+{% extends 'GotChosenSiteBundle::videoScholarship.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block active_tab %}videos{% endblock %}
+
+{% block vs_content %}
+<div class="alert alert-error">
+ <strong>Season 3 is finished.  Season 4 will begin in the Fall.</strong>
+</div>
+
+<div style="width:565px;float:left; text-align:left;margin: 5px 0px 0px 20px;"><p>Note: The videos are displayed randomly, and the number of views does not reflect the number of votes.</p></div>
+{% if videos|length > 0 %}
+    <div style="width:180px;float:right; text-align:right;margin: 5px 20px 0px 0px;"><p>{{ videoCount }} videos</p></div>
+{% else %}
+    <div style="width:180px;float:right; text-align:right;margin: 5px 20px 0px 0px;"><p></p></div>
+{% endif %}
+<div style="clear:both;"></div>
+
+<div style="padding: 5px; border: 1px solid #dddddd; font-family: Arial, Helvetica, Sans-Serif; -moz-border-radius: 15px; border-radius: 15px; width: 785px;">
+                    <ul style="display:inline-block; width:785px; margin: 0px 0px 5px 5px;">
+                        {% if videos|length > 0 %}
+                            {% for video in videos %}
+                        <li style="display:inline-block; border-bottom:1px solid #AAAAAA;">
+                            <div class="vid-entry" style="width:175px; padding: 5px; line-height:12px;">
+                                <p class="vidHead" style=" line-height:12px;margin-bottom:2px;font-size:12px;">
+                                    <a href="{{ path('vs_video', {'id': video.id}) }}">{{ video.title|length > 55 ? video.title[:55] ~ '...' : video.title }}</a>
+                                    </p>
+                                    <span class="vidCat" style="font-size:11px; line-height:11px;">Cat: {{ video.category.categoryName }}<br/>
+                                        By: <em><a href="{{ path('user_profile', {'username': video.user.username}) }}">{{ video.user.fullName }}</a></em></span>
+                                                <div class="vote-btn" style="padding:5px;">
+                                                    <a class="btn btn-success btn-block"
+
+                                                       href="{{ path('vs_video', {'id': video.id}) }}" id="vote_button_{{ video.id }}">
+                                                        <strong>Click to View!</strong>
+                                                    </a>
+                                                </div>
+
+                                <a href="{{ path('vs_video', {'id': video.id}) }}"><img src="https://img.youtube.com/vi/{{ video.youtubeURL }}/0.jpg" width=175 alt="{{ video.title }}" /></a>
+
+                            </div>
+                        </li>
+                            {% endfor %}
+                         {% else %}
+                            No videos found.
+                         {% endif %}
+                    </ul>
+
+            {% if numPages > 1 %}
+            <div class="pagination" style="width:500px;float:left;">
+                <ul>
+                    {% if page != 1 %}
+                    <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: page - 1})) }}">&laquo;</a></li>
+                    {% endif %}
+
+                    {% if page == 1 %}
+                    <li class="disabled"><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: 1})) }}">1</a></li>
+                    {% else %}
+                    <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: 1})) }}">1</a></li>
+                    {% endif %}
+
+                    {% if (page > 3) and (numPages > 5) %}<li class="disabled"><a href="#">...</a></li>{% endif %}
+
+                        {% if page == 1 %}
+                            {% set prevPage = page - 1%}
+                            {% set nextPage = min(numPages, page + 3)%}
+                        {% elseif page == numPages %}
+                            {% set prevPage = max(1, page - 3)%}
+                            {% set nextPage = numPages%}
+                        {% elseif page == 2 %}
+                            {% set prevPage = page%}
+                            {% set nextPage = min(numPages,page + 2)%}
+                        {% elseif page == numPages - 1 %}
+                            {% set prevPage = max(1, numPages - 3)%}
+                            {% set nextPage = numPages%}
+                        {% else %}
+                            {% set prevPage = page - 1%}
+                            {% set nextPage = page + 1%}
+                        {% endif %}
+
+                        {% for p in prevPage..nextPage %}
+                            {% if p > 0 %}
+                                {% if p == 1 %}
+                                    <!-- never output page 1 -->
+                                {% elseif p == numPages %}
+                                    <!-- never output last page -->
+                                {% else %}
+                                    <li{{ p == page ? ' class="active"' : '' }}>
+                                        <a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: p})) }}">{{ p }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                    {% if (numPages > 5) and (page <= numPages - 3) %}<li class="disabled"><a href="#">...</a></li>{% endif %}
+
+                    {% if page == numPages %}
+                    <li class="disabled"><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: numPages })) }}">{{ numPages }}</a></li>
+                    {% else %}
+                    <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: numPages })) }}">{{ numPages }}</a></li>
+                    {% endif %}
+
+
+                    {% if page == numPages %}
+                    {% else %}
+                    <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: page + 1})) }}">&raquo;</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+            </div>
+            {% else %}
+            {% endif %}
+
+
+        <div id="voteModal" class="modal hide fade "
+     tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-header">Thank you!
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        <h3 id=""></h3>
+    </div>
+    <div class="modal-body">
+        <p>Thank you for your support. Please help me win the contest by sharing my game with your
+            friends and coming back tomorrow to vote again!</p>
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>
+
+</div>
+{% endblock %}
+
+    {% block vs_sidebar %}
+    <div style="width:100px;font-size:12px; margin-left:5px;">
+            <h4>Filters</h4>
+            <ul class="filter-list" style="margin-left:5px;">
+                <li>
+                    {% if not filteredBy %}<strong>{% endif %}
+                    <a href="{{ path('vs_videos') }}">All Videos</a>
+                    {% if not filteredBy %}</strong>{% endif %}
+                </li>
+                <li>
+
+                    <span>By Category</span>
+                    <ul id="category_filters" style="margin-left:15px;">
+                        {% for category in categories %}
+                        <li style="font-size:11px;">
+                            {% if currentCategory and currentCategory.categoryName == category.categoryName %}<strong>{% endif %}
+                            <a href="{{ path(app.request.get('_route'), {'category': category.id}) }}">{{ category.categoryName }}</a>
+                            {% if currentCategory and currentCategory.categoryName == category.categoryName %}</strong>{% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>
+
+                    <span>By Video Title</span>
+                            <div class="input-append" style="margin-left:-12px;margin-bottom:0px;">
+                                <form action="{{ path(app.request.get('_route')) }}" method="get">
+                                    {% if currentEmail %}<input type="hidden" name="email" value="{{ currentEmail }}">{% endif %}
+                                    {% if currentCategory %}<input type="hidden" name="category" value="{{ currentCategory.id }}">{% endif %}
+                                    <input type="text" class="span2" name="video_title" id="video_title" value="{{ currentVideoTitle }}">
+                                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                                </form>
+                            </div>
+                </li>
+                <li>
+                    <span>By Email</span>
+                            <div class="input-append" style="margin-left:-12px;margin-bottom:0px;">
+                                <form action="{{ path(app.request.get('_route')) }}" method="get">
+                                    {% if currentVideoTitle %}<input type="hidden" name="video_title" value="{{ currentVideoTitle }}">{% endif %}
+                                    {% if currentCategory %}<input type="hidden" name="category" value="{{ currentCategory.id }}">{% endif %}
+                                    <input type="text" class="span2" name="email" id="email" value="{{ currentEmail }}">
+                                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                                </form>
+                            </div>
+                </li>
+            </ul>
+    </div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+    {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+{% endblock %}

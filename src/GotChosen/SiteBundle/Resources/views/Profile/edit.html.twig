@@ -1,0 +1,63 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% if form %}
+{% form_theme form _self %}
+{% block label_asterisk %}{% if required %}<span class="req">*</span>{% endif %}{% endblock %}
+{% endif %}
+
+
+{#
+{% block form_row %}
+    {% spaceless %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ (errors|length > 0 ? ' error' : '') }) %}
+        {{ block('widget_control_group_start') }}
+        {{ widget_prefix|trans({}, translation_domain)|raw }} {{ form_widget(form, _context) }} {{ widget_suffix|trans({}, translation_domain)|raw }}
+        {% if widget_remove_btn is defined %}
+            {{ block('form_widget_remove_btn') }}
+        {% endif -%}
+        {{ block('form_message') }}
+
+        {% if attr.has_perms %}
+        permissions!
+        {% endif %}
+
+        {{ block('widget_control_group_end') }}
+    {% endspaceless %}
+{% endblock form_row %}
+#}
+
+{% block title %}Manage Account | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main padded wide profile">
+            <h1 class="title">
+                <span class="right-title-btn">
+                    <a href="{{ path('user_my_profile') }}" class="btn"><i class="icon-home"></i> View My Profile</a>
+                </span>
+                Manage Account
+            </h1>
+
+            <div class="row">
+                <div class="span3">
+                    {% include 'GotChosenSiteBundle:Profile:edit_leftnav.html.twig' %}
+                </div>
+
+                <div class="span9">
+                    {% include tabTemplate %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+$(function(){
+    $('textarea.maxlength').maxCharacters('.controls');
+});
+</script>
+{% endblock %}

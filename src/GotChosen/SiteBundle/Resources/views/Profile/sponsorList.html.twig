@@ -1,0 +1,55 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}{{ user.fullName }}'s Sponsors | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <h1 class="title">{{ user.fullName }}'s Sponsors ({{ sponsorCount }}) <span class="title-bar" style="width:800px;"></span></h1>
+
+        <div class="pull-left">
+            <a class="btn" href="{{ path('user_profile', {username: user.username}) }}">&laquo; Back to Profile</a>
+        </div>
+
+        {% if numPages > 1 %}
+            <div class="pagination pull-right less-space">
+                <ul>
+                    {% if page == 1 %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% else %}
+                        <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: page - 1, username: user.username})) }}">&laquo;</a></li>
+                    {% endif %}
+
+                    {% for p in minPage..maxPage %}
+                        <li{{ p == page ? ' class="active"' : '' }}>
+                            <a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: p, username: user.username})) }}">{{ p }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if page == numPages %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% else %}
+                        <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: page + 1, username: user.username})) }}">&raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="sponsors">
+            {% if sponsors %}
+                {% for es in sponsors %}
+                    <div class="sponsor">
+                        {% if es.user.getPropertyValue("PhotoURL") %}
+                        <a href="{{ path('user_profile', {'username': es.user.username}) }}"><img src="{{ es.user.getPropertyValue("PhotoURL") }}" style="height: 90px;" alt="Avatar" /></a>
+                        {% else %}
+                            <a href="{{ path('user_profile', {'username': es.user.username}) }}"><img src="{{ asset('bundles/gotchosensite/images/default_user_90.jpg') }}" alt="Avatar" /></a>
+                        {% endif %}
+                        <a href="{{ path('user_profile', {'username': es.user.username}) }}">{{ es.user.fullName }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

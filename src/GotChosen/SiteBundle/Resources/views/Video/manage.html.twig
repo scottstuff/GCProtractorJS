@@ -1,0 +1,45 @@
+{% extends 'GotChosenSiteBundle::videoScholarship.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block active_tab %}manage{% endblock %}
+
+{% block vs_content %}
+<div class="alert alert-error">
+ <strong>Season 3 is finished.  Season 4 will begin in the Fall.</strong>
+</div>
+
+    <h1 class="title">My Video Entry <span class="title-bar" style="width:600px;"></span></h1>
+
+    <li style="display:inline-block;">
+            <div class="vid-entry" style="height:500px; width:600px; padding: 5px;">
+                <p class="vidHead">Title: {{ video.title }}<br/>
+                    <span class="vidCat">Category: {{ video.category.categoryName }}<br/>
+                        User Profile: <a href="{{ path('user_profile', {'username': video.user.username}) }}">{{ video.user.fullName }}</a>
+                        <br/> Votes: {{ votecount }}
+                        <br/> Views: {{ video.views }}</span>
+                        </p>
+                <object width="640" height="390">
+                    <param name="movie" value="https://www.youtube.com/v/{{ video.youtubeURL }}&version=3&amp;hl=en_US">
+                    </param>
+                    <param name="allowFullScreen" value="true"></param>
+                    <param name="allowscriptaccess" value="always"></param>
+                    <embed src="https://www.youtube.com/v/{{ video.youtubeURL }}&version=3&amp;hl=en_US"
+                           type="application/x-shockwave-flash" width="640" height="390"
+                           allowscriptaccess="always" allowfullscreen="true"></embed>
+                </object>
+            </div>
+        </li>
+
+        <div id="terms" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="modalLabel">VideoScholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_video.html.twig' %}
+        </div>
+    </div>
+
+{% endblock %}

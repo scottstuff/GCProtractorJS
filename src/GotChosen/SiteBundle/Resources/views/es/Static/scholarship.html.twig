@@ -1,0 +1,541 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}$20K Scholarship | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+
+    <div id="fb-root"></div>
+    <script> (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="main padded tabbed">
+            <ul class="nav nav-tabs" id="scholarship-tabs">
+                <li class="active"><a href="#about" id="tab_about" data-toggle="tab">About the $20K Scholarship</a></li>
+                <li><a href="#tips" id="tab_tips" data-toggle="tab">Winning Tips</a></li>
+                <li><a href="#how" id="tab_how" data-toggle="tab">How to Sponsor</a></li>
+                <li><a href="#rules" id="tab_rules" data-toggle="tab">Rules</a></li>
+                <li><a href="#faq" id="tab_faq" data-toggle="tab">FAQ</a></li>
+            </ul>
+
+            <div class="tab-content">
+
+                <!--
+                ABOUT TAB
+                -->
+
+                <div class="tab-pane active" id="about">
+                    <p><strong><span id="spanTab1">The 3rd $20K Give Away IS NOW OPEN!</span></strong></p>
+
+                    <p> GotChosen is offering the largest single private scholarship initiative with no educational
+                        institution
+                        affiliation. The GotScholarship $20K Give Away program is easy and free to enter and the
+                        scholarship is not
+                        awarded based on academic achievement or financial need. Instead, the winner is selected by a
+                        random
+                        drawing. </p>
+
+                    <p> Open to all fields of study, the US $20,000 must be used for “educational expenses”, this
+                        includes: tuition,
+                        fees, books, supplies, equipment required for study, contribution to a 529 Plan, a prepaid
+                        college program, or
+                        towards repayment of outstanding student loans. In addition, the GotScholarship $20K Give Away
+                        is transferable,
+                        and virtually anyone 18 years old or older is eligible to participate.</p>
+
+                    <p> Want more chances to win? Look for details on the <a href="{{ path('scholarship', {'tab': 'tips'}) }}">"Winning Tips"</a> tab.</p>
+
+                    <p>
+
+                    <p><span style="font-size: 14px;">Click&nbsp;</span><a
+                                href="{{ path('fos_user_registration_register') }}"><span
+                                    style="font-size: 14px;">here</span></a><span style="font-size: 14px;"> to register now! </span>
+                    </p>
+                    <img alt="" width="541" height="63" src="{{ asset('bundles/gotchosensite/images/notes5.jpg') }}"/>
+                    <ul>
+                        <li>Open to <span id="spanCountry">United States and international students and alumni. New York residents are not eligible to participate.</span>
+                        </li>
+                        <li>No GPA, No Essay - No Long Forms to Fill - Just Register and Apply!</li>
+                        <li>Sponsors increase your chances of winning.</li>
+                        <li>This is not a loan and there is no payback. This is a FREE scholarship.</li>
+                        <li>Privacy Disclosure: GotChosen will not sell or share any personal data from its
+                            registrants.
+                        </li>
+                        <li>Deadline: September 30, 2013.</li>
+                        <li>NO FEE, AND NO PURCHASE IS NECESSARY TO ENTER OR WIN.</li>
+                    </ul>
+                    <p> If you like GotChosen's philanthropic endeavors then "Like" us on Facebook!</p>
+
+                    <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false"
+                         data-width="200"
+                         data-show-faces="false"></div>
+                </div>
+
+                <!--
+                TIPS TAB
+                -->
+
+                <div class="tab-pane" id="tips">
+                    <p><strong>How Can I Increase My Chances Of Winning?</strong></p>
+
+                    <p style="margin: 0 0 10pt;"> The answer is getting sponsors. Every sponsor equals another entry for you to win
+                        the GotScholarship $20K Give Away. </p>
+
+                    <p style="margin: 0 0 10pt;"><strong>Who can be a sponsor?</strong> Anyone 18 years or older. </p>
+
+                    <p style="margin: 0 0 10pt;"><b>How can someone sponsor me?</b> It’s free and simple. Look for details on the <a
+                                href="{{ path('scholarship', {'tab': 'how'}) }}">"How To Sponsor"</a> tab </p>
+
+                    <p style="margin: 0 0 10pt;"><b>How do I ask for sponsors?</b> Log into your GotChosen profile page and connect
+                        to your friends and family using your favorite social network to post, tweet and share about your GotScholarship
+                        $20K Give Away opportunity. You can send e-mail invitations too.</p>
+
+                    <p style="margin: 0 0 10pt;"><b>Hint:</b> Tell everyone you know and ask them to tell everyone they know. There
+                        is no limit on the number of sponsors you can have and every sponsor is an additional chance for you to win!</p>
+
+                    <p><strong>Who is Eligible?</strong></p>
+                    <ul>
+                        <li>College students</li>
+                        <li>Public school students</li>
+                        <li>Graduate students</li>
+                        <li>Private school students</li>
+                        <li>Parents of students</li>
+                        <li>Technical school students</li>
+                        <li>Anyone with current student loan debt</li>
+                        <li>Vocational school students</li>
+                        <li>Relatives of students</li>
+                        <li>Friends of students</li>
+                        <li><strong>Virtually Anyone!</strong></li>
+                    </ul>
+                </div>
+
+                <!--
+                HOW TAB
+                -->
+
+                <div class="tab-pane" id="how">
+                    <p><strong>Sponsoring:</strong></p>
+
+                    <p> Sponsors enable participants to have more chances to win the scholarship. There is no cost to be a sponsor
+                        although registration is required to authenticate entries.</p>
+
+                    <p><strong>There are two ways to sponsor someone:</strong></p>
+                    <ol>
+                        <li>Register and go to your GotChosen profile page, type in the e-mail address of the person you wish to sponsor
+                            just below “Whom do you want to sponsor?”, then click the “Sponsor!” button.
+                        </li>
+                        <li>Respond to an e-mail or social network post from someone inviting you to sponsor them.</li>
+                    </ol>
+                    <p><strong>Sponsoring Bonus:</strong> The GotScholarship $20K Give Away is transferable so if you choose to apply
+                        for the scholarship and win you have the option to transfer the winnings to your friend (must be 18 years or
+                        older).</p>
+                </div>
+
+                <!--
+                RULES TAB
+                -->
+
+                <div class="tab-pane" id="rules">
+                    <p><strong>GotScholarship $20K Give Away Rules and Regulations</strong></p>
+
+                    <p><b>Highlights:<br/> </b></p>
+                    <ul style="margin-top: 0; list-style-type: disc;">
+                        <li>The US $20,000 transferable prize <i>must be used</i> for educational expenses.</li>
+                        <li>No purchase is required.</li>
+                        <li>Entrants must be 18 years or older.</li>
+                    </ul>
+                    <p></p>
+
+                    <p><b>Eligibility:</b></p>
+                    <ul style="margin-top: 0; list-style-type: disc;">
+                        <li>The GotChosen Scholarship Drawing is open to <span id="spanRules">United States* and international students and alumni, 18 years or older.</span>
+                            There is no cost to enter, and eligibility is not based on financial need or academic performance.
+                        </li>
+                        <li>Employees of GotChosen, Inc., their respective parents, immediate family members, and persons living in the
+                            households of each of these individuals, whether related or not, are ineligible for this
+                            drawing.&nbsp; </li>
+                        <li>The drawing is subject to all applicable federal, state, and local laws and regulations, and the drawing or
+                            any offers herein is void where prohibited or restricted by law.&nbsp; </li>
+                    </ul>
+                    <p><span style="text-decoration: underline;">The GotChosen drawing begins</span> on March 18, 2013. </p>
+
+                    <p><span style="text-decoration: underline;">The cutoff date for the drawing</span> is September 30, 2013 at
+                        11:59PM, Eastern Standard Time</p>
+
+                    <p> A random drawing from among all eligible entries received will be conducted in the U.S. under the direction of
+                        an independent auditing firm. The name of the winner will be announced on October 31, 2013 at <a>http://www.gotchosen.com</a>.
+                    </p>
+
+                    <p></p>
+
+                    <p><b>To Enter:</b></p>
+
+                    <p><b>Existing GotChosen users</b> simply need to Login, and click the &ldquo;Apply&rdquo; button in the Scholarship
+                        Panel for the GotScholarship $20K Give away.</p>
+
+                    <p><b>New visitors</b> to GotChosen must either (a) complete an on-line registration form at <a href="/">http://www.gotchosen.com</a>
+                        and (b) click on the “Apply” button under the Scholarship Panel, or (c) hand-print or type in English their
+                        name, e-mail address, date of birth, street address, city, state, zip, phone number, and the name and the e-mail
+                        address of the person who invited them (if any) on a 3” x 5” card and mail it in a first-class stamped envelope
+                        to GotChosen $20K Give Away Scholarship, 12472 Lake Underhill Road #397, Orlando, FL 32828. All written
+                        registrations must be postmarked no later than September 30, 2013 at 11:59PM, Eastern Standard Time. Please be
+                        sure to include all the information requested. Incomplete written registrations will be disregarded and you WILL
+                        NOT be registered to participate in this drawing. GotChosen is not responsible for mailing costs.</p>
+
+                    <p> By completing and submitting their registration, participants acknowledge and agree to the Rules and Regulations
+                        herein and to GotChosen’s Privacy Policy.</p>
+
+                    <p><b>Sponsoring:</b></p>
+
+                    <p><b><i>To sponsor someone</i></b>, you must be registered and the person you sponsor must also be registered and
+                        have applied for the scholarship.&nbsp;&nbsp;</p>
+                    <ul>
+                        <li>You can only sponsor one person, but you may be sponsored by an unlimited number of persons.</li>
+                        <li>You may increase your chances of winning by inviting one or more people to register and then sponsor you.
+                            Each person who does so gives you an additional entry. If those people also apply for a scholarship, then
+                            they will also each receive an entry.
+                        </li>
+                        <li>A person cannot sponsor himself or herself.</li>
+                    </ul>
+                    <p> There are two ways to sponsor someone:</p>
+                    <ol>
+                        <li>Go to your Profile page, type in the e-mail address of the person you wish to sponsor just below “Whom do
+                            you want to sponsor?”, then click the “Sponsor!” button.
+                        </li>
+                        <li>Respond to an e-mail or social network post inviting you to sponsor someone.</li>
+                    </ol>
+                    <p><b><i>To be sponsored,</i></b><i> </i>you must be registered as a GotChosen user, and also have applied for the
+                        scholarship. &nbsp;The person who sponsors you must also be registered. &nbsp;You receive an additional entry
+                        each time someone sponsors you, thus increasing your chances of winning.&nbsp; There are two ways to request a
+                        sponsor:</p>
+
+                    <p></p>
+                    <ol style="margin-top: 0; list-style-type: decimal;" start="1">
+                        <li>Go to your Profile page and send an individual e-mail invitation.</li>
+                        <li>Go to your Profile page, select the social network of your choice and, once logged in to your social
+                            network, share, tweet, or otherwise extend the invitation.&nbsp;</li>
+                    </ol>
+                    <p><b>Odds of winning:</b>&nbsp; <br/> The winner of the drawing will receive a US $20,000 scholarship.&nbsp; There
+                        will only be one winner.&nbsp; The actual odds will depend upon the total number of eligible entries received
+                        prior to 11:59PM Eastern Time on September 30, 2013.&nbsp; Each eligible entry will have an equal chance of
+                        winning. &nbsp;</p>
+
+                    <p><b>Prize Restrictions:</b></p>
+                    <ul>
+                        <li>&nbsp;The prize is transferable. (person must be 18 years or older)</li>
+                        <li>The US $20,000 scholarship will be issued in one US $10,000 installment per year for two consecutive
+                            years:
+                        </li>
+                    </ul>
+                    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Scholarship funds must be used educational purposes, such as
+                        tuition, fees, books, supplies, equipment required for study, contribution to a 529 plan or prepaid college
+                        program, or towards repayment of outstanding student loans. &nbsp;</p>
+
+                    <p></p>
+
+                    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- The winner must provide proof of legitimate educational
+                        expenditure of one year&rsquo;s award in order to receive a subsequent installment.</p>
+
+                    <p></p>
+                    <ul>
+                        <li>If any prize notification letter is returned to the Sponsor or its designated agent as undeliverable, the
+                            prize will be awarded to an alternative winner.&nbsp; </li>
+                        <li>The winners&rsquo; name will be posted on http://www.gotchosen.com.&nbsp; All information provided by
+                            eligible entrants will be verified.
+                        </li>
+                        <li>All federal, state, and local taxes and any other costs and expenses not specifically stated herein as being
+                            awarded are the winner&rsquo;s sole responsibility.
+                        </li>
+                        <li>GotChosen reserves the right to change these terms and conditions at any time.</li>
+                    </ul>
+                    <p style="margin: 0 0 10pt;"><b>Prize Notification</b>:<br/> The winner will be notified by email or phone or
+                        U.S. mail or Federal Express at the address on the winner’s entry form. Instructions will be provided either to
+                        the winner or to a transferee/recipient designated by the winner. The winner (or transferee) will be required to
+                        provide picture identification, sign an Affidavit of Eligibility and Liability Release, and (where not
+                        prohibited by law) a Publicity Release to be awarded the prize. In the event of noncompliance with the Official
+                        Rules, or the prize notification is unclaimed within 5 days of the date of the first notification attempt, or if
+                        any of the prize notifications are returned as undeliverable, the prize will be forfeited and may be awarded to
+                        an alternate winner.</p>
+
+                    <p style="margin: 0 0 10pt;"><b>Additional Terms</b>:<br/> By participating, registrants agree to: (a.) the
+                        Official Rules and the decisions of the Sponsor, which shall be final in all respects; and (b.) release,
+                        discharge, indemnify, and hold harmless GotChosen, Inc., their respective trustee, financial institutions,
+                        affiliated advertising and promotion agencies, the respective officers, directors, agents, and employees of the
+                        aforementioned entities (collectively, the “Released Parties”) from any liability, claims, or damages arising
+                        out of their participation in the GotChosen drawing and the acceptance, use, misuse, or possession of any prize.
+                    </p>
+
+                    <p style="margin: 0 0 10pt;"> By accepting the prize, the winner agrees to, where legal, the Sponsor’s and its
+                        designees’ use of his/her name and/or likeness for advertising and publicity purposes in any and all media now
+                        or hereafter known without compensation and hereby provides consent to such use. As a condition of entering the
+                        GotChosen drawing, participant agrees that a.) Under no circumstances will participant be permitted to obtain
+                        awards for, and participant hereby waives all rights to claim punitive, incidental, consequential, or any other
+                        damages; b.) All causes of action arising out of or connected with this drawing, or any prizes awarded, shall be
+                        resolved individually, without resort to any form of class action; and c.) Any and all claims, judgments, and
+                        awards shall be limited to actual out-of-pocket costs incurred, but in no event attorney’s fees. </p>
+
+                    <p style="margin: 0 0 10pt;"><b>Limitation of Liability</b>:&nbsp; <br/> Released Parties are not responsible
+                        for printing, typographical, human or other errors in any GotChosen-related materials; for stolen, lost, late,
+                        misdirected, damages, incomplete, illegible, or postage-due mail or entries; or for transactions that are
+                        processed late or incorrectly, or are lost due to computer or electronic malfunction or human error. Sponsor
+                        reserves the right to cancel, suspend or modify the drawing and award the prize from among all eligible
+                        non-suspect entries received prior to action taken if fraud or technical failures or other events compromise the
+                        integrity of the drawing as determined by the Sponsor in its sole discretion. The drawing is governed by the
+                        laws of the State of Florida for the resolution of all claims and disputes.</p>
+
+                    <p style="margin: 0 0 10pt;"><b>Winner&rsquo;s Name</b>:&nbsp; <br/> The name of the winner will be announced on
+                        October 31, 2013 at http://www.gotchosen.com. This drawing is sponsored and administered by GotChosen, Inc.,
+                        12472 Lake Underhill Road #397, Orlando, FL 32828. </p>
+
+                    <p> CONSUMER DISCLOSURE:&nbsp; NO PURCHASE IS NECESSARY TO ENTER OR WIN.</p>
+
+                    <p> * Excluding residents of New York State</p> <br/> <b>Glossary:<br/> </b>Visitor:&nbsp; (1) An individual with
+                    access only to the public portions of the website. (2)&nbsp; Also, an individual who does not register on the
+                    website.
+
+                    <p></p>
+
+                    <p style="margin: 0 0 10pt;"> Registered User (same as &ldquo;User&rdquo;): An individual who registers on the
+                        site, but who has not necessarily applied to or enrolled in any (or any particular) GotChosen, Inc., drawing or
+                        contest.</p>
+
+                    <p></p>
+
+                    <p style="margin: 0 0 10pt;"> Participant: An individual who has successfully applied to or enrolled in one or
+                        more GotChosen, Inc. drawings or contests.</p>
+
+                    <p style="margin: 0 0 10pt;"> &nbsp;</p>
+                </div>
+
+                <!--
+                FAQ TAB
+                -->
+
+                <div class="tab-pane" id="faq">
+                    <p><strong><span
+                                    style="text-decoration: underline;">Who is GOTCHOSEN?</span></strong></p>
+
+                    <p> GotChosen is an innovative startup in multimedia technology, advertising, and business development headquartered
+                        in Orlando, Florida. The company is developing an unparalleled informational exchange experience for users in
+                        ways that build new levels of involvement, brand loyalty, and profitability. Its proprietary technologies will
+                        begin to be rolled out in late 2013. </p>
+
+                    <p><strong><span style="text-decoration: underline;">What is the <em>GotScholarship $20k Give
+                                    Away </em>drawing?</span></strong><br/> Through the drawing, GotChosen will award one (1) very lucky
+                        winner a US $20,000 SCHOLARSHIP. Funds must be used for “educational expenses”; tuition, fees, books, supplies,
+                        equipment required for study, contribution to a 529 Plan or prepaid college program, or towards repayment of
+                        outstanding student loans. This is not a loan and there is no payback. The GotScholarship $20k Give Away is a
+                        FREE Scholarship.</p>
+
+                    <p><strong><span style="text-decoration: underline;">How do I enter the <em>GotScholarship $20K Give Away</em> drawing?</span></strong>
+                    </p>
+
+                    <p><strong>Existing GotChosen users</strong> simply need to Login, and click the &ldquo;Apply&rdquo; button in the
+                        Scholarship Panel for the GotScholarship $20K Give away.</p>
+
+                    <p><strong> <br/> New visitors</strong> &ndash; Simply go to www.gotchosen.com and complete the brief registration
+                        profile. Once registered, you&rsquo;ll be directed to your profile page and then can apply for the
+                        GotScholarship $20K Give Away drawing. </p>
+
+                    <p> Eligible participants who do not have access to the internet and/or are unable to register online at
+                        www.gotchosen.com may complete a written registration by providing their name, e-mail address, date of birth,
+                        street address, city, state, zip, phone number, the name and the email address of the person who referred you
+                        (if any) on a 3” x 5” card. This may be submitted by mailing it in a first-class stamped envelope to GotChosen,
+                        12472 Lake Underhill Road #397, Orlando, FL 32828. All written registrations must be postmarked no later than
+                        September 30, 2013. Please be sure to include all the information requested. Incomplete written registrations
+                        will be disregarded and you WILL NOT be registered to participate in this drawing. GotChosen is not responsible
+                        for mailing costs.</p>
+
+                    <p><strong><span style="text-decoration: underline;">How do I increase my chances to win?</span></strong></p>
+
+                    <p> By inviting EVERYONE you know to sponsor you. Every sponsor equals another entry for you to win the
+                        GotScholarship $20K Give Away.</p>
+
+                    <p> Detail instructions:<br/> <strong>To be sponsored,</strong><em> </em>you must be registered as a GotChosen user,
+                        and also have applied for the scholarship.&nbsp; The person who sponsors you must also be registered.&nbsp; You
+                        receive an additional entry each time someone sponsors you, thus increasing your chances of winning.&nbsp; There
+                        are two ways to request a sponsor:</p>
+                    <ol style="margin-top: 0; list-style-type: decimal;" start="1">
+                        <li>Go to your Profile page and send an individual e-mail invitation.</li>
+                        <li>Go to your Profile page, select the social network of your choice and, once logged in to your social
+                            network, share, tweet, or otherwise extend the invitation.&nbsp; </li>
+                    </ol>
+                    <p><strong>Sponsoring: </strong></p>
+
+                    <p> - To sponsor someone, you must be registered and the person you sponsor must also be registered and have applied
+                        for the scholarship.&nbsp; You can only sponsor one person, but you may be sponsored by an unlimited number of
+                        persons. </p>
+
+                    <p> - You may increase your chances of winning by inviting one or more people to register and then sponsor you.&nbsp;
+                        Each person who does so gives you an additional entry.&nbsp; If those people also apply for a scholarship, then
+                        they will also each receive an entry.</p>
+
+                    <p> - A person cannot sponsor himself or herself.</p>
+
+                    <p> There are two ways to sponsor someone.</p>
+
+                    <p> 1.&nbsp;&nbsp;&nbsp; Go to your Profile page, type in the e-mail address of the person you wish to sponsor just
+                        below &ldquo;Whom do you want to sponsor?&rdquo;, then click the &ldquo;Sponsor!&rdquo; button. </p>
+
+                    <p> 2.&nbsp;&nbsp;&nbsp; Respond to an e-mail or social network post inviting you to sponsor someone.</p>
+
+                    <p><strong><span style="text-decoration: underline;">How do I win?</span></strong></p>
+
+                    <p> All you have to do is&nbsp;<a
+                                href="{{ path('fos_user_registration_register') }}">
+                            register</a> and apply for the GotScholarship $20K Give Away drawing. A random drawing from among all
+                        eligible entries received will be conducted in the U.S. under the direction of an independent auditing firm. The
+                        name of the winner will be announced on October 31, 2013 at http://www.gotchosen.com.</p>
+
+                    <p><strong><span style="text-decoration: underline;">When does the scholarship drawing end?</span></strong></p>
+
+                    <p> The current scholarship drawing will end at 11:59PM Eastern Time on September 30, 2013 and a lucky winner will
+                        be announced on October 31, 2013 at http://www.gotchosen.com.</p>
+
+                    <p><strong><span
+                                    style="text-decoration: underline;">What if I don&rsquo;t win? Do I get another chance?</span></strong>
+                    </p>
+
+                    <p> Of course! There will be a GotScholarship $20K Give Away every 6 months, you&rsquo;ll be required to re-apply
+                        for another chance to win. You&rsquo;ll receive a notice at the start of each GotScholarship $20K Give Away
+                        drawing.</p>
+
+                    <p><strong><span style="text-decoration: underline;">Who can register for the <em>GotScholarship $20k Give Away</em> drawing?</span></strong>
+                    </p>
+
+                    <p> The GotChosen Scholarship Drawing is open to <span id="spanFAQ">United States* and international students. All participants must be 18 years or older.</span>
+                        <br/> &nbsp; </p>
+
+                    <p> * Excluding residents of New York State.</p>
+
+                    <p><strong><span
+                                    style="text-decoration: underline;">How many people can register for the scholarship?</span></strong>
+                    </p>
+
+                    <p> There are no limits to the number of registrants we can accept between March 18, 2013 and September 30,
+                        2013.</p>
+
+                    <p><strong><span
+                                    style="text-decoration: underline;">How does the winner receive the scholarship winnings? </span></strong>
+                    </p>
+
+                    <p> The US $20,000 scholarship will be issued in one US $10,000 installment per year for two consecutive years.
+                        Each installment amount will be payable to the winner or for the winner&rsquo;s selected
+                        transferee/recipient.</p>
+
+                    <p> Scholarship funds must be used for &ldquo;educational expenses&rdquo;; tuition, fees, books, supplies, equipment
+                        required for study, contribution to a 529 Plan or prepaid college program, or towards repayment of outstanding
+                        student loans.
+
+                    <p><strong><span
+                                    style="text-decoration: underline;">Can I register my underage son or daughter for the scholarship? </span></strong>
+                    </p>
+
+                    <p><strong>No</strong>, the winner of the scholarship must be 18 years or older. <b>In the USA only</b>,
+                        parents/guardians can apply and the winnings can be transferred to a 529 Plan for their underage son or
+                        daughter.</p>
+
+                    <p><strong><span style="text-decoration: underline;">Is the <em>GotScholarship $20k Give Away</em> scholarship transferable?</span></strong>
+                    </p>
+
+                    <p><strong>YES</strong> &ndash; as long as the funds are used for qualified educational expenses. (person must be 18
+                        years or older)</p>
+
+                    <p><strong><span style="text-decoration: underline;">What if I don&rsquo;t have any college debt, and I win, do I get the money?</span></strong>
+                    </p>
+
+                    <p><strong>NO</strong> &ndash; The winner must transfer the winning to someone who has “educational expenses” as
+                        described.</p>
+
+                    <p><strong><span style="text-decoration: underline;">Will the drawing be audited?</span></strong></p>
+
+                    <p><strong>YES</strong> &ndash; a random drawing from among all eligible entries received will be conducted in the
+                        U.S. under the direction of an independent auditing firm.</p>
+
+                    <p><strong><span style="text-decoration: underline;">How much does it cost to enter the drawing?</span></strong></p>
+
+                    <p> NO PURCHASE IS NECESSARY TO ENTER OR WIN. Simply register at <a
+                                href="{{ path('fos_user_registration_register') }}">
+                            www.gotchosen.com</a> then apply to enter the drawing for your chance to win the <em>GotScholarship $20K
+                            Give Away</em> drawing.</p>
+
+                    <p><strong><span style="text-decoration: underline;">How many drawing entries can I get?</span></strong></p>
+
+                    <p> The number is virtually unlimited!</p>
+
+                    <p><strong><span style="text-decoration: underline;">What are the odds of winning the <em> GotScholarship $20k Give
+                                    Away</em> drawing?</span></strong></p>
+
+                    <p> The odds of winning are unknown and conditioned upon the number of registrants. However, the odds of winning are
+                        improved each time a registered person sponsors you.</p>
+
+                    <p><strong><span style="text-decoration: underline;">When does the <em>GotScholarship $20k Give Away</em> registration start and end?</span></strong>
+                    </p>
+
+                    <p> The current registration begins on March 18, 2013 and ends at 11:59PM Eastern Time on September 30, 2013.</p>
+
+                    <p><strong><span style="text-decoration: underline;">When will the winner be announced?</span></strong></p>
+
+                    <p> The name of the winner will be announced on October 31, 2013 at http://www.gotchosen.com.</p>
+
+                    <p><strong><span style="text-decoration: underline;">Do I have to be present to win?</span></strong></p>
+
+                    <p> NO &ndash; We will contact you using the information in your profile.</p>
+
+                    <p></p>
+
+                    <p><strong><span style="text-decoration: underline;">Is the <em>GotScholarship $20k Give Away</em> scholarship considered income?</span></strong>
+                    </p>
+
+                    <p> YES &ndash; All federal, state, and local taxes and any other costs and expenses not specifically stated herein
+                        as being awarded are the winner&rsquo;s sole responsibility.</p>
+
+                    <p><strong><span style="text-decoration: underline;">Are there any legal rules and regulations?</span></strong></p>
+
+                    <p><strong>YES</strong> &ndash; These may be viewed in the <span style="text-decoration: underline;"> <a
+                                    href="{{ path('scholarship', {'tab': 'rules'}) }}">Rules</a></span> section of the website.</p>
+
+                    <p><strong><span style="text-decoration: underline;">How do I get more information on GOTCHOSEN?</span></strong></p>
+
+                    <p> Please visit www.gotchosen.com and see the <a href="{{ path('about_us') }}">About Us</a> section.</p>
+
+                    <p><strong><span style="text-decoration: underline;">What if I still have questions about the <em>GotScholarship
+                                    $20k Give Away</em> drawing that aren't answered here?</span></strong></p>
+
+                    <p> Please visit the <span style="text-decoration: underline;"><a href="{{ path('scholarship', {'tab': 'rules'}) }}">Rules</a></span> section of this
+                        website or send an email to info@gotchosen.com.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sb-block">
+                <a href="{{ path('monthly_scholarship') }}"><img src="{{ asset('bundles/gotchosensite/images/monthlyhome.png') }}" width="250" alt=""></a>
+            </div>
+            <div class="sb-block">
+                <a href="{{ path('evolution_games') }}"><img src="{{ asset('bundles/gotchosensite/images/evolution_scholarship_home.png') }}" width="250"></a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+    $(function() {
+        var curTab = "{{ tab }}";
+        $('#scholarship-tabs').find('a#tab_' + curTab).tab('show');
+    });
+    </script>
+
+{% endblock %}

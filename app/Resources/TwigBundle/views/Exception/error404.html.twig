@@ -1,0 +1,13 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main padded wide">
+            <h1 class="title">Page Not Found <span class="title-bar" style="width:770px;"></span></h1>
+            <p>
+                {{ exception.message }}
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block label_asterisk %}{% if required %}<span class="req">*</span>{% endif %}{% endblock %}
+
+{% block title %}Contact Us | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main">
+
+            <h1 class="title">Contact Information <span class="title-bar"></span></h1>
+            <p>12472 Lake Underhill Rd.<br />
+                Suite 397<br />
+                Orlando, Florida 32828<br />
+                United States</p>
+
+            <p>website: <a href="http://gotchosen.com/">www.gotchosen.com</a><br />
+                email:&nbsp;<a href="mailto:info@gotchosen.com">info@gotchosen.com</a></p>
+
+            <fieldset>
+                <legend>Contact Form</legend>
+
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+                {{ form_row(form.name, {'attr': {'class': 'span4'}}) }}
+                {{ form_row(form.email, {'attr': {'class': 'span4'}}) }}
+                {{ form_row(form.phone, {'attr': {'class': 'span4'}}) }}
+                {{ form_row(form.subject, {'attr': {'class': 'span4'}}) }}
+                {{ form_row(form.message, {'attr': {'class' : 'span4', 'rows': 5}}) }}
+
+                {{ form_rest(form) }}
+                <div class="submit-row">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <span class="req-note"><strong>*</strong> Denotes required fields</span>
+                </div>
+                {{ form_end(form) }}
+            </fieldset>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="sb-block">
+                <h1 class="title">Other Inquiries <span class="title-bar orange" style="width:150px;"></span></h1>
+            </div>
+            <div class="sb-block">
+                <p>Media:<br />
+                    <a href="mailto:media@gotchosen.com">media@gotchosen.com</a></p>
+                <p>Careers:<br />
+                    <a href="mailto:careers@gotchosen.com">careers@gotchosen.com</a></p>
+                <p>Investor Relations:<br />
+                    <a href="mailto:investor@gotchosen.com">investor@gotchosen.com</a></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %} Sponsor {{ user.fullName }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main padded wide profile">
+            <h1 class="title">
+                Sponsor {{ user.fullName }}
+                <span class="title-bar" style="width:800px;"></span>
+            </h1>
+
+            {% if app.user %}
+
+                {{ form_start(form) }}
+
+                <p>Thank you for considering a sponsorship of
+                    <a href="{{ path('user_profile', {'username': user.username}) }}">{{ user.fullName }}</a>.
+                    To confirm your sponsorship, click the relevant button below. You may also read more
+                    information about the scholarship, or apply for the scholarship yourself.
+                </p>
+
+                <p style="text-align: center">
+                    <input type="submit" value="Confirm Sponsorship" class="btn btn-primary" />
+                    &nbsp;
+                    <a class="btn" target="_blank" href="{{ path('scholarship') }}">More Information</a>
+                    {% if not app.user.hasApplied(scholarship) %}
+                        &nbsp;
+                        <a class="btn" target="_blank"
+                           href="{{ path('scholarship_apply', {'id': scholarship.id}) }}">Apply for Scholarship</a>
+                    {% endif %}
+                </p>
+
+                {{ form_end(form) }}
+
+            {% else %}
+                <p>
+                    Welcome! In order to confirm your sponsorship of
+                    <a href="{{ path('user_profile', {'username': user.username}) }}">{{ user.fullName }}</a>,
+                    please log in. If you do not yet have an account, please sign up for one.
+                </p>
+                <p style="text-align: center">
+                    <a class="btn" href="{{ loginUrl }}">Log in</a>
+                    &nbsp;
+                    <a class="btn" href="{{ registerUrl }}">Register</a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

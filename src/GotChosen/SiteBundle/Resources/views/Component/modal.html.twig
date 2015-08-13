@@ -1,0 +1,16 @@
+<div id="{{ id }}" class="modal hide fade {{ classes|default('') }}"
+     tabindex="-1" role="dialog" aria-labelledby="{{ label|default(id ~ 'Label') }}" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="{{ label|default(id ~ 'Label') }}">{% block header %}{% endblock %}</h3>
+    </div>
+    <div class="modal-body">
+        {% block body %}{% endblock %}
+    </div>
+    {% set foot = block('footer') %}
+    {% if foot is not empty %}
+    <div class="modal-footer">
+        {{ foot|raw }}
+    </div>
+    {% endif %}
+</div>

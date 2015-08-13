@@ -1,0 +1,114 @@
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block addl_meta %}{% endblock %}
+    {% block meta %}
+    {% endblock %}
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30656554-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <title>{% block title %}GotChosen{% endblock %}</title>
+    {% block stylesheets %}
+        {% stylesheets '@GotChosenSiteBundle/Resources/public/less/style.less' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+
+<body>
+
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript" src="https://d31qbv1cthcecs.cloudfront.net/atrk.js"></script>
+<script type="text/javascript">_atrk_opts = { atrk_acct: "iUd0g1a0Or002y", domain:"gotchosen.com"}; atrk ();</script><noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=iUd0g1a0Or002y" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->
+
+{% block navbar %}{% endblock %}
+
+<div class="container {% block container_class %}{% endblock %}">
+    {% set _headline = block('headline') %}
+    {% set _subheadline = block('sub_headline') %}
+    {% if _headline is not empty %}
+        <div class="page-header">
+            <h1>{{ _headline|raw }}{% if _subheadline is not empty %} <small>{{ _subheadline|raw }}</small>{% endif %}</h1>
+        </div>
+    {% endif %}
+
+    {% block flashes %}
+        {% if app.session.flashbag.peekAll|length > 0 %}
+            <div class="row-fluid flash-msg">
+                <div class="span12">
+                    {{ session_flash(false, true) }}
+                </div>
+            </div>
+        {% endif %}
+    {% endblock flashes %}
+
+    {% block body %}{% endblock %}
+</div>
+
+{% block javascripts %}
+    {% javascripts '@GotChosenSiteBundle/Resources/public/js/underscore-min.js'
+    '@GotChosenSiteBundle/Resources/public/js/jquery-1.9.1.min.js'
+    '@GotChosenSiteBundle/Resources/public/js/bootstrap.min.js'
+    '@GotChosenSiteBundle/Resources/public/js/gotchosen.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+<footer>
+    <div class="container">
+        <div class="share-icons">
+            <a href="http://facebook.com/GotChosen" target="_blank" title="GotChosen Facebook Fan Page"><img width="20" alt="Facebook" src="{{ asset('bundles/gotchosensite/images/icon_fb.jpg') }}"></a>
+            &nbsp;&nbsp;
+            <a href="http://twitter.com/GotChosen" target="_blank" title="Follow us on Twitter @GotChosen"><img width="20" alt="Twitter" src="{{ asset('bundles/gotchosensite/images/icon_tw.jpg') }}"></a>
+            &nbsp;&nbsp;
+            <a href="http://www.youtube.com/user/GotChosen" target="_blank" title="Subscribe our YouTube Channel!"><img width="20" alt="YouTube" src="{{ asset('bundles/gotchosensite/images/icon_yt.jpg') }}"></a>
+        </div>
+
+        <div class="footer-menu">
+            <ul>
+                <li><a href="{{ path('index') }}">Home</a></li>
+                <li><a href="{{ path('index') }}#/about">About Us</a></li>
+                <li><a href="{{ path('scholarship') }}">GotScholarship</a></li>
+                <li><a href="{{ path('eg_qualifier') }}">Evolution Games</a></li>
+                <li><a href="{{ path('monthly_scholarship') }}">Monthly Scholarship</a></li>
+                <li><a href="{{ path('vs_videos') }}">Video Scholarship</a></li>
+                <li><a href="{{ path('news') }}/winners">News</a></li>
+                <li><a href="{{ path('terms') }}">Terms</a></li>
+                <li><a href="{{ path('contact_us') }}">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="copyright">&copy; {{ "now"|date('Y') }} GotChosen, Inc.</div>
+        <div class="copyright">
+            <table style="margin: 0px auto;" width="135" border="0" cellpadding="2" cellspacing="0"
+                   title="Click to Verify - This site chose GeoTrust SSL for secure e-commerce and confidential communications.">
+            <tr>
+            <td width="135" align="center" valign="top"><script type="text/javascript" src="https://seal.geotrust.com/getgeotrustsslseal?host_name=www.gotchosen.com&amp;size=S&amp;lang=en"></script><br />
+            <a href="http://www.geotrust.com/ssl/" target="_blank"  style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;"></a></td>
+            </tr>
+            </table>
+                </div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+
+    </div>
+</footer>
+</body>
+</html>

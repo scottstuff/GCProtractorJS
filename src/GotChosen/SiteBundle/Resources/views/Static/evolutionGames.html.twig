@@ -1,0 +1,124 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block container_class %}evo{% endblock %}
+
+{% block body %}
+
+
+    <div class="content evo">
+        <div class="evoside-left">
+            <img src="{{ asset('bundles/gotchosensite/images/leftsideAJ.png') }}" width="220">
+        </div>
+        <div class="main padded tabbed wide evogames">
+
+            <div class="evoleft">
+                
+                <ul class="nav nav-tabs" id="evotabs">
+                    <li class="active"><a href="#scholarship" id="tab_scholarship" data-toggle="tab" class="active">Game Scholarship</a></li>
+                    <li><a href="#contest" id="tab_contest" data-toggle="tab">Game Developers Contest</a></li>
+                    <li><a href="#famewall" id="tab_famewall" data-toggle="tab">Wall of Fame</a></li>
+                </ul>
+                
+                <div class="tab-content">
+
+                    <div id="scholarship" class="tab-pane active">
+                        <p>GotChosen is excited to announce its fourth scholarship program - Evolution Games.</p>
+
+                        <p>The video game scholarship contest Round 1 will start in March 2014.  Anyone 18 years or older with 
+                            educational expenses or outstanding student loans can play games for free on our site and compete 
+                            for scholarships. You can also play just for fun.</p>
+
+                        <p>There will be five Rounds of competition and each Round will last one month.  Players can earn points 
+                            three different ways; by playing games and winning, by playing different games and winning, and by 
+                            providing constructive feedback to the game developers about their games. The player with the most 
+                            accumulated points for each Round will win a $1,000 scholarship prize.  </p>
+
+                        <p>
+                        In August, GotChosen will host the Championship Round and the winner will win the <em>$3,000 Grand Prize Scholarship!</em>
+                        </p>
+                        
+                        <p>We’re just getting started… GotChosen has already awarded over $130,000 in scholarships.  Get ready to have fun!</p>
+                    </div>
+                    
+                    <div id="contest" class="tab-pane">
+                        <p>Indie game developers are invited to join our Evolution Games Developer Contest to win seed money 
+                            from GotChosen starting February 2014.  This is a great opportunity for you to get exposure and 
+                            feedback for your game, and a great opportunity for the participants that will play your game 
+                            for the chance to win GotChosen scholarship awards. </p>
+
+                        <p>The Game Developer Contest will have three stages:</p>
+
+                        <ul>
+                            <li>The first stage is the Qualifier Round.  To enter, create a brief description of your game and 
+                                upload it to our site.  Invite your friends, colleagues, and fans to play and vote for your 
+                                game.  The ten games with the most votes in each monthly Qualifier Round will move onto the
+                                next month’s Game Developer Contest.  There will be five consecutive months of Qualifier Rounds.</li>
+
+                            <li>The second stage is the Contest Round.  Gamers will play the ten games chosen from the Qualifier 
+                                round.  The developer with the most-played game for each monthly Contest Round will  win a 
+                                $1000 Seed Money Award and the developer with the second most-played game will win a $500 Seed 
+                                Money Award. Both games will secure one of the ten spots in the Championship Round.</li>
+
+                            <li>The third stage is the Championship Round.  In August 2014, the developer of the most played 
+                                game will win the grand prize of $10,000 Seed Money Award from GotChosen.</li>
+                        </ul>
+
+                        <p>We are excited to provide a platform to indie game developers that will offer useful feedback 
+                            from gamers worldwide, at no cost, and the chance to win seed money.</p>
+                    </div>
+
+                    <div id="famewall" class="tab-pane">
+                        <p><strong><em>Under Construction</em></strong></p>
+                    </div>
+                    
+                </div>
+
+                <div id="fb-root"></div>
+                <script>(function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <p>If you would like to receive updates about Evolution Games, like us on Facebook.</p>
+
+                <div class="fb-like" data-href="https://www.facebook.com/GotChosenEvolutionGames" data-send="false"
+                     data-width="200" data-show-faces="false" data-colorscheme="light"></div>
+            </div>
+
+            <div class="sidebar">
+                <p>About Evolution Games</p>
+                <iframe width="280" height="170" src="//www.youtube.com/embed/xchAAw1f5lQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="evoside-right">
+            <img src="{{ asset('bundles/gotchosensite/images/Evolution_Games_Rocket.png') }}" width="220">
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            var curTab = "{{ tab }}";
+            $('#evotabs').find('a#tab_' + curTab).tab('show');
+
+            $('a[data-toggle="tab"]').on('shown', function (e) {
+                _gaq.push([
+                    '_trackPageview',
+                    '/{{ app.request.locale }}/evolution-games/' + e.target.id.replace('tab_', '')
+                ]);
+            });
+        });
+    </script>
+
+{% endblock %}

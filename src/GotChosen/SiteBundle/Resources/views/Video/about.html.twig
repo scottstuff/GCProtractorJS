@@ -1,0 +1,92 @@
+{% extends 'GotChosenSiteBundle::layout_alt_vs_landing.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block active_tab %}about{% endblock %}
+
+{% block vs_content %}
+<div class="alert alert-error">
+ <strong>Scholarship Closed</strong>
+</div>
+
+                <p style="margin: 0 auto;"><img
+                            src="{{ asset('bundles/gotchosensite/images/video_contest_season_3_combo2.png') }}" alt=""
+                            style="margin: 0 auto 10px; width: 658px;"/></p>
+
+                <p> The Season 3 Lights, Camera, Action Video Scholarship Contest is LIVE!</p>
+                <p>Open to United States and international students to all fields of study. Participants must be 18 years or older.
+                </p>
+
+                <p> Future filmmakers, talented storytellers, videographers and performers, and anyone with a dream
+                    to tell - get your video ready and start telling everyone you know about it so they can vote for you.
+                </p>
+
+                <p> The 3 scholarships will be awarded based on the videos with the most votes among the 5 categories.
+                    The Grand Prize is $2,500 scholarship and the 2 runner-ups will win a $250 scholarship each. </p>
+
+                <p> In order to participate to the contest, follow the 3 steps:</p>
+
+                <ol>
+                    <li>Choose from one of these 5 categories below to create your video: </li>
+                <ul>
+                    <li>Doing Good: reveal who has inspired you to change the world</li>
+                    <li>Let Me Dance: show us your best dance moves</li>
+                    <li>The Downfall of Internet Privacy: tell us how you see the general invasion of privacy on the internet</li>
+                    <li>Sports: capture the greatest sports moment of you or your friends</li>
+                    <li>Fake Commercial: make up a commercial for a fake movie or TV show</li>
+                </ul>
+                        <li>Upload your video to YouTube.</li>
+                        <li>Login or register <a href="{{ path('vs_submit') }}">here</a>, complete the
+                            required information, and paste your video YouTube link to submit your entry.</li>
+                </ol>
+
+                <p>Registration is not required to vote, only to submit a video entry.  The deadline for entries and voting is April 21, 2014.</p>
+
+                <p>
+                    Video must be original, and the participant must have the rights to any and all media used. Videos must
+                    not infringe on any third-party rights or copyrights. If GotChosen receives a notice of copyright
+                    infringements from the owner of the material, the video in violation will be removed.
+
+                </p>
+
+                <p>GotChosen reserves the right to remove any video that contains content that is deemed offensive
+                    in accordance to the specifications outlined in GotChosen’s <a href="{{ path('vs_rules') }}">Rules and Regulations</a> and at its sole discretion.</p>
+                <p>If you like GotChosen's efforts to reward students who create cool videos then like us on Facebook!</p>
+                <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false"
+                data-width="200"
+                data-show-faces="false"></div>
+{% endblock %}
+
+{% block vs_sidebar %}
+
+    <h4 style="margin-bottom:0px;">Videos</h4>
+    <ul style="display:inline-block; width:305px; margin: 0px 0px 5px -5px;">
+    {% if videos|length > 0 %}
+        {% for video in videos %}
+        <li style="display:inline-block;">
+            <div class="vid-entry" style="width:290px;padding: 5px; line-height:12px;">
+                <a href="{{ path('vs_video', {'id': video.id}) }}">
+                    <img src="https://img.youtube.com/vi/{{ video.youtubeURL }}/0.jpg" width="120" alt="{{ video.title }}" style="float:left; padding-right:5px;" />
+                </a>
+                <p class="vidHead" style=" line-height:12px;"><span style="font-size:11px;">
+                <a href="{{ path('vs_video', {'id': video.id}) }}">{{ video.title|length > 55 ? video.title[:55] ~ '...' : video.title }}</a></span><br/>
+                    <span class="vidCat" style="font-size:11px;">Cat: {{ video.category.categoryName }}<br/>
+                        By: <em><a href="{{ path('user_profile', {'username': video.user.username}) }}">{{ video.user.fullName }}</a></em></span>
+                        </p>
+                            <div class="vote-btn">
+                                 <a class="btn btn-success" style="padding-bottom:0px; padding-top:0px;"
+                                    href="{{ path('vs_video', {'id': video.id}) }}" id="vote_button_{{ video.id }}">
+                                     <strong>Click to Vote!</strong>
+                                 </a>
+                             </div>
+
+            </div>
+        </li>
+        {% endfor %}
+     {% else %}
+        <p>No videos found.</p>
+     {% endif %}
+    </ul>
+
+    <div><p><a href="{{ path('vs_videos') }}">See more videos...</a></p></div>
+{% endblock %}

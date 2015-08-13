@@ -1,0 +1,135 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters>
+        <parameter key="got_chosen_site.example.class">GotChosen\SiteBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="got_chosen_site.example" class="%got_chosen_site.example.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    acme_hello.twig.extension.debug:
+        class:        Twig_Extension_Debug
+        tags:
+             - { name: 'twig.extension' }
+    -->
+
+    <services>
+        <service id="gotchosen.translation.loader.orm" class="GotChosen\SiteBundle\Localization\TranslationORMLoader">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="translation.loader" alias="txt" />
+        </service>
+
+        <!-- event subscribers -->
+        <service id="gotchosen.auth.audit.listener" class="GotChosen\SiteBundle\EventListener\AuthAuditListener">
+            <argument type="service" id="doctrine" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="gotchosen.unexpire_password_listener"
+                 class="GotChosen\SiteBundle\EventListener\UnexpirePasswordListener">
+            <argument type="service" id="fos_user.user_manager" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="gotchosen.unset_username_listener"
+                 class="GotChosen\SiteBundle\EventListener\UnsetUsernameListener">
+            <argument type="service" id="router" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="gotchosen.exception_listener"
+                 class="GotChosen\SiteBundle\EventListener\ExceptionListener">
+            <argument type="service" id="session" />
+            <argument type="service" id="router" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="gotchosen.twig.extension" class="GotChosen\SiteBundle\Twig\ChosenExtension">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="php.memcache" class="Memcached">
+            <call method="addServer">
+                <argument>%session_memcache_host%</argument>
+                <argument>%session_memcache_port%</argument>
+            </call>
+        </service>
+
+        <service id="gotchosen.session.memcache"
+                 class="Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler">
+            <argument type="service" id="php.memcache" />
+            <argument type="collection">
+                <argument key="prefix">%session_memcache_prefix%</argument>
+                <argument key="expiretime">%session_memcache_expire%</argument>
+            </argument>
+        </service>
+        
+        <service id="gotchosen.s3.client"
+                 class="Aws\S3\S3Client"
+                 factory-class="Aws\S3\S3Client"
+                 factory-method="factory">
+            <argument type="collection">
+                <argument key="key">%aws_key%</argument>
+                <argument key="secret">%aws_secret_key%</argument>
+            </argument>
+        </service>
+
+        <service id="gotchosen.user_property_handler"
+                 class="GotChosen\User\UserPropertyHandler">
+            <argument type="service" id="property_storage_filesystem" />
+            <argument>%aws_s3_bucket%</argument>
+        </service>
+
+        <service id="gotchosen.mail.processor" class="GotChosen\Mail\Processor">
+            <argument type="service" id="doctrine" />
+            <argument type="service" id="gotchosen.mail.no_spool_mailer" />
+            <argument type="service" id="templating" />
+            <argument type="service" id="router" />
+            <argument type="service" id="gotchosen.mail.limiter" />
+        </service>
+        
+        <service id="gotchosen.mail.no_spool_transport" class="Swift_SmtpTransport">
+            <argument>%mailer_host%</argument>
+            <call method="setUsername">
+                <argument>%mailer_user%</argument>
+            </call>
+            <call method="setPassword">
+                <argument>%mailer_password%</argument>
+            </call>
+        </service>
+        
+        <service id="gotchosen.mail.no_spool_mailer" class="Swift_Mailer">
+            <argument type="service" id="gotchosen.mail.no_spool_transport" />
+        </service>
+
+        <service id="gotchosen.mail.limiter" class="GotChosen\Mail\DailyBatchLimiter">
+            <argument type="service" id="doctrine" />
+            <call method="setLimit">
+                <argument>%gotchosen_batch_limit%</argument>
+            </call>
+        </service>
+
+        <service id="gotchosen.report_card_manager" class="GotChosen\User\ReportCardManager">
+            <argument type="service" id="doctrine" />
+        </service>
+
+    </services>
+
+    <!--
+    <services>
+        <service id="got_chosen_site.twig.extension_debug" class="Twig_Extension_Debug">
+            <tag name="twig.extension" />
+        </service>
+    </services>
+    -->
+</container>

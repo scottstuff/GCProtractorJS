@@ -1,0 +1,88 @@
+{% extends 'GotChosenSiteBundle::layout_front.html.twig' %}
+
+{% block navbar %}
+<div class="top-slides-holder">
+    <div class="container">
+        <div class="slides-nav">
+            <div class="logo">
+                <a href="{{ path('index') }}">
+                    <img src="{{ asset('bundles/gotchosensite/images/gotchosen_logo_se.png') }}" style="height:50px;margin-top:4px;margin-left:4px;">
+                </a>
+            </div>
+            <div class="nav-items">
+                <ul class="nav-login">
+                    {% if app.user %}
+                        <li>
+                            <a href="{{ path('user_my_profile') }}">{{ app.user.username }}</a>
+                            {% if gc_egContestActive() %}
+                                <a href="{{ path('eg_contest_gate') }}"><img src="http://placehold.it/16x16&text=T" alt="Tokens" /> {{ app.user.tokens }}</a>
+                            {% endif %}
+                        </li>
+                        {% if is_granted("ROLE_SUPER_ADMIN") %}<li><a href="{{ path('admin_home') }}">Admin</a></li>{% endif %}
+                        <li><a href="{{ path('user_profile_edit') }}">Settings</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="slides-content">
+            <div class="slides-left">
+                <div class="slideshow">
+                    <img alt="" src="{{ asset('bundles/gotchosensite/images/slide1.png') }}"
+                         style="height: 401px; margin-top: 49px;" />
+                    <img alt="" src="{{ asset('bundles/gotchosensite/images/slide2.png') }}"
+                         style="height: 401px; margin-top:49px;" />
+                    <img alt="" src="{{ asset('bundles/gotchosensite/images/slide3.png') }}"
+                         style="height: 401px; margin-top:49px;" />
+                </div>
+            </div>
+            <div class="slides-right">
+                <div class="stretch-up">
+                    <div style="margin:5px 0;">
+                    <a href="{{ path('eg_qualifier') }}">
+                        <img alt="" src="{{ asset('bundles/gotchosensite/images/evolution_scholarship_home.png') }}" style="height:79px;">
+                    </a>
+                    </div>
+                    <div style="margin:5px 0;">
+                    <a href="{{ path('scholarship') }}">
+                        <img alt="" src="{{ asset('bundles/gotchosensite/images/gotscholarship_20K_home.png') }}"
+                             style="width:201px;">
+                    </a>
+                    </div>
+                    <div style="margin:5px 0;">
+                    <a href="{{ path('monthly_scholarship') }}">
+                        <img alt="" src="{{ asset('bundles/gotchosensite/images/monthlyhome.png') }}"
+                                style="width:201px;">
+                    </a>
+                    </div>
+                    <div style="margin:5px 0;">
+                    <a href="{{ path('vs_videos') }}">
+                        <img alt="" src="{{ asset('bundles/gotchosensite/images/gotchosen_video_contest_home.png') }}"
+                                style="width:201px;">
+                    </a>
+                    </div>
+                    <div class="register-now" onclick="self.location.href = '{{ path('fos_user_registration_register') }}';"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts '@GotChosenSiteBundle/Resources/public/js/jquery.cycle.all.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script>
+        $(function() {
+            $('.slideshow').cycle({fx: 'scrollLeft', timeout: 5000});
+        });
+    </script>
+{% endblock %}

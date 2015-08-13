@@ -1,0 +1,1395 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="content">
+
+    <div id="fb-root"></div>
+    <script> (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="main padded tabbed staticpage" style="width:805px;">
+        <ul class="nav nav-tabs" id="scholarship-tabs">
+            <li class="active"><a href="#about" id="tab_about" data-toggle="tab">About the Contest</a></li>
+            <li><a href="#videos" id="tab_videos" data-toggle="tab">Videos</a></li>
+            <li><a href="#top20" id="tab_top20" data-toggle="tab">Top 20</a></li>
+            <li><a href="#submit" id="tab_submit" data-toggle="tab">Submit An Entry</a></li>
+            <li><a href="#pastseasons" id="tab_pastseasons" data-toggle="tab">Past Seasons</a></li>
+            <li><a href="#rules" id="tab_rules" data-toggle="tab">Rules</a></li>
+            <li><a href="#faq" id="tab_faq" data-toggle="tab">FAQ</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+            <!--
+            ABOUT TAB
+            -->
+
+            <div class="tab-pane active" id="about">
+                <p style="margin: 0 auto; width:250px;"><img
+                            src="{{ asset('bundles/gotchosensite/images/video contest season 3.png') }}" alt=""
+                            style="margin: 0 auto 10px; width: 250px;"/></p>
+                
+                <p> The 3rd Lights, Camera, Action Video Scholarship Contest will begin in January 2014.</p>
+
+                <p> Future filmmakers, talented storytellers, videographers and performers, and anyone with a dream 
+                    to tell - get your video ready and start telling everyone you know about it so they can vote for you.
+                </p>
+
+                <p> The scholarships are awarded based on the video with the most votes. There will be 3 scholarships 
+                    awarded. The video with the most votes will win a US $2,500 scholarship and the next 2 runner ups 
+                    will each win a US $250 scholarship. </p>
+
+                <p> You will choose one of the 5 available 5 categories to create your video for the contest.</p>
+                
+                <p>
+                    Now we need your help - what categories do you want to choose from? 
+                    Go to our <a href="https://www.facebook.com/GotChosen" target="_blank">Facebook</a> page and post your ideas. 
+                    The categories will be announced soon.
+
+                </p>
+                
+                <p>
+                    We can't wait to see the first entries!
+                </p>
+
+                <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false"
+                data-width="200"
+                data-show-faces="false"></div>
+                
+            </div>
+            
+            <!--
+            VIDEOS TAB
+            -->
+
+            <div class="tab-pane" id="videos">
+
+                <div style="padding: 5px; border: 1px solid #dddddd; font-family: Arial, Helvetica, Sans-Serif; -moz-border-radius: 15px; border-radius: 15px; width: 785px;">
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span> 
+                                        <div class="vote-btn">
+                                            <a class="btn btn-success {{ 0 <= 0 ? 'disabled maximum-reached' : '' }}"
+                                               href="#" id="vote_button">
+                                                <strong>VOTE!</strong>
+                                            </a>
+                                        </div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                </p>
+
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>
+                        
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>      
+                        
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>
+
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>
+
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>
+                        
+                </div>
+
+            </div>            
+
+            <!--
+            TOP20 TAB
+            -->
+
+            <div class="tab-pane" id="top20">
+                <div style="padding: 5px; border: 1px solid #dddddd; font-family: Arial, Helvetica, Sans-Serif; -moz-border-radius: 15px; border-radius: 15px; width: 785px;">
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>
+                        
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>      
+                        
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>
+
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>
+
+                    <ul style="display:inline-block; width:785px; margin: 0 0 5px 5px;">
+                        <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    <li style="display:inline-block;">
+                    <div class="vid-entry" style="height:100px; width:175px; padding: 5px;"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="175">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="175"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                            </li>
+                    </ul>
+                        
+                </div>
+            </div>            
+            
+            <!--
+            SUBMIT TAB
+            -->
+
+            <div class="tab-pane" id="submit">
+                {% if app.user %}
+                <p>Submit form placeholder.</p>
+                {% else %}
+                <p>You must be logged in to submit an entry.</p>
+                {% endif %}
+
+            </div>
+            
+            <!--
+            PAST SEASONS TAB
+            -->
+
+            <div class="tab-pane" id="pastseasons">
+
+                <p><strong>Season 1</strong></p>
+                <p> GotChosen wanted to offer a platform for college students around the world to showcase their talent
+                    and capture their best moments on video with the incentive of winning a scholarship. The opportunity
+                    to win a $3000 scholarship was launched with the introduction of the Lights, Camera, Action Video
+                    Scholarship Contest in February 2013.</p>
+
+                <p> Empowering students to control their ability to win - the winner was decided by voting. Students
+                    were encouraged to be creative in their videos and with their marketing savvy by getting others to
+                    vote for them.</p>
+
+                <p> In the first contest, 516 students created, uploaded and got their friends and families to vote for
+                    them. The five categories from the first contest were: Dreams Come True, Comedy, School Spirit, Your
+                    Hero, and Best Performance. </p>
+
+                <p> The first winner, Kirk Saechao was awarded a US $3000 scholarship. Kirk's story detailing how he
+                    learned about the contest, the process he went through to create his video, and how he used social
+                    media to get votes can be found <a
+                            href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                            target="_blank">here</a>.</p>
+
+                <p> Check out the Top 10 videos from the past season with the most votes, including the winner's Maple
+                    Love Story below:</p>
+
+                <div style="padding: 10px; border: 1px solid #dddddd; font-family: Arial, Helvetica, Sans-Serif; -moz-border-radius: 15px; border-radius: 15px; width: 630px;">
+                    <div class="vid-entry"><p class="vidHead"> Title: Maple Love Story<br/> <span class="vidCat">Category: Best Performance<br/> Author: <a
+                                        href="{{ path('news_article', {'id': 43, 'slug': 'The-Winners-Story-GotChosen-Video-Scholarship'}) }}"
+                                        target="_blank">Kirk Seachao - Winner of the contest</a></span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/ZcekUuC7D9Y?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: GotChosen Dreams Come True Video<br/> <span
+                                    class="vidCat">Category: Dreams Come True<br/> </span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/OznL2rs3Ync?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/OznL2rs3Ync?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Blind Makeup Tutorial!<br/> <span class="vidCat">Category: Comedy<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/l6DcIBE6Iy0?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/l6DcIBE6Iy0?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Free Your Dreams<br/> <span class="vidCat">Category: Dreams Come True<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/nlKKBL6E03s?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/nlKKBL6E03s?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: "My name is Shelby Steingraeber, and my hero.....is
+                            Cassidy-Rae"<br/> <span class="vidCat">Category: Your Hero<br/> </span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/h-h5InvW1oQ?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/h-h5InvW1oQ?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Snap<br/> <span
+                                    class="vidCat">Category: Comedy<br/>  </span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/Q37qyEwwKC8?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/Q37qyEwwKC8?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: World Hunger PSA<br/> <span class="vidCat">Category: Best Performance<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/0W2Ic5hV28w?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/0W2Ic5hV28w?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Passion for Film<br/> <span class="vidCat">Category: Best Performance<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/EGC2dF6r-gc?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/EGC2dF6r-gc?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: My Hero<br/> <span class="vidCat">Category: Your Hero<br/> </span>
+                        </p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/vL9Ue48svbI?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/vL9Ue48svbI?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Love Triangle Music Video<br/> <span
+                                    class="vidCat">Category: Best Performance<br/> </span></p>
+                        <object width="495" height="300">
+                            <param name="movie" value="https://www.youtube.com/v/XYQ0NdbCKkA?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/XYQ0NdbCKkA?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                </div>                
+                
+                <P><strong>Season 2</strong></p>
+                <p> What happens when you combine talent, originality and determination? For our scholarship winners it
+                    means success and scholarships dollars for their college education.</p>
+
+                <p> GotChosen's Season Two Video Scholarship Contest participants had 12 weeks to upload a video of original
+                    work and then get as many votes as possible to reach the Top 20. </p>
+
+                <p> The Judging Panel, comprised of experts in all forms of the art, film and media gathered at Everest
+                    College (North Orlando Campus, Film Video Department, Matt Gunter, Chair) to view each of the Top 20
+                    Videos. </p>
+
+                <p> Representing the Panel of Judges: Patrick Kahn (<a href="http://snaporlando.com/" target="_blank">SNAP!
+                        Orlando</a>), Felicia Rieman (Award winning television producer), Attorney Jim Lussier (<a
+                            href="http://www.orlandoslice.com/" target="_blank">Orlando Slice</a>), Patrick Jackson (<a
+                            href="http://www.pbjentertainmentgroup.com/Home_Page.html" target="_blank">PB&J Entertainment
+                        Group</a>), Realdo Manes (<a href="http://www.jornalbb.com/" target="_blank">Journal B&B
+                        Newspaper</a>), Darko Cesar (Animator Instructor at <a href="http://www.fullsail.edu/"
+                                                                               target="_blank">Full Sail University</a>),
+                    Mirjana Cesar (<a href="http://mirjanacesar.weebly.com/index.html" target="_blank">Mixed Media
+                        artist</a>), Rupert Meghnot (Instructor at <a href="http://www.fullsail.edu/" target="_blank">Full
+                        Sail University</a>), Michelle Hill - Program Director of Film and Video Program at <a
+                            href="http://www.first.edu/" target="_blank">F.I.R.S.T Institute</a>, Grazyna Kleinman - <a
+                            href="http://grazmagicphoto.com/" target="_blank"> photographer</a>, John Ribeiro (musician),
+                    Nivaldo Nassiff & Josh Blackwell (International Pastors at <a href="http://www.firstorlando.com/"
+                                                                                  target="_blank">First Baptist Orlando</a>).
+                </p>
+
+                <p> Check out the winners stories <a
+                        href="{{ path('news_article', {'id': 63, 'slug': 'What-do-the-winners-have-to-say'}) }}"
+                        target="_blank">HERE</a>. <p> The $3000 Grand Prize Winner was awarded to Fabian Caballero of Hunter
+                    College with the most votes by the Panel of Judges. Our four Runner-ups receiving a $250 scholarship
+                    award are: Emily Hoven (University of Alberta Canada), Emina Sonnad (University of California,
+                    Berkeley), Amanda Neuhouser (Southern Illinois University) and Jake Tuohy (Suffolk Community
+                    College).</p>
+
+                <p> Congratulations to the winners. Their "never give up” attitude and their efforts have paid off. We look
+                    forward to our Season 3 Lights, Camera, Action, Video Scholarship contest to launch in late fall. Please
+                    check our website for announcements and details coming soon.</p>
+
+                <p> Check out the winner’s videos from season two, including the grand prize winner’s video “To Be”
+                    below:</p>
+
+                <div style="padding: 10px; border: 1px solid #dddddd; font-family: Arial, Helvetica, Sans-Serif; -moz-border-radius: 15px; border-radius: 15px; width: 630px;">
+                    <div class="vid-entry"><p class="vidHead"> Title: To Be<br/> <span class="vidCat">Category: Best Original Music<br/>                                    Author: <a
+                                        href="{{ path('news_article', {'id': 64, 'slug': 'GotChosen-Season-Two-Winners'}) }}"
+                                        target="_blank">Fabain Calallero - Winner of the contest</a></span></p>
+                        <object width="330" height="200">
+                            <param name="movie" value="https://www.youtube.com/v/MNAucb0Pg2o?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://youtube.com/v/MNAucb0Pg2o?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Rainbowfish- Here I Am<br/> <span class="vidCat">Category: Best Original Music<br/>                                    Author: <a
+                                        href="{{ path('news_article', {'id': 64, 'slug': 'GotChosen-Season-Two-Winners'}) }}"
+                                        target="_blank">Emina Sonnad - 1st Runner-Up</a></span></p>
+                        <object width="330" height="200">
+                            <param name="movie" value="https://www.youtube.com/v/daon82qsRkw?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/daon82qsRkw?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Waiting<br/> <span
+                                    class="vidCat">Category: Friends<br/>                                    Author: <a
+                                        href="{{ path('news_article', {'id': 64, 'slug': 'GotChosen-Season-Two-Winners'}) }}"
+                                        target="_blank">Amanda Neuhouser - 2nd Runner-Up</a></span></p>
+                        <object width="329" height="200">
+                            <param name="movie" value="https://www.youtube.com/v/Gx76bkZ21nE?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/Gx76bkZ21nE?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: We In The Building<br/> <span class="vidCat">Category: Best Original Music<br/>                                    Author: <a
+                                        href="{{ path('news_article', {'id': 64, 'slug': 'GotChosen-Season-Two-Winners'}) }}"
+                                        target="_blank">Jake Tuohy - 3rd Runner-Up</a></span></p>
+                        <object width="329" height="200">
+                            <param name="movie" value="https://www.youtube.com/v/or5SoAT-UNY?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/or5SoAT-UNY?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                    <div class="vid-entry"><p class="vidHead"> Title: Oh The Places You've Gone<br/> <span class="vidCat">Category: Best Trip Ever<br/>                                    Author: <a
+                                        href="{{ path('news_article', {'id': 64, 'slug': 'GotChosen-Season-Two-Winners'}) }}"
+                                        target="_blank">Emily Hoven - 4th Runner-Up</a></span></p>
+                        <object width="329" height="200">
+                            <param name="movie" value="https://www.youtube.com/v/-R-kEq_Q4uE?version=3&amp;hl=en_US">
+                            </param>
+                            <param name="allowFullScreen" value="true"></param>
+                            <param name="allowscriptaccess" value="always"></param>
+                            <embed src="https://www.youtube.com/v/-R-kEq_Q4uE?version=3&amp;hl=en_US"
+                                   type="application/x-shockwave-flash" width="495" height="300"
+                                   allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!--
+            RULES TAB
+            -->
+
+            <div class="tab-pane" id="rules">
+                    <p>
+                        <strong>Video Scholarship Contest Rules and Regulations </strong>
+                    </p>
+                    <ul>
+                        <li>PARTICIPANTS MUST HAVE INTERNET ACCESS, PROVIDE A VALID E-MAIL ADDRESS AND HAVE
+                            A VIDEO RECORDING DEVICE.</li>
+                        <li>WINNERS WILL BE NOTIFIED BY E-MAIL ONLY.</li>
+                        <li>NO PURCHASE NECESSARY.</li>
+                        <li>VOID WHERE PROHIBITED. THIS CONTEST IS GOVERNED BY THE LAWS OF THE STATE OF FLORIDA,
+                            UNITED STATES OF AMERICA.</li>
+                        <li>ALL FEDERAL, STATE AND LOCAL LAWS AND REGULATIONS APPLY.</li>
+                    </ul>
+                    <p>
+                        <strong>Eligibility: </strong>
+                    </p>
+                    <ul>
+                        <li>The Video Scholarship Contest is open to <span id="spanVideoRules">US and international
+                            students, 18 years old or older.</span> The contest is offered to all fields of
+                            study.</li>
+                        <li>Each participant must register at http://www.gotchosen.com, and create his/ her
+                            entry for the contest. A participant is defined as an individual, not a group.</li>
+                        <li>The winners will be notified by the e-mail address provided on the participant’s
+                            entry form.</li>
+                        <li>There is no cost to enter, and eligibility is not based on financial need or academic
+                            performance.</li>
+                        <li>Only one (1) video submission per participant is permitted.</li>
+                        <li>Each participant must upload their video to YouTube, and then paste the link in
+                            the “Create New Entry” form.</li>
+                        <li>We recommend videos under 3 minutes. Supported YouTube file formats are: .MOV, .MPEG4,
+                            .AVI, .WMV, .MPEGPS, .FLV, 3GPP, and WebM.</li>
+                        <li>Only the one (1) participant submitting the video is eligible for the scholarship.
+                            The video may contain an unlimited number of people of any age, but only the participant
+                            submitting the video will be eligible to win.</li>
+                        <li>Video must be original, and the participant must have the rights to any media used.
+                            Videos must not infringe on any third-party rights or copyrights. During Phase One,
+                            if GotChosen receives a notice of copyright infringements from the owner of the
+                            material, the video in violation will be removed.</li>
+                        <li>Videos submitted for prior GotChosen contests are not eligible.</li>
+                        <li>Employees of GotChosen, Inc., their respective parents, immediate family members,
+                            and persons living in the households of each of these individuals, whether related
+                            or not, are ineligible for this drawing.</li>
+                        <li>The contest is subject to all applicable federal, state, and local laws and regulations,
+                            and the contest is void where prohibited or restricted by law.</li>
+                        <li>Fraud Prevention: Each video can be voted on once a day per IP address.</li>
+                        <li>Videos that are deemed to be immoral, obscene, profane; sexually explicit or suggestive;
+                            unnecessarily violent or derogatory of an ethnic, racial, gender, religious, professional
+                            or age group; pornographic; contain nudity; promote alcohol, illegal drugs, tobacco,
+                            firearms/weapons; promote any activities that may appear unsafe or dangerous; promote
+                            particular political agenda or message; endorse forms of hate or hate group; or
+                            not in keeping with GotChosen's image; or are in violation of these Official Rules,
+                            may be disqualified and have the video removed.</li>
+                        <li>GotChosen reserves the right to remove any video that contains content that is deemed
+                            offensive in accordance to the specifications outlined in these rules and regulations
+                            and at its sole discretion.</li>
+                        <li>Entries that appear to duplicate any other submitted entries will be void and only
+                            the first entry submitted (based on time/date) will be included in the Contest.</li>
+                    </ul>
+                    <p>
+                        <strong>Contest Details: </strong>
+                    </p>
+                    <p>
+                        The Video Scholarship Contest has two phases.</p>
+                    <p>
+                        <strong>Phase One </strong>
+                    </p>
+                    <p>
+                        Phase One will begin on May 15, 2013. Participants will be able to create their
+                        entriesfor the public to view and vote for their favorite video.The public voting
+                        period will end on July 31, 2013 at 11:59:59 p.m. EDT. The number of votes received
+                        for each video will be tracked by GotChosen’s platform, and the Top 20 videos with
+                        the most votes will move onto Phase Two.</p>
+                    <p>
+                        <strong>Phase Two </strong>
+                    </p>
+                    <p>
+                        The participants of the top 20 videos will be notified by email and they will have
+                        10 days to provide verification of eligibility and compliance with the rules and
+                        regulations. The participant’s videos will then be voted on by a panel of judges.
+                        The video with the most votes will be awarded the grand prize of a US $3000 scholarship
+                        and the next 4 runner-ups will each be awarded a prize of a US $250 scholarship.
+                        In case of a tie in Phase Two, the tie breaker will be the video that had the most
+                        public votes in Phase One.
+                    </p>
+                    <p>
+                        The panel of judges will be represented by university professors, business entrepreneurs,
+                        and celebrities. Their identities will not be revealed until after the winners have
+                        been announced.
+                    </p>
+                    <p>
+                        GotChosen will send weekly reports to the participants instead of displaying the
+                        number of votes during phase one so new participants are not discouraged to enter
+                        the contest. The name of the winners will be announced by September 10, 2013 at
+                        http://www.gotchosen.com.</p>
+                    <p>
+                        <strong>To Enter:</strong></p>
+                    <p>
+                        In order to create your entry for the video contest, first, you must upload your
+                        video to YouTube, and then paste the link in the “Create New Entry” form.
+                    </p>
+                    <p>
+                        <span style="text-decoration: underline;"><strong>Existing GotChosen users</strong></span>
+                        simply need to Login, and create your entry for the Video Scholarship contest based
+                        on the following 5 categories: Best Original Music, Friends, Best Trip Ever, Nature,
+                        and Helping Hands.
+                    </p>
+                    <p>
+                        <span style="text-decoration: underline;"><strong>New visitors to GotChosen</strong></span>
+                        must: (1) complete an on-line registration and (2) create your entry for the Video
+                        Scholarship contest based on the available categories.</p>
+                    <p>
+                        By completing and submitting their entry, participants acknowledge and agree to
+                        the Rules and Regulations herein and to GotChosen’s Privacy Policy.
+                    </p>
+                    <p>
+                        <strong>Prize Information:</strong></p>
+                    <ul>
+                        <li>The US $3,000 scholarship and each US $250scholarship will be issued in one installment.
+                            Scholarship funds must be used for educational purposes, such as tuition, fees,
+                            student loans, books, supplies, equipment required for study, or towards repayment
+                            of outstanding student loans. </li>
+                        <li>The winner's names will be posted on http://www.gotchosen.com. All information provided
+                            by winners will be verified before issuing the payment. </li>
+                        <li>All federal, state, and local taxes and any other costs and expenses not specifically
+                            stated herein as being awarded are the winner’s sole responsibility. </li>
+                        <li>GotChosen reserves the right to change these terms and conditions at any time.
+                        </li>
+                    </ul>
+                    <p>
+                        <strong>Prize Notification: </strong>
+                    </p>
+                    <p>
+                        The final winners will be notified by e-mail with instructionsto provide picture
+                        identification, a written story about their contest experience, sign an Affidavit
+                        of Eligibility and Liability Release, complete a W9 form (if required) and (where
+                        not prohibited by law) a Publicity Release to be awarded the prize. In the event
+                        of noncompliance with the Official Rules, or the prize notification is unclaimed
+                        within 3 days of the date of the first notification attempt, the prize will be forfeited
+                        and may be awarded to the next winner.
+                    </p>
+                    <p>
+                        Note: The winners will be notified by e-mail <strong>only</strong> using the email
+                        address entered at registration. Make sure you use a valid email address and check
+                        your inbox.
+                    </p>
+                    <p>
+                        <strong>Additional Terms: </strong>
+                    </p>
+                    <p>
+                        By participating, registrants agree to: (1.) the Official Rules and the decisions
+                        of GotChosen, which shall be final in all respects; and (2.) release, discharge,
+                        indemnify, and hold harmless GotChosen, Inc., their respective trustee, financial
+                        institutions, affiliated advertising and promotion agencies, the respective officers,
+                        directors, agents, and employees of the aforementioned entities (collectively, the
+                        “Released Parties”) from any liability, claims, or damages arising out of their
+                        participation in the GotChosen Video Scholarship contest and the acceptance, use,
+                        misuse, or possession of any prize.
+                    </p>
+                    <p>
+                        By accepting the prize, the winner agrees to, where legal, GotChosen’s and its designees’
+                        use of his/her name and/or likeness for advertising and publicity purposes in any
+                        and all media now or hereafter known without compensation and hereby provides consent
+                        to such use. As a condition of entering the GotChosen Video Scholarship contest,
+                        participant agrees that 1.) Under no circumstances will participant be permitted
+                        to obtain awards for, and participant hereby waives all rights to claim punitive,
+                        incidental, consequential, or any other damages; 2.) All causes of action arising
+                        out of or connected with this contest, or any prizes awarded, shall be resolved
+                        individually, without resort to any form of class action; and 3.) Any and all claims,
+                        judgments, and awards shall be limited to actual out-of-pocket costs incurred, but
+                        in no event attorney’s fees.
+                    </p>
+                    <p>
+                        <strong>Limitation of Liability: </strong>
+                    </p>
+                    <p>
+                        Released Parties are not responsible for printing, typographical, human or other
+                        errors in any GotChosen-related materials; for stolen, lost, late, misdirected,
+                        damages, incomplete or illegible entries; or for transactions that are processed
+                        late or incorrectly, or are lost due to computer or electronic malfunction or human
+                        error. GotChosen reserves the right to cancel, suspend or modify the contest and
+                        award the prize from among all eligible non-suspect entries received prior to action
+                        taken if fraud or technical failures or other events compromise the integrity of
+                        the contest as determined by GotChosen in its sole discretion. The contest is governed
+                        by the laws of the State of Florida for the resolution of all claims and disputes.
+                    </p>
+                    <p>
+                        <strong>Winner’s Name: </strong>
+                    </p>
+                    <p>
+                        The name of the winners will be announced by September 10, 2013 at http://www.gotchosen.com.
+                        This contest is sponsored and administered by GotChosen, Inc., 12472 Lake Underhill
+                        Road #397, Orlando, FL 32828.
+                    </p>
+                    <p>
+                        CONSUMER DISCLOSURE: NO PURCHASE IS NECESSARY TO ENTER OR WIN.</p>
+            </div>
+            
+            <!--
+            FAQ TAB
+            -->
+
+            <div class="tab-pane" id="faq">
+                    <p>
+                        <strong>Who is eligible for the contest?</strong></p>
+                    <p>
+                        The contest is open to <span id="spanVideoFAQ">US and international students and alumni.
+                            Participants must be 18 years or older.</span> The contest is offered to all
+                        fields of study.
+                    </p>
+                    <p>
+                        <strong>What should the video be about? What limitations are there?</strong></p>
+                    <p>
+                        You must use one of the 5 categories:</p>
+                    <ol>
+                        <li>Best Original Music: Share your talent with an original musical piece (song or instrumental).
+                            Your submission must be completely original or it will be disqualified.</li>
+                        <li>Friends: Create a video about what the word “friends” means to you.</li>
+                        <li>Best Trip Ever: Make a video about your favorite travel adventures.</li>
+                        <li>Nature: Show us the beauty of nature.</li>
+                        <li>Helping Hands: What are you doing to make a difference?</li>
+                    </ol>
+                    <p>
+                        Disqualification: GotChosen reserves the right to remove any video that contains
+                        content that is deemed offensive in accordance to the specifications outlined in
+                        GotChosen’s Rules and Regulations and at its sole discretion.</p>
+                    <p>
+                        <strong>How long, and how big can my video be? </strong>
+                    </p>
+                    <p>
+                        We recommend videos under 3 minutes.</p>
+                    <p>
+                        <strong>In what file type (format) should my video be recorded?</strong></p>
+                    <p>
+                        Since your first step is to upload your video to YouTube, here are the supported
+                        YouTube file formats: .MOV, .MPEG4, .AVI, .WMV, .MPEGPS, .FLV, 3GPP, and WebM.</p>
+                    <p>
+                        <strong>How do I submit my video?</strong></p>
+                    <p>
+                        In order to create your entry for the video contest, first, you must upload your
+                        video to YouTube, and then paste the link in the “Create New Entry” form.
+                    </p>
+                    <p>
+                        <strong>Existing GotChosen users</strong> simply need to login, and create your
+                        entry for the Video Scholarship contest based on the 5 categories: Best Original
+                        Music, Friends, Best Trip Ever, Nature, or Helping Hands.</p>
+                    <p>
+                        <strong>New visitors to GotChosen must:</strong> (1) complete an on-line registration
+                        and (2) create your entry for the Video Scholarship contest based on the 5 categories:
+                        Best Original Music, Friends, Best Trip Ever, Nature, or Helping Hands.</p>
+                    <p>
+                        <strong>When is the video submission deadline?</strong></p>
+                    <p>
+                        Videos must be submitted during Phase One by July 31, 2013 | 11:59PM EDT.</p>
+                    <p>
+                        <strong>Am I the only person that can be in the video? </strong>
+                    </p>
+                    <p>
+                        Absolutely not. In fact, you don’t need to be in it at all. However, everyone in
+                        the video should understand that he or she is helping you win this scholarship.
+                        Should your video win, the only winner of the scholarship will be you, the registered
+                        GotChosen participant who submits the video.
+                    </p>
+                    <p>
+                        <strong>How many videos will be chosen for the contest?</strong></p>
+                    <p>
+                        There will be five (5) winners. One grand prize winner will be awarded a US $3000
+                        scholarship and four (4) runner-ups will be awarded a US $250 scholarship each.</p>
+                    <p>
+                        <strong>How are winners determined?</strong></p>
+                    <p>
+                        The contest has two phases. During Phase One the top 20 videos with the most votes
+                        will move onto Phase Two. A panel of judges will then vote for one (1) grand prize
+                        winner and four (4) runner-ups. In case of a tie in Phase Two, the tie breaker will
+                        be the video that had the most votes in Phase One.
+                    </p>
+                    <p>
+                        <strong>Who will be on the panel of judges?</strong></p>
+                    <p>
+                        The panel of judges will be represented by university professors, business entrepreneurs,
+                        and celebrities. Their identities will not be revealed until after the winners have
+                        been announced.</p>
+                    <p>
+                        <strong>When will voting begin? When will it end?</strong></p>
+                    <p>
+                        Phase One voting will be available for the public from May 15, 2013 to July 31,
+                        2013, 11:59 PM EDT. During Phase Two the participant’s videos will then be voted
+                        on by a panel of judges and winners will be announced by September 10, 2013.</p>
+                    <p>
+                        <strong>Who can vote for the video?</strong></p>
+                    <p>
+                        During Phase One anyone and everyone you know. Registration is NOT required to vote.
+                        Each person can vote for your video once a day using the same IP address.
+                    </p>
+                    <p>
+                        GotChosen reserves the right to action taken if fraud or technical failures or other
+                        events compromise the integrity of voting during the contest as determined by GotChosen
+                        at its sole discretion.</p>
+                    <p>
+                        <strong>What is the scholarship award?</strong></p>
+                    <p>
+                        The Grand Prize is a US $3,000 scholarship and four (4) runner-up prizes of a US
+                        $250 scholarship each.</p>
+                    <p>
+                        <strong>When and how will I know if I won?</strong></p>
+                    <p>
+                        The participants of the top 20 videos will be notified by email and will have 10
+                        days to provide verification of eligibility and compliance with the rules and regulations.
+                        Their videos will then be voted on by a panel of judges. The name of the 5 winners
+                        will be announced by September 10, 2013 at <a>www.gotchosen.com</a>.
+                    </p>
+                    <p>
+                        Note: The winners will be notified by e-mail only using the email address entered
+                        at registration. Make sure you use a valid email address and you check your inbox.</p>
+                    <p>
+                        <strong>What if I have other questions not in this FAQ list?</strong></p>
+                    <p>
+                        Please visit the <a href="?t=Rules">Rules</a> section of this website or send an
+                        email to <a href="mailto:info@gotchosen.com">info@gotchosen.com</a>.</p>
+
+            </div>            
+        </div>
+    </div>
+
+    <div class="sidebar" style="width:100px;">
+        <div class="sb-block">
+            <p> Like us on Facebook!</p>
+
+            <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false" data-width="100"
+                 data-show-faces="false"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            var curTab = "{{ tab }}";
+            $('#scholarship-tabs').find('a#tab_' + curTab).tab('show');
+
+            $('a[data-toggle="tab"]').on('shown', function (e) {
+                _gaq.push([
+                    '_trackPageview',
+                    '/{{ app.request.locale }}/video-scholarship/' + e.target.id.replace('tab_', '')
+                ]);
+            })
+        });
+    </script>
+    
+    <script>
+        var MAX_MSG = 'You have reached the maximum number of votes for today';
+
+        $(function() {
+            var $vote = $('#vote_button');
+            $vote.click(function(e) {
+                e.preventDefault();
+                if ( $vote.hasClass('disabled') ) {
+                    if ( $vote.hasClass('maximum-reached') ) {
+                        alert(MAX_MSG);
+                    }
+                    return;
+                }
+
+                $vote.addClass('disabled');
+                
+            });
+        });
+    </script>    
+
+{% endblock %}

@@ -1,0 +1,334 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}User Profile | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    {# Let's just deal with this once and for all ... #}
+    {% if properties.FirstName is defined and properties.LastName is defined %}
+        {% set user_display_name = user.fullName %}
+    {% else %}
+        {% set user_display_name = user.username %}
+    {% endif %}
+
+    {% set isOwner = app.user and app.user.id == user.id %}
+
+    <div class="content">
+
+        <div id="fb-root"></div>
+        <script> (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="main padded wide profile">
+            <div class="row">
+                <div class="span3">
+                    <div class="profile-left">
+                        <h2>
+                            {{ user_display_name }}
+                        </h2>
+
+                        {% if is_granted("ROLE_SUPER_ADMIN") %}
+                        <h3>{{ user.getEmail() }}</h3>
+                        {% endif %}
+
+                        {% if isOwner %}
+                           {% spaceless %}
+                            <div style="text-align: center">
+                                <a href="#" id="update_photo">
+                            {% if isVisible.PhotoURL and properties.PhotoURL is not empty %}
+                                <img src="{{ properties.PhotoURL }}" class="picture">
+                                <br />Edit Photo
+                            {% else %}
+                                <img src="{{ asset('bundles/gotchosensite/images/default_user_180.jpg') }}"
+                                        class="picture">
+                                <br />Upload Photo
+                            {% endif %}
+                                </a>
+                            </div>
+                            {% endspaceless %}
+                        {% else %}
+                            {% if isVisible.PhotoURL and properties.PhotoURL is not empty %}
+                                <img src="{{ properties.PhotoURL }}" class="picture">
+                            {% else %}
+                                <img src="{{ asset('bundles/gotchosensite/images/default_user_180.jpg') }}"
+                                     class="picture">
+                            {% endif %}
+                        {% endif %}
+
+                        {% if (not app.user or (app.user and app.user.id != user.id)) and scholarship
+                              and user.hasApplied(scholarship) and not currentIsSponsoring %}
+                            <a class="btn btn-info btn-small"
+                               href="{{ path('scholarship_sponsor', {'username': user.username}) }}">Sponsor Me!</a>
+                        {% endif %}
+
+                        <form action="{{ path('user_search_email') }}" method="post" id="email_search_form">
+                            <label for="user_search">Search for Members to Sponsor:</label>
+                            <div class="input-append">
+                                <input id="user_search" type="text" name="search" data-placeholder="E-mail Address">
+                                <button type="submit" class="btn"><i class="icon-search"></i></button>
+                            </div>
+                            <span class="error" id="empty_error"
+                                  style="display:none">Please enter an e-mail address.</span>
+                            <span class="error" id="nonexist_error"
+                                    style="display:none">{{ 'search.email_does_not_exist'|trans }}</span>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="span5">
+                    {% for gname, props in propGroups %}
+                    <div class="properties-box">
+                        <h2 class="box-title">{{ gname }}</h2>
+
+                        {% for name, value in props %}
+                        <div class="property-row">
+                            <strong>{{ ('profile_properties.' ~ name)|trans({}, 'profile_properties') }}:</strong>
+                            {% if name == 'Address' or name == 'HowIWouldUseScholarship' %}
+                            <p>{{ value|nl2br }}</p>
+                            {% else %}
+                            {{ value }}
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+
+                        <div class="box-footer"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if app.user and app.user.id == user.id %}
+                <div class="span4">
+                    <div class="scholarship-panel">
+                        <h2>
+                            <a href="{{ path('user_profile_edit', {'tab': 'scholarships'}) }}">My Scholarship Panel</a>
+                        </h2>
+                        {% for sship in scholarships %}
+                            {% set rulesRoute = sship.rulesRoute %}
+                            <div class="scholarship-item">
+                                <h3>{{ sship.scholarshipName|e|gc_autosuper }}</h3>
+                                {% if app.user.hasApplied(sship) %}
+
+                                    {% if sship.is40K %}
+                                        {{ 'x.entries'|transchoice(sponsorCount + 1, {'%count%': sponsorCount + 1}) }}<br />
+
+                                        {% if sponsorCount > 0 %}
+                                            <div class="sponsors">
+                                                <a href="{{ path('user_profile_sponsors', {username: app.user.username}) }}"
+                                                        >{{ sponsorCount }} sponsor(s)</a>
+                                            </div>
+                                        {% endif %}
+
+                                        {% if sponsoring|length > 0 %}
+                                            <div class="sponsoring">
+                                                You are sponsoring
+                                                <a href="{{ path('user_profile', {'username': sponsoring[0].entry.user.username}) }}"
+                                                        ><strong>{{ sponsoring[0].entry.user.fullName }}</strong></a>
+                                            </div>
+                                        {% endif %}
+                                        <br />
+                                        <a href="{{ path('scholarship_sponsor', {'username': user.username}) }}" class="disabled AddTooltip"
+                                           data-original-title="Right-click the link and select 'Copy Link / Copy Shortcut' to share.">Your Sponsor URL Link</a>
+                                    {% elseif sship.isMonthly %}
+                                        {{ 'x.entries'|transchoice(1, {'%count%': 1}) }}
+                                    {% elseif sship.isEvoGames %}
+                                        <div class="report-card">
+                                            {% include 'GotChosenSiteBundle:Components:report_card.html.twig' with {card: reportCard} %}
+                                        </div>
+                                    {% elseif sship.isVideo %}
+                                        {% if video is not null %}
+                                        Title: <a href="{{ path('vs_video', {'id' : video.id }) }}">{{ video.title }}</a><br />
+                                        Category: {{ video.category.categoryName }}<br/>
+                                        Votes: {{ votecount }} <br />
+                                        Views: {{ video.views }}
+                                        {% else %}
+                                            Click <a href="{{ path('vs_submit') }}">HERE</a> to submit your video entry.
+                                        {% endif %}
+                                    {% endif %}
+
+                                {% else %}
+
+                                <a class="apply" href="{{ path('scholarship_apply', {'id': sship.id}) }}">APPLY!</a>
+                                <br />
+                                By clicking "Apply" above you agree to the
+                                <a href="#terms-{{ rulesRoute[0] }}" data-toggle="modal">rules and regulations</a>.
+
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
+                        <div class="scholarship-footer">
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    {# display scholarships the user has applied for, with a count of entries #}
+                    <div class="span4">
+                        <div class="scholarship-panel">
+                            <h2>Scholarship Panel</h2>
+                            {% for sship in scholarships if user.hasApplied(sship) %}
+                                {% set rulesRoute = sship.rulesRoute %}
+                                <div class="scholarship-item">
+                                    <h3>{{ sship.scholarshipName|e|gc_autosuper }}</h3>
+
+                                    {% if sship.is40K %}
+                                        {{ 'x.entries'|transchoice(sponsorCount + 1, {'%count%': sponsorCount + 1}) }}
+                                        {% if sponsorCount > 0 and showSponsors %}
+                                            <div class="sponsors">
+                                                <a href="{{ path('user_profile_sponsors', {username: user.username}) }}"
+                                                        >{{ sponsorCount }} sponsor(s)</a>
+                                            </div>
+                                        {% endif %}
+                                    {% elseif sship.isMonthly %}
+                                        {{ 'x.entries'|transchoice(1, {'%count%': 1}) }}
+                                    {% elseif sship.isEvoGames %}
+                                        <div class="report-card">
+                                            {% include 'GotChosenSiteBundle:Components:report_card.html.twig' with {card: reportCard} %}
+                                        </div>
+                                    {% elseif sship.isVideo %}
+                                        {% if video is not null %}
+                                        Title: <a href="{{ path('vs_video', {'id' : video.id }) }}">{{ video.title }}</a><br/>
+                                        Category: {{ video.category.categoryName }}<br/>
+                                        Views: {{ video.views }}
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <div class="scholarship-item">
+                                    {{ user_display_name }} has not applied for any scholarships.
+                                </div>
+                            {% endfor %}
+
+                            <div class="scholarship-footer">
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="scholarshipLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="scholarshipLabel">$20K Scholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_40k.html.twig' %}
+        </div>
+    </div>
+
+    <div id="terms-monthly_scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="monthScholarshipLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="monthScholarshipLabel">Monthly Scholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_monthly.html.twig' %}
+        </div>
+    </div>
+
+    <div id="terms-video_scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="modalLabel">VideoScholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_video.html.twig' %}
+        </div>
+    </div>
+
+    {% if isOwner %}
+    {% embed 'GotChosenSiteBundle:Components:modal.html.twig' with {id: 'photoModal'} %}
+        {% block header %}Change your Photo{% endblock %}
+        {% block body %}
+            <form method="post" action="{{ path('user_profile_update_photo') }}" class="form-horizontal"
+                  enctype="multipart/form-data">
+
+            <div id="photoForm_PhotoURL_control_group" class="control-group">
+                {{ form_label(photoForm.PhotoURL, 'Profile Photo') }}
+                <div class="controls">
+                    {{ form_widget(photoForm.PhotoURL) }}
+                    {{ form_errors(photoForm.PhotoURL) }}
+
+                    {% if fileInfos['PhotoURL']|default(false) %}
+                        <span class="help-block">Currently:<br />
+                            <img src="{{ fileInfos['PhotoURL'] }}" style="height:100px;"><br />
+                            <a href="{{ path('user_profile_clear_property', {property: 'PhotoURL', tab: '_home'}) }}">Remove</a>
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            {{ form_row(photoForm.privacy_PhotoURL) }}
+
+            <div class="controls">
+            <button type="submit" class="btn btn-primary">Update Photo</button>
+            </div>
+
+            {{ form_rest(photoForm) }}
+            </form>
+        {% endblock %}
+    {% endembed %}
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            var $searchForm = $('#email_search_form');
+            var $searchBox = $('#user_search');
+            var $emptyError = $('#empty_error');
+            var $nonExistError = $('#nonexist_error');
+
+            $('#update_photo').click(function(e) {
+                e.preventDefault();
+                $('#photoModal').modal();
+            });
+
+            $searchForm.submit(function(e) {
+                var value = $searchBox.val();
+                e.preventDefault();
+
+                $nonExistError.hide();
+                $emptyError.hide();
+
+                // check if non-empty, and matches {whatever}@blah.x[.y]...
+                if ( value.length == 0 || !/^[^@]+@([a-z0-9_-]+\.)+[a-z0-9_-]+$/i.test(value) ) {
+                    $emptyError.show();
+                    return false;
+                }
+
+                emailSearch(value, function(json) {
+                    if ( json.profileUrl.length == 0 ) {
+                        $nonExistError.show();
+                    } else {
+                        window.location = json.profileUrl;
+                    }
+                });
+
+                return false;
+            });
+
+            var emailSearch = function(email, fn) {
+                $.ajax('{{ path('ajax_search_email') }}', {
+                    data: {search: email},
+                    dataType: 'json',
+                    success: fn
+                });
+            };
+        });
+    </script>
+
+{% endblock %}

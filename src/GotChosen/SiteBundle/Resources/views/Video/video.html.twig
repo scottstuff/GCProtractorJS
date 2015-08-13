@@ -1,0 +1,172 @@
+{% extends 'GotChosenSiteBundle::layout_vs_video.html.twig' %}
+
+{% block meta %}
+
+<meta property="og:url" content="{{ url('vs_video', {id: video.id}) }}"/>
+<meta property="og:title" content="Video Scholarship Contest"/>
+<meta property="og:description" content="Check out my video and vote for it to help me win a scholarship!"/>
+<meta property="og:image" content=""/>
+
+{% endblock %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block active_tab %}
+{% if fromTop20 %}
+top20
+{% elseif fromGallery %}
+videos
+{% endif %}
+{% endblock %}
+
+{% block vs_content %}
+<div class="alert alert-error">
+ <strong>Season 3 is finished.  Season 4 will begin in the Fall.</strong>
+</div>
+
+<div class="back-btn">
+{% if fromTop20 %}
+    <a class="btn btn-small"
+       href="{{ path('vs_top20') }}">&laquo; Back to Top20</a>
+{% elseif fromGallery %}
+    <a class="btn btn-small"
+       href="{{ path('vs_videos') }}">&laquo; Back to Gallery</a>
+{% endif %}
+</div>
+
+<h1 class="title" style="margin-bottom:0px;padding-bottom:0px;line-height:18px;">{{ firstName }}'s Video<span class="title-bar" style="width:840px;"></span></h1>
+
+            <div class="vid-entry" style="width:850px; padding: 5px;">
+                <div style="width:325px;float:left;">
+                    <p class="vidHead" style="font-size:13px;margin:0px;">Title: {{ video.title }}<br/>
+                        <span class="vidCat">Category: {{ video.category.categoryName }}<br/>
+                            By: <a href="{{ path('user_profile', {'username': video.user.username}) }}">{{ video.user.fullName }}</a>
+                            {% if app.user and app.user.id == videoUser.id %}
+                            <br/> Votes: {{ votecount }}
+                            {% endif %}
+                            </p>
+                    <!--<div class="vote-btn">
+                        <a class="btn btn-success btn-large {{ video.votesRemaining <= 0 ? 'disabled maximum-reached' : '' }}"
+                           style="line-height:12px; margin-top:0px;padding: 11px 0px 10px; width:200px;"
+                           href="#" id="vote_button_{{ video.id }}" onClick="vote({{ video.id }});">
+                            <strong>{{ video.votesRemaining <= 0 ? 'VOTED' : 'VOTE' }}</strong>
+                        </a>
+                    </div>-->
+                </div>
+                    <div class="social" style="display:inline-block;width:500px;float:right;">
+                        <h4 style="padding-top:0px;margin-top:0px;margin-bottom:0px;padding-bottom:0px;font-weight:normal;font-size:13px;">Share this video</h4>
+                        <div class="social" style="display:inline-block;width:475px;
+                                overflow:hidden;border:#CCC solid 1px;padding:5px;">
+                            <div class="fb-share-button"
+                            data-href="{{ url('vs_video', {id: video.id}) }}"
+                                 data-type="button_count" style="margin-right: 5px; vertical-align: super"></div>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-via="GotChosen">Tweet</a>
+                            <script>!function (d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                                    if (!d.getElementById(id)) {
+                                        js = d.createElement(s);
+                                        js.id = id;
+                                        js.src = p + '://platform.twitter.com/widgets.js';
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }
+                                }(document, 'script', 'twitter-wjs');</script>
+
+                            <div class="g-plusone"></div>
+                            <script type="text/javascript">
+                                (function() {
+                                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                    po.src = 'https://apis.google.com/js/plusone.js';
+                                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                                })();
+                            </script>
+
+                            <a href="http://www.tumblr.com/share/link?url={{ url('vs_video', {id: video.id})|url_encode }}&amp;name={{ video.title|url_encode }}&amp;description={{ video.category.categoryName|url_encode }}"
+                               title="Share on Tumblr"
+                               style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('https://platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;"></a>
+
+                            <p>Your share link: <a href="{{ url('vs_video', {id: video.id}) }}" class="disabled AddTooltip"
+                                               data-original-title="Right-click the link and select 'Copy Link / Copy Shortcut' to share.">
+                                                {{ url('vs_video', {id: video.id}) }}</a>
+                                </p>
+                        </div>
+                    </div>
+                <br/>
+                <div style="clear:both;height:2px;"></div>
+                    <object width="640" height="390" style="padding-top:5px;">
+                        <param name="movie" value="https://www.youtube.com/v/{{ video.youtubeURL }}&version=3&amp;hl=en_US">
+                        </param>
+                        <param name="allowFullScreen" value="true"></param>
+                        <param name="allowscriptaccess" value="always"></param>
+                        <embed src="https://www.youtube.com/v/{{ video.youtubeURL }}&version=3&amp;hl=en_US"
+                               type="application/x-shockwave-flash" width="640" height="390"
+                               allowscriptaccess="always" allowfullscreen="true"></embed>
+                    </object>
+            </div>
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_row(form.reportReason, {'attr': {'class': 'span4', 'style' : 'margin-bottom:10px;'}}) }}
+            <div class="submit-row" style="padding: 0px 0px 0px 180px; margin-top:-20px;">
+                <input type="submit" class="btn btn-primary" value="Report Video" />
+            </div>
+            {{ form_end(form) }}
+
+
+        <div id="terms" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="modalLabel">VideoScholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_video.html.twig' %}
+        </div>
+    </div>
+
+{% endblock %}
+        {% block vs_sidebar %}
+
+
+        {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+
+        function vote(v){
+            var $vote = $('#vote_button_' + v);
+
+                if ( $vote.hasClass('disabled') ) {
+                    if ( $vote.hasClass('maximum-reached') ) {
+                        //$('#voteModal').modal();
+                    }
+                    return;
+                }
+
+                $vote.find('> strong').text('VOTED');
+                $vote.addClass('disabled');
+
+                var url = '{{ path('video_vote', {'id': 0}) }}';
+                url = url.replace('0', v);
+                $.ajax(url, {
+                    dataType: 'json',
+                    type: 'POST'
+                }).done(function(json) {
+                    if ( json.status == 'ok' ) {
+                        if ( json.votesRemaining > 0 ) {
+                            alert('Your vote has been submitted. Remember to come back tomorrow and vote again!');
+                        }
+                        else
+                        {
+                            alert('Your vote has been submitted. However, you have reached your vote limit for today. Remember to come back tomorrow and vote again.');
+                        }
+                    } else if ( json.status == 'error' ) {
+                            alert(json.message);
+                    }
+
+
+                    //$('#voteModal').modal();
+                });
+        }
+
+    </script>
+
+{% endblock %}

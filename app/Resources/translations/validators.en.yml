@@ -1,0 +1,3 @@
+gotchosen:
+    password:
+        short: "[-Inf,Inf]Password must be 8 characters"

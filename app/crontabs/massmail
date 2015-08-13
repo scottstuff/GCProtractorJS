@@ -1,0 +1,1 @@
+* * * * * root php /var/www/vhosts/gotchosen/current/app/console gotchosen:massmail --limit=15000 >> /var/www/vhosts/gotchosen/shared/app/logs/massmail.log 2>&1

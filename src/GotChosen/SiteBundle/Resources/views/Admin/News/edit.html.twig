@@ -1,0 +1,59 @@
+{% extends 'GotChosenSiteBundle::layout_admin_content.html.twig' %}
+
+{% block title %}News Article Administration | {{ parent() }}{% endblock %}
+
+{% block box_title -%}
+    <a class="btn" href="{{ path('admin_news') }}">&laquo; Back</a> &nbsp; Edit News Article
+{%- endblock %}
+
+{% block box_body %}
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.category) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content, {attr: {rows: 8, style: 'width:440px;'}}) }}
+    {{ form_row(form.publish) }}
+    {{ form_row(form.publishDate) }}
+    {{ form_rest(form) }}
+
+    <div class="form-actions">
+        <button tabindex="100" type="submit" id="send_btn" class="btn btn-primary">Update</button>
+        <a tabindex="101" href="#" id="preview-button" class="btn btn-success pull-right">Preview</a>
+    </div>
+
+    {{ form_end(form) }}
+
+    {% embed 'GotChosenSiteBundle:Components:modal.html.twig' with {id: 'previewModal'} %}
+        {% block header %}Preview News Article{% endblock %}
+        {% block body %}
+        <div class="post">
+            <h1></h1>
+            <div class="news-content"></div>
+        </div>
+        {% endblock %}
+        {% block footer %}
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            $previewButton = $('#preview-button');
+            $previewButton.click(function(e) {
+                var title = $('#form_title').val();
+                var content = $('#form_content').val();
+
+                $('#previewModal .modal-body .post h1').html(title);
+                $('#previewModal .modal-body .post .news-content').html(content);
+
+                $('#previewModal').modal();
+            });
+        });
+    </script>
+{% endblock %}

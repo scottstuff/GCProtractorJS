@@ -1,0 +1,41 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}scholarship{% endblock %}
+
+{% block eg_content %}
+<div class="alert alert-error">
+ <strong>Our first season of Evolution Games has ended. The next season will start in the Fall.</strong>
+</div>
+    <div class="evoleft" style="border: 1px solid #DDDDDD;border-radius:15px;padding:5px 5px 5px 10px;">
+
+        <p>Our first season of Evolution Games ended June 30, 2014. The next season will start in the Fall.
+            In the mean time you can play the games for fun.</p>
+
+        <p>The indie developers who submitted games have worked long and hard on their craft. Support their work and play their games.</p>
+
+        <p>Have fun!</p>
+
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <p> If you would like to show your support for Evolution Games, like us on Facebook!</p>
+
+        <div class="fb-like" data-href="https://www.facebook.com/GotChosenEvolutionGames" data-send="false"
+             data-width="200" data-show-faces="false" data-colorscheme="light"></div>
+
+    </div>
+
+    <div class="sidebar">
+        <p>About Evolution Games</p>
+        <iframe width="280" height="170" src="//www.youtube.com/embed/xchAAw1f5lQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+{% endblock %}

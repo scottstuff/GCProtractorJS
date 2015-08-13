@@ -1,0 +1,15 @@
+{{ form_errors(form) }}
+
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }}
+      method="POST" class="form-horizontal ChosenTTForm">
+
+    {{ form_row(form.plainPassword.first,
+        {'error_type': 'inline', 'attr': {'title': 'Password must be at least 8 characters long'}}) }}
+    {{ form_row(form.plainPassword.second) }}
+
+    {{ form_rest(form) }}
+
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>

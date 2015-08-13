@@ -1,0 +1,66 @@
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal ChosenTTForm'}}) }}
+
+    {% if app.request.query.get('_target') %}
+        <input type="hidden" name="_target" value="{{ app.request.query.get('_target') }}" />
+    {% endif %}
+
+    {{ form_row(form.username, {'error_type': 'inline', 'attr': {
+        'class': 'ChosenExistsCheck', 'data-path': path('check_username'),
+        'data-error': 'This username is not available', 'data-success': 'This username is available'
+    }}) }}
+    
+    {{ form_row(form['FirstName']) }}
+    
+    {{ form_row(form['LastName']) }}
+
+    {{ form_row(form.email.first, {'error_type': 'inline', 'attr': {
+        'class': 'ChosenExistsCheck', 'data-path': path('check_email'),
+        'data-error': 'This e-mail already exists in our system', 'data-success': ''
+    }}) }}
+    
+    {{ form_row(form.email.second) }}
+    
+    {{ form_row(form.plainPassword) }}
+    
+    {{ form_row(form['Gender']) }}
+    
+    {{ form_row(form['BirthDay']) }}
+
+    {#
+    {% for propkey in properties %}
+    {{ form_row(form[propkey]) }}
+    {% endfor %}
+    #}
+
+    {#
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+
+    {{ form_row(form.birthday) }}
+    {{ form_row(form.country) }}
+    #}
+
+    {{ form_rest(form) }}
+
+    <!-- Modal -->
+    <div id="terms-modal" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="termsLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="termsLabel">Terms &amp; Conditions</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_registration.html.twig' %}
+        </div>
+    </div>
+
+    <p>By clicking the <strong>&ldquo;Register&rdquo;</strong> button below, you agree to the
+        <a href="#terms-modal" data-toggle="modal">&raquo; terms and conditions</a>.</p>
+
+    <div class="submit-row">
+        <button type="submit" class="btn btn-primary">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button>
+        &nbsp;&nbsp;&nbsp; <a href="{{ path('home') }}">Cancel</a>
+    </div>
+
+{{ form_end(form) }}

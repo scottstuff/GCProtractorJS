@@ -1,0 +1,17 @@
+{% extends 'GotChosenSiteBundle::layout_admin_content.html.twig' %}
+
+{% block title %}Admin Dashboard | {{ parent() }}{% endblock %}
+
+{% block box_title %}Admin Dashboard{% endblock %}
+
+{% block box_body %}
+    {% for counts in userCounts %}
+    <p><strong>{{ counts.status }}</strong>: {{ counts.num|number_format }}
+    {% endfor %}
+
+    <p><strong>Users Registered in {{ "last month"|date('F') }}</strong>: {{ usersLastMonth|number_format }}</p>
+    <p><strong>Users Registered Month-to-Date</strong>: {{ usersMonthToDate|number_format }}</p>
+    <p><strong>Users Entered in Current Monthly Scholarship</strong>: {{ currentMonthlyEntrants|number_format }}</p>
+    <p><strong>Users Entered in Current $20K Scholarship</strong>: {{ current40KEntrants|number_format }}</p>
+    <p><em>Other dashboard stuff coming soon. Feel free to request stuff you'd like to see.</em></p>
+{% endblock %}

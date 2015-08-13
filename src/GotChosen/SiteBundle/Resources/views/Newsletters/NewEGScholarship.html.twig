@@ -1,0 +1,76 @@
+<html>
+<head>
+
+</head>
+<body>
+  <table class="topcontainer" border="0" cellspacing="0" cellpadding="0" style="background: #b8cce4;width: 100%;">
+    <tr>
+      <td>
+        {% if view_in_browser is defined %}
+        <center class="in-browser" style="margin-bottom: 10px;font-family: Verdana, Geneva, sans-serif;font-size: 9px;color: #333;">
+          Having trouble viewing this e-mail? <a href="{{ view_in_browser }}">Click here</a> to view it in your browser.
+        </center>
+        {% endif %}
+        <table class="container" border="0" cellspacing="0" cellpadding="0" align="center" style="width: 600px;background: #f2f2f2;">
+          <tr>
+            <td class="header" colspan="2">
+              <img src="https://s3.amazonaws.com/GCNewsletters/head_Evo.png" alt="Newsletter Header">
+            </td>
+          </tr>
+          <tr>
+            <td class="left-content" style="width: 369px;vertical-align: top;padding-left: 10px;padding-top: 8px;padding-right: 5px;font-family: Verdana, Geneva, sans-serif;font-size: 11px;line-height: normal;color: #333;">
+              {% if user.properties is defined %}
+                <p>Hello {{ user.properties.FirstName|default("") }},</p>
+              {% else %}
+                <p>Hello,</p>
+              {% endif %}
+
+              {{ body|raw }}
+            </td>
+            <td class="right-banner" style="width: 212px;vertical-align: top;text-align:right;padding-right:5px;padding-top:5px;padding-bottom:5px;">
+                <a href="https://www.gotchosen.com/en/evolution-games"><img src="https://s3.amazonaws.com/GCNewsletters/evolution_scholarship_email.png" alt="Evolution Games" style="margin-top: 5px;margin-bottom: 5px;border: 0;"></a>
+              <a href="https://www.gotchosen.com/en/scholarship"><img src="https://s3.amazonaws.com/GCNewsletters/gotscholarship20K_210.png" alt="GotScholarship $20K Give Away" style="margin-top: 5px;margin-bottom: 5px;border: 0;"></a>
+              <a href="https://www.gotchosen.com/en/monthly-scholarship"><img src="https://s3.amazonaws.com/GCNewsletters/monthly_210.png" alt="$1000 Every Month Scholarship" style="margin-top: 5px;margin-bottom: 5px;border: 0;"></a>
+            </td>
+          </tr>
+          <tr>
+            <td class="footer" colspan="2">
+              <img src="https://s3.amazonaws.com/GCNewsletters/button3.jpg" alt="Newsletter Bottom Bar">
+            </td>
+          </tr>
+        </table>
+        <table class="disclaimer-container" border="0" cellspacing="0" cellpadding="0" align="center" style="width: 600px;">
+          <tr>
+            <td class="disclaimers" style="font-family: Verdana, Geneva, sans-serif;font-size: 9px;color: #333;margin-right: 50px;">
+              <h3 style="font-size: 10px;margin-top: 10px;">Subscription Information</h3>
+              <p>To see complete scholarship drawing rules, click the link for the scholarship you're interested in:</p>
+              <ul>
+                <li><a href="https://www.gotchosen.com/en/scholarship/rules">GotScholarship $20K Give Away</a></li>
+                <li><a href="https://www.gotchosen.com/en/monthly-scholarship/rules">$1000 Every Month Scholarship</a></li>
+                <li><a href="https://www.gotchosen.com/en/evolution-games/rules/scholarship">Evolution Games</a></li>
+              </ul>
+
+              {% if unsubscribe_link %}
+                <p>You have received this message because you opted-in to receive updates on your gotchosen.com account,
+                  including new scholarship opportunities. To opt-out, <a href="{{ unsubscribe_link }}">simply click here to unsubscribe</a>.</p>
+              {% else %}
+                <p>You can manage your account notification settings by <a href="https://www.gotchosen.com/en/edit-profile/notifications">clicking here</a>.</p>
+              {% endif %}
+                <p>If you have any questions or concerns about our privacy policy, <a href="https://www.gotchosen.com/en/terms">click here to review the details</a>.</p>
+              <p>
+                ______________________________________<br>
+                This is an automated e-mail. Please do not reply.<br>
+              </p>
+
+              <p>
+                GotChosen | 12472 Lake Underhill Road, #397 | Orlando, FL 32828<br>
+                Copyright &copy; 2014. All rights reserved. GotChosen, Inc.<br>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

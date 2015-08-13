@@ -1,0 +1,19 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}Unsubscribe | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main staticpage wide">
+            <h1 class="title">Unsubscribe <span class="title-bar" style="width: 790px;"></span></h1>
+
+            <p>You will no longer receive messages relating to "{{ newsletter.name }}"</p>
+
+            <p>To manage all of your e-mail preferences, you may visit
+                <a href="{{ path('user_profile_edit', {'tab': 'notifications'}) }}">your notifications page</a>.</p>
+
+        </div>
+    </div>
+
+{% endblock %}

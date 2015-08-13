@@ -1,0 +1,69 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block container_class %}evo{% endblock %}
+
+{% block body %}
+
+    <div class="content evo">
+        <div class="evoside-left">
+            <a href="{{ path('eg_contest_gate') }}"><img src="{{ asset('bundles/gotchosensite/images/leftsideAJ.png') }}"
+                                                    width="220"></a>
+        </div>
+        <div class="main padded tabbed wide evogames">
+
+            {% block eg_tabs %}
+
+            {% set active_tab = block('active_tab') %}
+            {% if active_tab is empty %}
+                {% set active_tab = 'scholarship' %}
+            {% endif %}
+
+            <ul class="nav nav-tabs" id="evotabs">
+                <li {{ active_tab == 'scholarship' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_scholarship') }}">Players</a>
+                </li>
+                <li {{ active_tab == 'developers' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_developers') }}">Developers</a>
+                </li>
+                {% if gc_egQualifierCount() %}
+                <li {{ active_tab == 'qualifier' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_qualifier') }}">Games</a>
+                </li>
+                {% endif %}
+                <!--{% if gc_egContestActive() %}
+                <li {{ active_tab == 'contest' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_contest_gate') }}">Contest</a>
+                </li>
+                {% endif %}
+                {% if app.user and gc_userHasGame(app.user) %}
+                <li {{ active_tab == 'manage' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_manage') }}">Manage Game</a>
+                </li>
+                {% else %}
+                <li {{ active_tab == 'submit' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_submit_gate') }}">Submit Game</a>
+                </li>
+                {% endif %}
+                <li {{ active_tab == 'rules' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_rules') }}">Rules</a>
+                </li>
+                <li {{ active_tab == 'faq' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_faq') }}">FAQ</a>
+                </li>-->
+                <li {{ active_tab == 'wall' ? 'class="active"' : '' }}>
+                    <a href="{{ path('eg_wall') }}">Wall of Fame</a>
+                </li>
+            </ul>
+
+            {% endblock %}
+
+            {% block eg_content %}{% endblock %}
+
+        </div>
+        <div class="evoside-right">
+            <a href="{{ path('eg_submit_gate') }}"><img src="{{ asset('bundles/gotchosensite/images/Evolution_Games_Rocket.png') }}"
+                                                   width="220"></a>
+        </div>
+    </div>
+
+{% endblock %}

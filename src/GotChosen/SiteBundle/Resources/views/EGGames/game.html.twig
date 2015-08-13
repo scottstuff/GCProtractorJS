@@ -1,0 +1,292 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+{% from '::macros.html.twig' import facebook_init %}
+
+{% block meta %}
+
+<meta property="og:url" content="{{ url('eg_game', {id: game.id}) }}"/>
+<meta property="og:title" content="Evolution Games Developer Contest"/>
+<meta property="og:description" content="Check out the game I made and vote for it to help me win seed money!"/>
+{% if game.screenshotFile %}
+<meta property="og:image" content="{{ game.screenshotFile }}"/>
+{% else %}
+<meta property="og:image" content=""/>
+{% endif %}
+
+{% endblock %}
+
+{% block title %}Play {{game.gameName}} on EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}{% spaceless %}
+{% if not isInQualifier and gc_egContestActive() %}
+contest
+{% else %}
+qualifier
+{% endif %}
+{% endspaceless %}{% endblock %}
+
+{#
+{% block eg_tabs %}{% endblock %}
+#}
+
+{# {% block active_tab %}qualifier{% endblock %} #}
+
+{% block eg_content %}
+
+    {{ facebook_init() }}
+
+    {% embed 'GotChosenSiteBundle:Components:modal.html.twig'
+       with {id: 'voteModal', styles: 'display:block;visibility:hidden'} %}
+        {% block header %}Thank you!{% endblock %}
+        {% block body %}
+            <p>Thank you for your support. Please help me win the contest by sharing my game with your
+            friends and coming back tomorrow to vote again!</p>
+
+            <div class="social" style="display:inline-block;width:485px;
+                                overflow:hidden;border:#CCC solid 1px;padding:5px;">
+                {# <div class="fb-like" data-href="{{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify}) }}" data-width="150"
+                      data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true"
+                      data-send="false"></div> #}
+
+                <div class="fb-share-button" data-href="{{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify}) }}"
+                     data-type="button_count" style="margin-right: 15px; vertical-align: super"></div>
+
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="GotChosen">Tweet</a>
+                <script>!function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');</script>
+
+                <div class="g-plusone"></div>
+                <script type="text/javascript">
+                    (function() {
+                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/plusone.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                    })();
+                </script>
+
+                <a href="https://www.tumblr.com/share/link?url={{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify})|url_encode }}&amp;name={{ game.gameName|url_encode }}&amp;description={{ game.gameSynopsis|url_encode }}"
+                   title="Share on Tumblr"
+                   style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('https://platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;"></a>
+
+                <p style="font-size:12px; line-height: 12px; text-align: left;
+                          font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
+                          margin: 5px 0 0 0;">
+                    Your share link:<br /> <a href="{{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify}) }}"
+                                              class="disabled AddTooltip" data-placement="top"
+                                              data-original-title="Right-click the link and select 'Copy Link / Copy Shortcut' to share.">
+                        {{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify}) }}</a>
+                </p>
+            </div>
+        {% endblock %}
+        {% block footer %}
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        {% endblock %}
+    {% endembed %}
+
+    {% if app.user and not isInQualifier and app.user.tokens > 0 %}
+    <div class="alert alert-warning">
+        <strong style='color:blue'>{{ app.user.tokens }} Token Plays Available</strong> - Please keep in mind that when you click 'play' below, unless this is the first time you've played
+        the game or you have no tokens available, a token will be <strong><em>immediately</em></strong> deducted from your account. Be sure you
+        have enough time available to complete the play session as tokens <strong><em>will not be returned</em></strong> after they've been used.
+    </div>
+    {% elseif app.user and not isInQualifier and app.user.tokens == 0 %}
+    <div class="alert alert-info">
+        <strong>No Tokens Available</strong> - You have no tokens, so you are playing for fun. Scores acquired while playing for fun do not count
+        toward your rank.
+    </div>
+    {% elseif not app.user and not isInQualifier %}
+    <div class="alert alert-danger">
+        <strong>Not Logged In</strong> - You are not logged in, so you are playing for fun. To participate in the scholarship contest, you must login and apply.
+        <a href="{{ path('fos_user_security_login') }}">Click here to login</a>.
+    </div>
+    {% endif %}
+
+    <a class="btn btn-small" href="{{ path(isInQualifier ? 'eg_qualifier' : 'eg_contest') }}">&laquo; Back to Gallery</a>
+
+    <h1 class="title">{{ game.studioName }}'s Game<span class="title-bar" style="width:800px;"></span></h1>
+
+    {# screenshot, game name, genre, synopsis #}
+    {# studio name, studio bio #}
+    <div class="game-left">
+        <div style="font-size: 13px; margin-bottom: 5px">
+            <strong>Title: {{ game.gameName }}</strong><br />
+            Genre: {{ game.genre.name }}<br />
+            Plays All-Time: {{ game.totalPlays|number_format }}<br />
+        </div>
+
+        <div align="center" style="margin-bottom: 5px">
+            <div style="width: {{ isInQualifier ? '49%' : '100%' }}; display: inline-block;">
+                <a href="{{ path('eg_play', {'id': gameId, 'slug': game.gameName|gc_slugify}) }}"
+                    class="btn btn-large btn-primary btn-block" style="line-height:12px;"><strong>PLAY</strong></a>
+            </div>
+
+            {% if isInQualifier %}
+                <div style="width: 49%; display: inline-block;">
+                    <a class="btn btn-large btn-success btn-block {{ votesRemaining <= 0 ? 'disabled maximum-reached' : '' }}"
+                       href="#" id="vote_button" style="line-height:12px;">
+                        <strong>{{ votesRemaining <= 0 ? 'VOTED' : 'VOTE' }}</strong>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+
+        {% spaceless %}
+        <div class="game-img" align="center">
+            {% if game.screenshotFile %}
+            <span style="vertical-align: middle; height: 100%; display: inline-block;"></span>
+            <a href="{{ path('eg_play', {'id': gameId, 'slug': game.gameName|gc_slugify}) }}"><img src="{{ game.screenshotFile }}" alt="{{ game.gameName }}" class="size-portal" /></a>
+            {% else %}
+            <div class="no-screenshot"><a href="{{ path('eg_play', {'id': gameId, 'slug': game.gameName|gc_slugify}) }}">No Picture</a></div>
+            {% endif %}
+        </div>
+        {% endspaceless %}
+
+        <div class="shadowed-box" style="margin-top: 10px">
+            <h2 class="box-title">Game Synopsis</h2>
+            <div class="box-body">{{ game.gameSynopsis }}</div>
+        </div>
+
+        <div class="shadowed-box" style="margin-top: 10px">
+            <h2 class="box-title">Studio Bio</h2>
+            <div class="box-body">{{ game.studioProfile }}</div>
+        </div>
+
+    </div>
+
+    <div class="game-right">
+        <div class="right-top">
+            Share this game
+            <div class="social">
+
+                <div class="fb-share-button" data-href="{{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify}) }}"
+                     data-type="button_count" style="margin-right: 15px; vertical-align: super"></div>
+
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="GotChosen">Tweet</a>
+                <script>!function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');</script>
+
+                <div class="g-plusone"></div>
+                <script type="text/javascript">
+                    (function() {
+                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/plusone.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                    })();
+                </script>
+
+                <a href="https://www.tumblr.com/share/link?url={{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify})|url_encode }}&amp;name={{ game.gameName|url_encode }}&amp;description={{ game.gameSynopsis|url_encode }}"
+                   title="Share on Tumblr"
+                   style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('https://platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;"></a>
+
+                <p style="font-size:12px; line-height: 12px; text-align: left;
+                          font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
+                          margin: 5px 0 0 0;">
+                    Your share link:<br /> <a href="{{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify}) }}"
+                                       class="disabled AddTooltip"
+                                       data-original-title="Right-click the link and select 'Copy Link / Copy Shortcut' to share.">
+                        {{ url('eg_game', {id: gameId, slug: game.gameName|gc_slugify}) }}</a>
+                </p>
+            </div>
+
+        </div>
+
+        {% if app.user %}
+        {% include 'GotChosenSiteBundle:Components:report_card.html.twig' with {card: reportCard} %}
+        {% endif %}
+
+        <div class="feedback-form">
+
+            {# TODO: Uncomment # submitted and fill with real data #}
+            <h2 style="margin-bottom: 10px">Submit Game Feedback</h2>
+
+            {% if app.user %}
+
+                {% if gc_egContestActive() %}
+
+                <div class="alert alert-info" style="margin-bottom: 10px">
+                    Keep in mind your feedback may be rated by the developer for points in the contest. Good, useful
+                    feedback will be more likely to be rated highly and get you more points.
+                </div>
+
+                {% endif %}
+
+                {% if app.user.id != game.user.id %}
+
+                {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+
+                <div style="margin-bottom: 10px">
+                {{ form_errors(form.thoughts) }}
+                {{ form_widget(form.thoughts, {'attr': {'rows': 6, 'style': 'width: 97%'}}) }}
+                </div>
+
+                <input type="submit" value="Submit Feedback" class="btn btn-large btn-block btn-primary" />
+
+                {{ form_end(form) }}
+
+                {% else %}
+
+                You may not submit feedback for your own game.
+
+                {% endif %}
+
+            {% else %}
+
+            Please login or register to submit feedback.
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            var $vote = $('#vote_button');
+            $vote.click(function(e) {
+                e.preventDefault();
+                if ( $vote.hasClass('disabled') ) {
+                    if ( $vote.hasClass('maximum-reached') ) {
+                        $('#voteModal').modal();
+                    }
+                    return;
+                }
+
+                $vote.find('> strong').text('VOTED');
+                $vote.addClass('disabled');
+
+                $.ajax('{{ path('eg_vote', {'id': gameId}) }}', {
+                    dataType: 'json',
+                    type: 'POST'
+                }).done(function(json) {
+                    if ( json.status == 'ok' ) {
+                        if ( json.votesRemaining > 0 ) {
+                        } else {
+                        }
+                    } else {
+                    }
+
+                    $('#voteModal').css('visibility', 'visible').modal();
+                });
+            });
+        });
+    </script>
+
+{% endblock %}

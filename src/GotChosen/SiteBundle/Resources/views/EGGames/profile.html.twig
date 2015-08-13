@@ -1,0 +1,108 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% from '::macros.html.twig' import facebook_init %}
+
+{% block addl_meta %}
+    <meta property="og:title" content="GotChosen | {{ user.username }}'s Evolution Games Profile">
+    <meta property="og:url" content="{{ url('eg_profile', {'username': user.username}) }}">
+{% endblock %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block eg_tabs %}{% endblock %}
+
+{% block eg_content %}
+
+    {{ facebook_init() }}
+
+    {#
+    i.  Public Profile page will display gamer profile in addition to: Games played
+        with win/loss stats. Total number of points in the competition (report card), and global
+        ranking. In addition, we can display their picture/avatar, their bio/story. Facebook
+        posting functionality (but it will show only to the player, player must be logged in
+        GotChosen to see).
+
+    ii. When player is logged in, it will display the number of remaining plays for the day, and
+        bonus plays (if any). It will
+        also Display the history of the rounds: the game played, the day played, and the score.
+    #}
+
+    {% set loggedIn = app.user and app.user.id == user.id %}
+
+    <div class="contest-card eg-profile">
+
+        <div class="avatar">
+            <img src="http://placehold.it/180x180" alt="Avatar" />
+        </div>
+        <div class="name">
+            <a href="{{ path('user_profile', {'username': user.username}) }}">{{ user.fullName }}</a>
+        </div>
+
+        {% if loggedIn %}
+            <div class="fb-share-button" data-href="{{ url('eg_profile', {'username': user.username}) }}"
+                 data-type="button_count" style="margin-bottom: 6px;"></div>
+        {% endif %}
+
+        {% if loggedIn %}
+            <div class="tokens">Tokens: <strong>{{ user.tokens }}</strong></div>
+        {% endif %}
+
+        <br />
+        {% include 'GotChosenSiteBundle:Components:report_card.html.twig' with {card: reportCard} %}
+    </div>
+
+    {# gameplay history #}
+
+
+    <div class="gameplay-history">
+    {% if loggedIn %}
+        <h3>Gameplay History</h3>
+
+        {% for month, sessions in gameSessions %}
+            <div class="history-month">
+                <h4>{{ month|date('F Y') }}</h4>
+                {% if sessions|length > 0 %}
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Game Title</th>
+                        <th>Date Played</th>
+                        <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sess in sessions %}
+                        <tr>
+                            <td><a href="{{ path('eg_game', {'id': sess.game.id,
+                                'slug': sess.game.gameName|gc_slugify}) }}">{{ sess.game.gameName }}</a></td>
+                            <td>{{ sess.endDate|date('M. jS, g:i A') }}</td>
+                            <td>{{ sess.score|number_format }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <div class="no-sessions">No gameplay sessions recorded for this month.</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+    <div class="winloss-stats">
+        {% if loggedIn %}
+            <h3>Game Records</h3>
+            {% if gameResults|length > 0 %}
+                <dl class="winloss-games">
+                {% for r in gameResults %}
+                    <dt><a href="{{ path('eg_game', {id: r.game.id, slug: r.game.gameName|gc_slugify}) }}">{{ r.game.gameName }}</a></dt>
+                    <dd>Plays: {{ r.plays }} | <span class="wins">Wins: {{ r.wins }}</span> | <span class="losses">Losses: {{ r.losses }}</span></dd>
+                {% endfor %}
+                </dl>
+            {% else %}
+                <div class="no-results">No game records recorded.</div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<ul class="property-groups">
+    <li class="group-title">
+        {{ user.fullName }}
+    </li>
+    {% for pgroup in propertyGroups %}
+        <li {{ tab == pgroup.slug ? 'class="active"' : '' }}>
+            <a href="{{ path('user_profile_edit', {'tab': pgroup.slug}) }}">{{ pgroup.groupName }}</a></li>
+    {% endfor %}
+    <li {{ tab == 'scholarships' ? 'class="active"' : '' }}>
+        <a href="{{ path('user_profile_edit', {'tab': 'scholarships'}) }}">Scholarships</a></li>
+    <li {{ tab == 'notifications' ? 'class="active"' : '' }}>
+        <a href="{{ path('user_profile_edit', {'tab': 'notifications'}) }}">Notification Management</a></li>
+    <li {{ tab == 'change-password' ? 'class="active"' : '' }}>
+        <a href="{{ path('user_profile_edit', {'tab': 'change-password'}) }}">Change Password</a></li>
+    <li {{ tab == 'delete-account' ? 'class="active"' : '' }}>
+        <a href="{{ path('user_profile_edit', {'tab': 'delete-account'}) }}">Delete Account</a></li>
+</ul>

@@ -1,0 +1,68 @@
+form:
+    password_confirmation: "Confirm Password:"
+    new_password_confirmation: "Confirm Password:"
+    current_password: "Current Password:"
+    new_password: "New Password:"
+    new_password_confirmation: "Confirm Password:"
+
+security:
+    login:
+        submit: "Log in"
+
+# Password resetting
+resetting:
+    password_already_requested: The password for this user has already been requested within the last 24 hours.
+    check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
+    request:
+        invalid_username: The username or email address "%username%" does not exist.
+        username: "Username or email address:"
+        submit: Reset password
+    reset:
+        submit: Change password
+    flash:
+        success: The password has been reset successfully
+    email:
+        subject: GotChosen: Password reset for GotChosen user account "%email%"
+        message: |
+            This message was sent to “%email%” at your request.
+            We've received your request to reset the password for your GotChosen account.
+
+            Please use the following link to reset your password:
+            %confirmationUrl%
+
+            The link will expire 24 hours after the request was made.
+
+            Didn't request this change?
+
+            If you didn't request a new password reset, let us know immediately at support@gotchosen.com to investigate the request or remove the account.
+
+            Thanks,
+            The GotChosen Team
+            ______________________________________
+            This is an automated e-mail. Please do not reply.
+
+            GotChosen | 12472 Lake Underhill Road, #397 | Orlando, FL 32828
+            Copyright © 2013. All rights reserved. GotChosen, Inc.
+
+registration:
+    email:
+        subject: GotChosen: New account email confirmation request for "%email%"
+        message: |
+            You are receiving this email because you registered a new account at https://www.gotchosen.com.
+
+            In order to finish the registration process, you need to verify your email address by clicking on the following link:
+            %confirmationUrl%
+
+            Once your email is verified you can login and access your account.
+
+            Didn't register this account?
+
+            If you didn't register a new account at GotChosen, let us know immediately at support@gotchosen.com and we will remove the account.
+
+            Best Regards,
+            The GotChosen Team
+            ______________________________________
+            This is an automated e-mail. Please do not reply.
+
+            GotChosen | 12472 Lake Underhill Road, #397 | Orlando, FL 32828
+            Copyright © 2013. All rights reserved. GotChosen, Inc.

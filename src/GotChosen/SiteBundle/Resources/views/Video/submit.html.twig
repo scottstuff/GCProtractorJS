@@ -1,0 +1,78 @@
+{% extends 'GotChosenSiteBundle::layout_vs_static.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block active_tab %}submit{% endblock %}
+
+{% block vs_content %}
+<div class="alert alert-error">
+ <strong>Season 3 is finished.  Season 4 will begin in the Fall.</strong>
+</div>
+
+    {% if sship is defined %}
+        {% if not app.user.hasApplied(sship) %}
+            <div class="box-body profile-scholarships">
+
+                {% set rulesRoute = sship.rulesRoute %}
+                <div class="scholarship-item">
+
+                    <h3>{{ sship.scholarshipName|e|gc_autosuper }}</h3>
+                        <div class="right-btn">
+                            <a class="btn btn-primary" href="{{ path('scholarship_apply', {'id': sship.id}) }}">APPLY!</a>
+                        </div>
+                    <br/>
+                        <p>By clicking "Apply" you agree to the
+                        <a href="#terms" data-toggle="modal">rules and regulations</a>.</p>
+                </div>
+            </div>
+        {% else %}
+            <h1 class="title">Submit Your Video Entry <span class="title-bar" style="width:585px;"></span></h1>
+
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+            {{ form_row(form.videoTitle, {'attr': {'class': 'span4'}}) }}
+            {{ form_row(form.videoCategory, {'attr': {'class': 'span4'}}) }}
+            {{ form_row(form.youtubeURL, {'attr': {'class': 'span4'}}) }}
+
+            <p class="form-inline"><a href="#terms" data-toggle="modal">Click here to read the rules and regulations.</a></p>
+
+            {{ form_row(form.accept) }}
+
+            <div class="submit-row">
+                <input type="submit" class="btn btn-primary" value="Submit Entry" />
+            </div>
+
+            {{ form_end(form) }}
+        {% endif %}
+    {% else %}
+        <h1 class="title">Submit Your Video Entry <span class="title-bar" style="width:585px;"></span></h1>
+
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        {{ form_row(form.videoTitle, {'attr': {'class': 'span4'}}) }}
+        {{ form_row(form.videoCategory, {'attr': {'class': 'span4'}}) }}
+        {{ form_row(form.youtubeURL, {'attr': {'class': 'span4'}}) }}
+
+        <p class="form-inline"><a href="#terms" data-toggle="modal">Click here to read the rules and regulations.</a></p>
+
+        {{ form_row(form.accept) }}
+
+        <div class="submit-row">
+            <input type="submit" class="btn btn-primary" value="Submit Entry" />
+        </div>
+
+        {{ form_end(form) }}
+
+
+{% endif %}
+    <div id="terms" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="modalLabel">VideoScholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_video.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

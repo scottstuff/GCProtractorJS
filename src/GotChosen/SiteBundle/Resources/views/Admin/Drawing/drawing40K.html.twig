@@ -1,0 +1,119 @@
+<html>
+<head runat="server">
+    <title>Drawing for {{ scholarship.scholarshipName }}</title>
+    <style type="text/css">
+
+        body
+        {
+            height:100%;
+            width:100%;
+            background-image:url('{{ asset('bundles/gotchosensite/images/drawing/drawingbackground_40k.png') }}');
+            background-repeat:no-repeat;
+        }
+
+        #selectBox
+        {
+            background-image: url('{{ asset('bundles/gotchosensite/images/drawing/selectwinner_button_40k.png') }}');
+            background-repeat:no-repeat;
+            width:200px;
+            height:48px;
+            margin-left:50px;
+            z-index:1000;
+        }
+
+        #selectBox:hover
+        {
+            background-image: url('{{ asset('bundles/gotchosensite/images/drawing/selectwinner_m_over_40k.png') }}');
+            background-repeat:no-repeat;
+            width:200px;
+            height:48px;
+            margin-left:50px;
+            cursor:pointer;
+            z-index:1000;
+        }
+
+        #txtWinner
+        {
+            text-align:center;
+            font-size:36px;
+            color:Black;
+            height:50px;
+            width:350px;
+            margin-left:270px;
+            position:relative;
+            top:-48px;
+        }
+
+        #reset
+        {
+            color:#efefef;
+            margin-left:10px;
+        }
+        #reset:hover
+        {
+            color:Aqua;
+            margin-left:10px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div style="width:800px;height:1000px;margin:0 auto;">
+    <div id="logoBox">
+        <div style="padding-left:100px;">
+            <img src="{{ asset('bundles/gotchosensite/images/drawing/top_logos_40k.png') }}" style="height:200px;" alt=""/>
+        </div>
+
+    </div>
+    <div id="drawingBox">
+        <img src="{{ asset('bundles/gotchosensite/images/drawing/screen_group_40k.png') }}" style="height:400px;z-index:-1;" alt=""/>
+        <div id="reset" onclick="">reset</div>
+        <div id="winnerBox" style="margin-top:-320px;position:relative;">
+            <div id="selectBox" onclick="">
+            </div>
+            <div id="txtWinner">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% block javascripts %}
+    {% javascripts '@GotChosenSiteBundle/Resources/public/js/underscore-min.js'
+    '@GotChosenSiteBundle/Resources/public/js/jquery-1.9.1.min.js'
+    '@GotChosenSiteBundle/Resources/public/js/bootstrap.min.js'
+    '@GotChosenSiteBundle/Resources/public/js/gotchosen.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script>
+        var loadFullName = function(id) {
+            $.ajax('{{ path('admin_drawing_fullname') }}?id=' + id, {
+                dataType: 'json',
+                success: function(json) {
+                    $('#txtWinner').text(json.name);
+                }
+            });
+        };
+
+        $(function() {
+            $('#selectBox').click(function() {
+                $.ajax('{{ path('admin_drawing_40k_pick', {'scholarshipId': scholarshipId}) }}', {
+                    dataType: 'json',
+                    success: function(json) {
+                        //$('#txtWinner').text(json.name);
+                        loadFullName(json.userId);
+                    }
+                });
+            });
+
+            $('#reset').click(function() {
+                $('#txtWinner').text('');
+            });
+        });
+    </script>
+{% endblock %}
+
+</body>
+</html>

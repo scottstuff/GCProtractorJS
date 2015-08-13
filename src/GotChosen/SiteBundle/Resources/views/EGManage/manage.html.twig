@@ -1,0 +1,432 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}manage{% endblock %}
+
+{% form_theme form _self %}
+
+{% block eg_content %}
+
+    {% if game.swfFile == null %}
+        <div class="alert alert-error" style="margin-bottom: 10px">
+            <h4>No Game Uploaded</h4>
+            <p>Please upload your game using the form at the bottom of the page.</p>
+            <p>In order for your game to be activated, you must implement our API based on the <a href="https://s3.amazonaws.com/ProdContent/IntegrationGuides/EvolutionGames-DeveloperIntegration.zip" target="_blank">documentation provided</a>.
+            During your implementation, you will need a secret key to be able to communicate with the API. Test your game using the player
+            provided below. Once your game properly submits a score to the API for the first time, we will automatically activate it and make
+            it live on the website.</p>
+            <p style="margin-bottom: 0">Your game's secret key is: <strong>{{ game.secretKey }}</strong></p>
+        </div>
+    {% elseif game.status == 'no_api_connect' %}
+        <div class="alert alert-warning" style="margin-bottom: 10px">
+            <h4>Not Connected to API</h4>
+            <p>In order for your game to be activated, you must implement our API based on the <a href="https://s3.amazonaws.com/ProdContent/IntegrationGuides/EvolutionGames-DeveloperIntegration.zip" target="_blank">documentation provided</a>.
+            During your implementation, you will need a secret key to be able to communicate with the API. Test your game using the player
+            provided below. Once your game properly submits a score to the API for the first time, we will automatically activate it and make
+            it live on the website.</p>
+            <p style="margin-bottom: 0">Your game's secret key is: <strong>{{ game.secretKey }}</strong></p>
+        </div>
+    {% elseif game.status == 'under_review' %}
+        <div class="alert alert-warning" style="margin-bottom: 10px">
+            <h4>Game Under Review</h4>
+            <p style="margin-bottom: 0">Your game has been flagged for review and is pending investigation. This is usually due to GotChosen Terms of Service or Evolution
+            Games Rules violations. This status message will update depending on the final result of that investigation. You can contact us at
+            <a href="mailto:developer@gotchosen.com">developer@gotchosen.com</a> for help or more information.</p>
+        </div>
+    {% elseif game.status == 'admin_disabled' %}
+        <div class="alert alert-error" style="margin-bottom: 10px">
+            <h4>Game Disabled</h4>
+            <p style="margin-bottom: 0">Your game has been disabled by the Administrators and will not appear on the website. This is usually due to GotChosen Terms of Service or Evolution
+            Games Rules violations. You can contact us at <a href="mailto:developer@gotchosen.com">developer@gotchosen.com</a> for help or more information.</p>
+        </div>
+    {% elseif game.status == 'ineligible' %}
+        <div class="alert alert-info" style="margin-bottom: 10px">
+            <h4>Thanks for Competing!</h4>
+            <p style="margin-bottom: 0">Your game has won a contest and/or a championship and is no longer eligible to compete in additional contests. Your game will remain on the website
+            and available to play, but you will no longer be placed into a Qualifier or Contest Round.</p>
+        </div>
+    {% else %}
+        <div class="alert alert-success" style="margin-bottom: 10px">
+            <h4>All Systems Go</h4>
+            <p style="margin-bottom: 0">Your game is active and available on the website. If you need help or have any questions, you can contact us at
+                <a href="mailto:developer@gotchosen.com">developer@gotchosen.com</a>.</p>
+        </div>
+    {% endif %}
+
+    <div class="manage-left">
+        <h2 class="title">
+            Game Profile
+            <span class="right-title-btn">
+                <a class="btn" href="{{ path('eg_edit') }}"><i class="icon icon-pencil"></i> Edit</a>
+            </span>
+        </h2>
+
+        <div class="game-stats">
+            Stage: {{ phase == 'qualifier' ? 'Qualifier' : 'Contest' }}-{{ 'now'|date('M') }}
+            | Rank: <strong>#{{ monthStats.rank == 0 ? ' n/a' : monthStats.rank }}</strong>
+            | Votes: <strong>{{ game.totalVotes }}</strong>
+        </div>
+        <div class="game-stats">
+            Plays This Month: <strong>{{ monthStats.monthPlays }}</strong> | Plays All-Time: <strong>{{ game.totalPlays }}</strong>
+        </div>
+
+        <div class="game-summary">
+            <div class="summary-avatar">
+                <img src="{{ game.avatarFile|default('http://placehold.it/60x60&text=Avatar') }}" alt="Avatar" class="avatar60" /><br /><a href="{{ path('eg_edit_avatar') }}">Edit</a>
+            </div>
+            <div class="summary-info">
+                <strong>{{ game.gameName }}</strong><br />
+                by: {{ game.studioName }}
+            </div>
+        </div>
+
+        <div class="game-profile">
+            <strong>Studio Profile</strong>
+            <p>
+                {{ game.studioProfile }}
+            </p>
+        </div>
+
+        <div class="game-ss">
+            <div class="ss-screen">
+                <img src="{{ game.screenshotFile|default('http://placehold.it/150x100&text=Qualifier+Screenshot') }}" class="size-qualifier" alt="Qualifier Screenshot" /><br /><a href="{{ path('eg_edit_screenshot') }}">Edit</a>
+            </div>
+            <div class="ss-synopsis">
+                <strong>Game Synopsis</strong>
+                <p>
+                    {{ game.gameSynopsis }}
+                </p>
+            </div>
+            {#
+            <div class="ss-additional" style="clear:left;">
+                <a href="{{ path('eg_edit_screenshot') }}">
+                    <img src="{{ game.screenshotFile|default('http://placehold.it/222x148&text=Contest+Screenshot') }}" class="size-contest" alt="Contest Screenshot" /><br /><br />
+                    <img src="{{ game.screenshotFile|default('http://placehold.it/300x200&text=Game+Page+Screenshot') }}" class="size-portal" alt="Game Page Screenshot" /><br />
+                </a>
+            </div>
+            #}
+        </div>
+
+        <div class="game-link">
+            <a href="{{ path('eg_game', {'id': game.id, 'slug': game.gameName|gc_slugify}) }}">Link to my game</a>
+        </div>
+
+        <div class="game-test">
+            {% if game.swfFile is not null %}
+                {% if game.type == "flash" %}
+                    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="450" height="300"
+                        id="gameObject" align="middle">
+                        <param name="movie" value="{{ game.swfFile }}" />
+                        <param name="flashvars" value="{{ flashVars|raw }}" />
+                        <param name="allowFullScreen" value="true" />
+                        <!--[if !IE]>-->
+                        <object type="application/x-shockwave-flash" data="{{ game.swfFile }}" width="450" height="300">
+                            <param name="movie" value="{{ game.swfFile }}" />
+                            <param name="flashvars" value="{{ flashVars|raw }}" />
+                            <param name="allowFullScreen" value="true" />
+                        <!--<![endif]-->
+                            <a href="http://www.adobe.com/go/getflash">
+                                <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                            </a>
+                        <!--[if !IE]>-->
+                        </object>
+                        <!--<![endif]-->
+                    </object>
+                {% elseif game.type == "unity" %}
+                    <div id="unityPlayer">
+                        <div class="missing">
+                            <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+                                <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <img src="http://placehold.it/450x300&text=Game+Preview" alt="Game Preview" />
+            {% endif %}
+        </div>
+
+        <div class="reupload">
+            {# Form templates were too much hassle. This works nicely. #}
+            <form method="post" action enctype="multipart/form-data">
+                {{ form_label(form.game) }}
+                {{ form_widget(form.game) }}
+                <button type="submit" class="btn btn-small btn-primary"><i class="icon icon-white icon-arrow-up"></i> Upload</button>
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+
+    <div class="manage-right">
+        <h2>Feedback System</h2>
+
+        <div>Inbox: <a href="#" id="fb_unrated"><strong></strong> Unrated</a>
+            | <a href="#" id="fb_rated"><strong></strong> Rated</a></div>
+
+        <div>Archive: <a href="#" id="fb_archive"><strong></strong> Total Feedback</a></div>
+
+        <div class="feedback-list" id="feedback_list">
+
+            {% for fb in feedback %}
+                {% set fbid = fb.id %}
+                {% set rated = fb.developerRating != -1 %}
+                <div class="feedback-row fbk-{{ rated ? 'rated' : 'unrated' }}"
+                     id="fbrow_{{ fbid }}" data-open="false">
+                    <div class="fbk-title">
+                        Feedback from "{{ fb.user.username }}"
+                        <span>{{ fb.createdDate|date('n/j/Y \\a\\t g:i A') }}</span>
+                    </div>
+                    <!-- <div class="fbk-subject">
+                        Subject: "Hey man, this is a pretty cool game"
+                    </div> -->
+                    <div class="fbk-details" id="fbdetails_{{ fbid }}">
+                        <div class="fbk-text">
+                            <p>
+                                <strong>Thoughts:</strong>
+                                {{ fb.feedbackContent }}
+                            </p>
+                        </div>
+
+                        <div class="fbk-rate">
+                            <h4>Rate this feedback</h4>
+
+                            <label><input type="radio" name="rate{{ fbid }}" value="0" id="rate_{{ fbid }}_0"
+                                        {{ rated ? 'disabled' : '' }}
+                                        {{ fb.developerRating == 0 ? 'checked' : '' }} /> Not Helpful</label>
+                            <label><input type="radio" name="rate{{ fbid }}" value="1" id="rate_{{ fbid }}_1"
+                                        {{ rated ? 'disabled' : '' }}
+                                        {{ fb.developerRating == 1 ? 'checked' : '' }} /> Somewhat Helpful</label>
+                            <label><input type="radio" name="rate{{ fbid }}" value="3" id="rate_{{ fbid }}_3"
+                                        {{ rated ? 'disabled' : '' }}
+                                        {{ fb.developerRating == 3 ? 'checked' : '' }} /> Helpful</label>
+                            <label><input type="radio" name="rate{{ fbid }}" value="5" id="rate_{{ fbid }}_5"
+                                        {{ rated ? 'disabled' : '' }}
+                                        {{ fb.developerRating == 5 ? 'checked' : '' }} /> Very Helpful</label>
+
+                            <strong>Points: <span id="pts{{ fbid }}">{{ rated ? fb.developerRating : '' }}</span></strong>
+
+                            <div class="fbk-submit">
+                                {% if rated %}
+                                    <input type="button" class="feedback-rate btn disabled btn-small"
+                                           value="Submitted on {{ fb.ratedDate|date('n/j/Y \\a\\t g:i A') }}"
+                                           data-fbkid="{{ fbid }}" />
+                                {% else %}
+                                    <input type="button" class="feedback-rate btn btn-primary btn-small"
+                                           value="Submit Rating" data-fbkid="{{ fbid }}" />
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function() {
+
+            var SUBMIT_RATE_URL = "{{ submitRateUrl }}";
+
+            $('#fb_rated, #fb_unrated, #fb_archive').click(function(e) {
+                e.preventDefault();
+
+                var $anch = $(e.delegateTarget);
+                var filter = $anch.attr('id').replace('fb_', '');
+                var $rows = $('#feedback_list').find('.feedback-row');
+
+                $('#fb_rated, #fb_unrated, #fb_archive').css('font-weight', 'normal');
+                $anch.css('font-weight', 'bold');
+
+                if ( filter == 'archive' ) { // show all
+                    $rows.show();
+                    return;
+                }
+
+                var showClass = 'fbk-' + filter;
+                $rows.each(function() {
+                    var $row = $(this);
+                    var fid = $row.attr('id').replace('fbrow_', '');
+
+                    if ( $row.hasClass(showClass) ) {
+                        $row.show();
+                    } else {
+                        if ( $row.data('open') == 'true' ) {
+                            $('#fbdetails_' + fid).hide();
+                            $row.data('open', 'false');
+                            $rows.removeClass('fbk-faded fbk-current');
+                        }
+                        $row.hide();
+                    }
+                });
+            });
+
+            $('.feedback-row').click(function(e) {
+                if ( $(e.target).parents('.fbk-details').length ) {
+                    return;
+                }
+
+                var $row = $(this);
+                var id = $row.attr('id').split('_')[1];
+                var open = $row.data('open') == 'true';
+                var $details = $('#fbdetails_' + id);
+
+                if ( open ) {
+                    $('.feedback-row').removeClass('fbk-faded fbk-current');
+                    $details.slideUp('fast');
+                } else {
+                    closeOthers(id);
+                    $row.removeClass('fbk-faded').addClass('fbk-current');
+                    $details.slideDown('fast')
+                }
+
+                $row.data('open', open ? 'false' : 'true');
+            });
+
+            var closeOthers = function(id) {
+                $('.fbk-details')
+                    .not('#fbdetails_' + id)
+                    .slideUp('fast')
+                    .parent()
+                        .data('open', 'false')
+                        .removeClass('fbk-current')
+                        .addClass('fbk-faded');
+            };
+
+            $('.fbk-rate input').change(function() {
+                var $inp = $(this);
+                var id = $inp.attr('id').split('_')[1];
+                $('#pts' + id).text($inp.val());
+            });
+
+            $('.feedback-rate').not('.disabled').on('click', function() {
+                var id = $(this).data('fbkid');
+                var $radios = $('input[name=rate' + id + ']');
+                var checkedVal = -1;
+                $radios.each(function() {
+                    if ( $(this).prop('checked') ) {
+                        checkedVal = $(this).val();
+                        return false;
+                    }
+                    return true;
+                });
+
+                if ( checkedVal == -1 ) {
+                    alert('Please choose a rating');
+                    return;
+                }
+
+                submitRating(id, checkedVal, $(this));
+            });
+
+            var submitRating = function(feedbackId, rating, $btn) {
+                console.log("Submitting rating of " + rating + " for feedback #" + feedbackId);
+
+                $.ajax(SUBMIT_RATE_URL, {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {feedback_id: feedbackId, rating: rating}
+                }).done(function(json) {
+                    if ( json.status == 'ok' ) {
+                        var date = json.date.replace('@', 'at');
+                        var $row = $('#fbrow_' + feedbackId);
+                        $row.removeClass('fbk-unrated').addClass('fbk-rated');
+                        $('input[name=rate' + feedbackId + ']').prop('disabled', true);
+                        $btn.removeClass('btn-primary')
+                                .addClass('disabled')
+                                .off('click')
+                                .val('Submitted on ' + date);
+
+                        updateCounts();
+                    } else {
+                        alert(json.error);
+                    }
+                });
+            };
+
+            var updateCounts = function() {
+                var $divs = $('#feedback_list').find('.feedback-row');
+                var totalCount = $divs.length;
+                var unratedCount = $divs.filter('.fbk-unrated').length;
+                var ratedCount = totalCount - unratedCount;
+
+                $('#fb_unrated').find('> strong').text(unratedCount);
+                $('#fb_rated').find('> strong').text(ratedCount);
+                $('#fb_archive').find('> strong').text(totalCount);
+            };
+
+            updateCounts();
+            $('#fb_archive').click();
+        });
+    </script>
+
+{% if game.type == "unity" %}
+
+{% javascripts '@GotChosenSiteBundle/Resources/public/js/UnityObject2.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<script type="text/javascript">
+    var config = {
+            width: 450, 
+            height: 300,
+            params: { enableDebugging:"1" }
+
+    };
+    
+    var u = new UnityObject2(config);
+    
+    function initUnityGame()
+    {
+        u.getUnity().SendMessage("EvolutionGames", "setSessionID", "{{ gameParameters.session_id }}");
+        u.getUnity().SendMessage("EvolutionGames", "setApiEndpoint", "{{ gameParameters.api_endpoint }}");
+        u.getUnity().SendMessage("EvolutionGames", "setRedirectUrl", "{{ gameParameters.completion_url }}");
+    }
+
+    jQuery(function() {
+
+            var $missingScreen = jQuery("#unityPlayer").find(".missing");
+            var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+            $missingScreen.hide();
+            $brokenScreen.hide();
+
+            u.observeProgress(function (progress) {
+                    switch(progress.pluginStatus) {
+                            case "broken":
+                                    $brokenScreen.find("a").click(function (e) {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                            u.installPlugin();
+                                            return false;
+                                    });
+                                    $brokenScreen.show();
+                            break;
+                            case "missing":
+                                    $missingScreen.find("a").click(function (e) {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                            u.installPlugin();
+                                            return false;
+                                    });
+                                    $missingScreen.show();
+                            break;
+                            case "installed":
+                                    $missingScreen.remove();
+                            break;
+                            case "first":
+                            break;
+                    }
+            });
+            u.initPlugin(jQuery("#unityPlayer")[0], "{{ game.swfFile }}");
+    });
+</script>
+
+{% endif %}
+
+{% endblock %}

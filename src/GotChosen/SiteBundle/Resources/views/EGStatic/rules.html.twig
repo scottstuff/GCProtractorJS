@@ -1,0 +1,16 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}rules{% endblock %}
+
+{% block eg_content %}
+<div class="alert alert-error">
+ <strong>Our first season of Evolution Games has ended. The next season will start in the Fall.</strong>
+</div>
+
+    <div align="center">
+        <a href="{{ path('eg_rules_scholarship') }}" class="btn btn-large btn-primary">Evolution Games Scholarship Rules</a> <a href="{{ path('eg_rules_developers') }}" class="btn btn-large btn-success">Game Developers Contest Rules</a>
+    </div>
+
+{% endblock %}

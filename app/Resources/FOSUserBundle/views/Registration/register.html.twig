@@ -1,0 +1,22 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{# needs to be here, not in register_content. possibly doesn't work in include tags or something. #}
+{% form_theme form _self %}
+{% block label_asterisk %}{% if required %}<span class="req">*</span>{% endif %}{% endblock %}
+
+{% block title %}Registration | {{ parent() }}{% endblock %}
+
+{% block fos_user_content %}
+
+    <div class="main padded wide tabbed">
+        <h1 class="title">User Registration <span class="title-bar" style="width:730px;"></span></h1>
+
+        <p class="spaced">
+            <strong>*Note:</strong> Membership to this website is public. <span class="req-note"><strong>*</strong> Denotes required fields.</span>
+        </p>
+
+        {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    </div>
+
+
+{% endblock fos_user_content %}

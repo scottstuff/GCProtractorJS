@@ -1,0 +1,12 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    <div class="main padded wide tabbed">
+        <h1 class="title">Retrieve Password <span class="title-bar" style="width:730px;"></span></h1>
+
+        {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+
+    </div>
+
+{% endblock fos_user_content %}

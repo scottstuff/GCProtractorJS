@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+    <!-- wherever the game files are stored on S3... -->
+    <allow-access-from domain="s3.amazonaws.com"/>
+</cross-domain-policy>

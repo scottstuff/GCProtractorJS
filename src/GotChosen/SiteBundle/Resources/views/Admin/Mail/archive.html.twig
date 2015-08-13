@@ -1,0 +1,47 @@
+{% extends 'GotChosenSiteBundle::layout_admin_content.html.twig' %}
+
+{% block title %}Mass Mail Queue | {{ parent() }}{% endblock %}
+
+{% block box_title -%}
+    Mass Mail Queue &nbsp; <a class="btn btn-success"
+                              href="{{ path('admin_mail_create') }}"><i class="icon icon-white icon-plus"></i> New</a>
+{%- endblock %}
+
+{% block box_body %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 23%;">Date Added</th>
+            <th style="width: 38%;">Subject</th>
+            <th style="width: 20%;">Status</th>
+            <th>Progress <i class="AddTooltip icon icon-info-sign" data-original-title="Approximate"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for e in queue %}
+        <tr>
+            <td>{{ e.dateAdded|date('n/j/Y g:i A') }}</td>
+            <td><a href="{{ path('newsletter_view', {'id': e.id}) }}" target="_blank">{{ e.subject }}</a></td>
+            <td>
+                {{ e.statusName }}
+                {% if e.statusName == 'Paused' %}
+                    <a href="{{ path('admin_mail_resume', {id: e.id}) }}"
+                       class="btn btn-mini AddTooltip" data-original-title="Resume"><i class="icon icon-play"></i></a>
+                {% elseif e.statusName == 'Processing' %}
+                    <a href="{{ path('admin_mail_pause', {id: e.id}) }}"
+                       class="btn btn-mini AddTooltip" data-original-title="Pause"><i class="icon icon-pause"></i></a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
+            <td>{{ e.progressText }}
+                <i class="AddTooltip icon icon-info-sign" data-original-title="{{ e.sent }} / {{ e.total }}"></i>
+            </td>
+        </tr>
+        {% else %}
+            <tr><td colspan="4">No entries have been added.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

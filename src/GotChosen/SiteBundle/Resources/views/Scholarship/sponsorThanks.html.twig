@@ -1,0 +1,31 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %} Sponsor {{ user.fullName }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main padded wide profile">
+            <h1 class="title">
+                Sponsor {{ user.fullName }}
+                <span class="title-bar" style="width:800px;"></span>
+            </h1>
+
+            <p>Thank you for sponsoring {{ user.fullName }}!</p>
+
+            <p style="text-align: center">
+                <a class="btn" href="{{ path('user_profile', {'username': user.username}) }}">
+                    {{ user.fullName }}'s Profile</a>
+                &nbsp;
+                <a class="btn" href="{{ path('user_my_profile') }}">My Profile</a>
+
+                {% if scholarship and not app.user.hasApplied(scholarship) %}
+                    &nbsp;
+                    <a class="btn"
+                       href="{{ path('scholarship_apply', {'id': scholarship.id}) }}">Apply for Scholarship</a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}Financial Aid | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+
+        <div class="main padded">
+            <img src="http://www.lduhtrp.net/image-6753208-10761392" width="602">
+
+            <h1 class="title">Financial Aid <span class="title-bar" style="width:475px;"></span></h1>
+
+            <p><span class="strong-emph">Get student financial aid and money to pay for college here.</span>
+            </p>
+
+            <p>You are one step away from finding out several options to help you with that.<br />
+                Complete the form below to see them right away!</p>
+
+            <div id="js-st-widget">
+                <span style="display:none;">Need a private student loan? Compare your student loan
+                    options all in one place.
+                    <a href="http://www.simpletuition.com/student_loans_home">SimpleTuition</a></span>
+            </div>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="sb-block">
+                <a href="http://www.kqzyfj.com/click-6753208-10486357?cm_mmc=CJ-_-3915143-_-6753208-_-Join%20Upromise!" target="_blank"><img src="http://www.lduhtrp.net/image-6753208-10486357" width="250" height="64" alt="Join Upromise!" border="0"></a>
+            </div>
+
+            <div class="sb-block">
+                <a href="http://www.smarterbank.com/partner01?tfc_src=483&utm_source=partner_GotChosen&utm_medium=ad_bank&utm_campaign=GotChosen_nov" target="_blank"><img alt="" src="{{ asset('bundles/gotchosensite/images/smarterbank_250_x_250.jpg') }}" style="width:250px; height:250px;"></a>
+            </div>
+
+            <div class="sb-block">
+                <a href="http://www.smarterbucks.com/partner03?tfc_src=483&utm_source=partner_gotchosen&utm_medium=ad_bucks&utm_campaign=gotchosen_feb" target="_blank"><img alt="" src="{{ asset('bundles/gotchosensite/images/smarterbucks_250_x_100.png') }}" style="width:250px; height:200px;"></a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="http://www.simpletuition.com/widget.js?brnd=gotchosen&f=EAGZL&h=1&d=st&jq=f"></script>
+{% endblock %}

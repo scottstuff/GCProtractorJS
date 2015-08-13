@@ -1,0 +1,81 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}News | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main padded">
+            <a class="btn btn-small"
+               href="{{ path('news') }}">&laquo; Back to News</a>
+
+            <div class="post">
+                <h1>{{ article.getTitle() | raw }}</h1>
+
+                <div class="news-content">
+                    {{ article.getContent().getContent() | raw }}
+                </div>
+                <div class="socialnetwork">
+                    </div>
+                <div class="line">
+                </div>
+                <div class="footer">
+                    Posted
+                    {% if article.getAuthor() %}
+                    by {{ article.getAuthor().getFullName() }}
+                    {% endif %}
+                    on {{ article.publishDate | date('F dS, Y') }}
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sb-block">
+                <h5>Most Recent Articles</h5>
+                <ul class="news-archive">
+                    {% for article in recentArticles %}
+                    <li>{{ article.publishDate | date('F j') }}<sup>{{ article.publishDate | date('S') }}</sup>, {{ article.publishDate | date('Y') }}<br />
+                        <a href="{{ path('news_article', {'id': article.id, 'slug': article.title|gc_slugify }) }}">{{ article.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="sb-block">
+                <div id="fb-root"></div>
+                <script>(function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <p style="font-weight: bold; font-size: 14px;">Like us on Facebook!</p>
+
+                <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false" data-width="200"
+                     data-show-faces="false">
+                </div>
+            </div>
+
+            <div class="sb-block center">
+                <a href="{{ path('eg_qualifier') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/evolution_scholarship_home.png') }}"></a>
+            </div>
+
+            <div class="sb-block center">
+                <a href="{{ path('scholarship') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/4th_give_away_blue.png') }}" alt=""></a>
+            </div>
+            <div class="sb-block center">
+                <a href="{{ path('monthly_scholarship') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/monthlyhome.png') }}" alt=""></a>
+            </div>
+            <div class="sb-block">
+                <a href="{{ path('vs_videos') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/gotchosen_video_contest_home.png') }}"
+                            width="250" alt=""></a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

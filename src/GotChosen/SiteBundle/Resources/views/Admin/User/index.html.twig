@@ -1,0 +1,116 @@
+{% extends 'GotChosenSiteBundle::layout_admin_content.html.twig' %}
+
+{% block title %}User Administration | {{ parent() }}{% endblock %}
+
+{% block box_title -%}User Management{%- endblock %}
+
+{% block box_body %}
+
+    <form action="{{ path('admin_users') }}" method="get" class="pull-right">
+        <div class="input-append">
+            <input id="user_search" type="text" name="search"
+                    data-placeholder="Username or E-Mail Address" value="{{ searchTerm }}">
+            <button type="submit" class="btn"><i class="icon-search"></i></button>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Username / Full Name</th>
+            <th>E-Mail Address</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for u in users %}
+        <tr>
+            <td>
+                <a href="{{ path('user_profile', { username : u.username }) }}" target="_blank"><strong>{{ u.username }}</strong></a><br />
+                {{ gc_userProfileProperty(u, 'FirstName', app.user, false) }} {{ gc_userProfileProperty(u, 'LastName', app.user, false) }}
+            </td>
+            <td>{{ u.email }}</td>
+            <td>
+                {% if (u.enabled) %}
+                <a class="btn btn-danger" href=" {{ path('admin_users_disable', app.request.query.all|merge({username:u.userName,page:page})) }} ">Disable</a>
+                {% else %}
+                <a class="btn btn-success" href=" {{ path('admin_users_enable', app.request.query.all|merge({username:u.userName,page:page})) }} ">Enable</a>
+                {% endif %}
+            </td>
+            <td>
+                {% if u.getNotificationSubs() | length > 0 %}
+                <a class="btn btn-danger" href=" {{ path('admin_users_unsubscribe', app.request.query.all|merge({username:u.userName,page:page})) }}">Unsubscribe</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+            <tr><td colspan="4">No users can be found.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if numPages > 1 %}
+    <div class="pagination" style="width:500px;float:left;">
+        <ul>
+            {% if page != 1 %}
+            <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: page - 1})) }}">&laquo;</a></li>
+            {% endif %}
+
+            {% if page == 1 %}
+            <li class="disabled"><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: 1})) }}">1</a></li>
+            {% else %}
+            <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: 1})) }}">1</a></li>
+            {% endif %}
+
+            {% if (page > 3) and (numPages > 5) %}<li class="disabled"><a href="#">...</a></li>{% endif %}
+
+            {% if page == 1 %}
+            {% set prevPage = page - 1%}
+            {% set nextPage = min(numPages, page + 3)%}
+            {% elseif page == numPages %}
+            {% set prevPage = max(1, page - 3)%}
+            {% set nextPage = numPages%}
+            {% elseif page == 2 %}
+            {% set prevPage = page%}
+            {% set nextPage = min(numPages,page + 2)%}
+            {% elseif page == numPages - 1 %}
+            {% set prevPage = max(1, numPages - 3)%}
+            {% set nextPage = numPages%}
+            {% else %}
+            {% set prevPage = page - 1%}
+            {% set nextPage = page + 1%}
+            {% endif %}
+
+            {% for p in prevPage..nextPage %}
+                {% if p > 0 %}
+                    {% if p == 1 %}
+                    <!-- never output page 1 -->
+                    {% elseif p == numPages %}
+                    <!-- never output last page -->
+                    {% else %}
+                        <li{{ p == page ? ' class="active"' : '' }}>
+                            <a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: p})) }}">{{ p }}</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {% if (numPages > 5) and (page <= numPages - 3) %}<li class="disabled"><a href="#">...</a></li>{% endif %}
+
+            {% if page == numPages %}
+            <li class="disabled"><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: numPages })) }}">{{ numPages }}</a></li>
+            {% else %}
+            <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: numPages })) }}">{{ numPages }}</a></li>
+            {% endif %}
+
+
+            {% if page == numPages %}
+            {% else %}
+            <li><a href="{{ path(app.request.get('_route'), app.request.query.all|merge({page: page + 1})) }}">&raquo;</a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+    {% endif %}
+{% endblock %}

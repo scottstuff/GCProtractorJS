@@ -1,0 +1,169 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>GotChosen</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Webfonts -->
+  <link rel="stylesheet" href="https://s3.amazonaws.com/ProdContent/styles/webfonts/ss-gizmo.css">
+
+  <link rel="stylesheet" href="https://s3.amazonaws.com/ProdContent/styles/main.css">
+</head>
+<body>
+
+
+  <div class="container-fluid">
+
+    <div class="row section" id="take-control">
+
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">Menu</button>
+            <a class="navbar-brand scroller" href="/" data-scroll-target="body">GotChosen</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{ path('publisher') }}">Publishers</a></li>
+              <li><a href="{{ path('home') }}" target="_blank">GotChosen Scholarships</a></li>
+              <li><a href="#/about" class="launch-about">About GotChosen</a></li>
+              <li><a href="{{ path('contact_us') }}">Contact Us</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+      </div>
+
+
+      <div class="jumbotron jumbotron-transparent">
+        <h1 id="main-title">Take <strong>control</strong> of your online experience</h1>
+        <div class="row">
+          <div class="col col-sm-4">
+            <div class="icon ss-view"></div>
+            <h2>Privacy</h2>
+            <p>
+              Stop being tracked. Today, your internet
+              activity, no matter how personal, is being
+              tracked, analyzed, and used for marketing.
+            </p>
+          </div>
+          <div class="col col-sm-4">
+            <div class="icon ss-user"></div>
+            <h2>Choice</h2>
+            <p>
+              You choose the advertisements and content you want to see.
+              You control your online image.
+            </p>
+          </div>
+          <div class="col col-sm-4">
+            <div class="icon ss-book"></div>
+            <h2>Quality Content</h2>
+            <p>
+              View content and ads that are 100% relevant
+              to you. Enjoy focused discussions of high
+              quality user-generated content.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- DMEXCO section -->
+    <!--
+    <div class="row" id="dmexco">
+      <img src="https://s3.amazonaws.com/ProdContent/images/tip-dark-blue.png" id="tip-dark-blue" class="scroller hidden-xs tab-tip" data-scroll-target="bottom"/>
+
+      <div class="col-xs-12 visible-xs" style="height: 340px;">
+        <div class="dmexco-info">
+          <h3>Come visit us!</h3>
+        <p>
+          Orlando, Florida<br />
+          September 20, 2014<br />
+          @ Full Sail University<br />
+          </p>
+        </div>
+        <img src="https://s3.amazonaws.com/ProdContent/images/blogcon.jpg" style="height: 100%; max-height: 200px; position: absolute; left: 0px; bottom: 0px;">
+
+      </div>
+
+      <div class="col-xs-12 hidden-xs gradient-text">
+        <div class="dmexco-info">
+          <h3>Come visit us!</h3>
+          <p>
+            Orlando, Florida<br />
+            September 20, 2014<br />
+            @ Full Sail University<br />
+          </p>
+        </div>
+      </div>
+
+    </div>
+    -->
+
+
+    <!-- Footer -->
+    <footer class="row">
+      <a href="javascript:;" class="scroller thumbsup" data-scroll-target="body"></a>
+
+      <div class="col-sm-6">
+        Copyright &copy; 2014 GotChosen, Inc. All rights reserved.
+      </div>
+      <div class="col-sm-6">
+
+        <div class="links">
+          <a href="#/about" class="launch-about">About GotChosen</a>
+          &nbsp;
+          <a href="{{ path('contact_us') }}">Contact Us</a>
+          &nbsp;
+          <a href="https://www.gotchosen.com/en/terms">Terms</a>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="about-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="about-modal-title">About GotChosen</h4>
+        </div>
+        <div class="modal-body">
+          <h3 style="margin-top: 0px;">GotChosen is an innovative company that is developing proprietary technologies based on choice and privacy.</h3>
+
+          <p>In October of 2014, you’re going to see the start of a new way of doing business on the internet. We’re replacing the current data-centric approach, which uses behavioral targeting and data brokering, with a cooperative model that both puts consumers in charge and produces superior results for websites and advertisers.</p>
+
+
+          <h4>It starts with three simple ideas.</h4>
+          <ol>
+            <li>Your data is your data. No one else has a right to it–not advertisers, not publishers, not even social media.</li>
+            <li>You are smart enough to decide what marketing you’d like to see. You don’t need someone watching every site you visit and trying to guess what you’d like to buy.</li>
+            <li>You have a right to quality content, free of all the noise and nonsense so common in today’s internet. </li>
+          </ol>
+
+          <p>Our business model is not data-driven. We don’t track your data in order to display ads. Instead, our model is consumer-driven. That means you have control over the ads you see. We respect your privacy, and will never share or sell your data to anyone, ever.</p>
+
+
+          <h4>What about the scholarships?</h4>
+          <p>For the past two years, GotChosen has been giving away scholarships. During this time, we’ve been building brand awareness and a web presence. We’ve also helped a lot of people pay for their education. We’re going to keep doing that. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://s3.amazonaws.com/ProdContent/scripts/vendor.js"></script>
+
+  <script src="https://s3.amazonaws.com/ProdContent/scripts/main.js"></script>
+
+</body>
+</html>

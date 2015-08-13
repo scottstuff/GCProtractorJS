@@ -1,0 +1,17 @@
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+<div class="alert alert-block alert-error">
+    <h4>Warning!</h4>
+    Are you sure? Your account with GotChosen will be deleted!<br />
+    You can only reinstate the account by sending an email request to
+    <a href="mailto:support@gotchosen.com">support@gotchosen.com</a>.
+    <br /><br />
+
+    {{ form_row(form.current_password) }}
+    <div class="submit-row">
+        <input type="submit" class="btn btn-danger" value="Yes, Delete My Account" />
+    </div>
+</div>
+
+{{ form_rest(form) }}
+{{ form_end(form) }}

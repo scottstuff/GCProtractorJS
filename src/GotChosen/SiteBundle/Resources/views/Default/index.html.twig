@@ -1,0 +1,12 @@
+{% extends 'GotChosenSiteBundle::layout_front_slides.html.twig' %}
+
+{% block body %}
+
+    {% trans %}hello.%name%{% endtrans %}
+    Current locale is: {{ app.request.locale }}
+
+    {# see Static/home.html.twig for homepage content #}
+
+{% endblock %}
+
+

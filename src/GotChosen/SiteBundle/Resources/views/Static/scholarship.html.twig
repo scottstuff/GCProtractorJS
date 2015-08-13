@@ -1,0 +1,416 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}$20K Scholarship | {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+    <style type="text/css">
+        .faqh {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+
+    <div id="fb-root"></div>
+    <script> (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="main padded tabbed staticpage">
+            <ul class="nav nav-tabs" id="scholarship-tabs">
+                <li class="active"><a href="#about" id="tab_about" data-toggle="tab">About the $20K Scholarship</a></li>
+                <li><a href="#tips" id="tab_tips" data-toggle="tab">Winning Tips</a></li>
+                <li><a href="#how" id="tab_how" data-toggle="tab">How to Sponsor</a></li>
+                <li><a href="#rules" id="tab_rules" data-toggle="tab">Rules</a></li>
+                <li><a href="#faq" id="tab_faq" data-toggle="tab">FAQ</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <!--
+                ABOUT TAB
+                -->
+
+                <div class="tab-pane active" id="about">
+<div class="alert alert-error">
+ <strong>This scholarship is now closed.  Please come back in November to apply for the next chance to win.</strong>
+</div>
+                    <p><strong>The 6th GotScholarship Give Away - A Summer Special Opportunity</strong></p>
+
+                    <p>When the students speak, we respond. You needed more time to add entries by asking for sponsors
+                    and you wanted to get back on campus to do this. We have extended the 6th GotScholarship $20,000 Give Away
+                    until September 30, 2014.</p>
+
+                    <p>We keep it simple. This scholarship is easy and free to enter and the shortest period for application. The winner
+                        is selected by a random drawing. There are no GPA, financial need or essay requirements.</p>
+
+                    <p>Open to all fields of study for US, international students, and alumni, the US $20,000 must be used for
+                        “educational expenses”, this includes: tuition, fees, books, supplies, equipment required for study,
+                        contribution to a prepaid college program (the 529 Plan is an option for US students only), or towards
+                        repayment of outstanding student loans. In addition, the GotScholarship $20K Give Away is transferable,
+                        and virtually anyone 18 years old or older is eligible to participate.</p>
+
+                    <p>And more good news, at GotChosen - we respect your privacy. We will never sell your data to anyone, ever.</p>
+
+                    <p> Want more chances to win? Look for details on the
+                        <a href="{{ path('scholarship', {'tab': 'tips'}) }}">"Winning Tips"</a> tab.</p>
+
+                    <p class="nomargin">Click <a href="{{ path('fos_user_registration_register') }}">here</a> to register now!</p>
+
+                    <img alt="" width="541" height="63" src="{{ asset('bundles/gotchosensite/images/notes5.jpg') }}"/>
+                    <ul>
+                        <li>Open to <span id="spanCountry">United States and international students and alumni. New York residents are not eligible to participate.</span>
+                        </li>
+                        <li>No GPA, No Essay - No Long Forms to Fill - Just Register and Apply!</li>
+                        <li>Sponsors increase your chances of winning.</li>
+                        <li>This is not a loan and there is no payback. This is a FREE scholarship.</li>
+                        <li>Privacy Disclosure: We respect your privacy. We will never sell your data to anyone, ever.</li>
+                        <li>Deadline: September 30, 2014.</li>
+                        <li>NO FEE, AND NO PURCHASE IS NECESSARY TO ENTER OR WIN.</li>
+                    </ul>
+                    <p> If you like GotChosen's scholarships then "Like" us on Facebook!</p>
+
+                    <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false"
+                         data-width="200"
+                         data-show-faces="false"></div>
+                </div>
+
+                <!--
+                TIPS TAB
+                -->
+
+                <div class="tab-pane" id="tips">
+<div class="alert alert-error">
+ <strong>This scholarship is now closed.  Please come back in November to apply for the next chance to win.</strong>
+</div>
+
+                    <p><strong>How Can I Increase My Chances Of Winning?</strong></p>
+
+                    <p style="margin: 0 0 10pt;"> The answer is getting sponsors. Every sponsor equals another entry for you to win
+                        the GotScholarship $20K Give Away. </p>
+
+                    <p style="margin: 0 0 10pt;"><strong>Who can be a sponsor?</strong> Anyone 18 years or older. </p>
+
+                    <p style="margin: 0 0 10pt;"><b>How can someone sponsor me?</b> It’s free and simple. Look for details on the <a
+                                href="{{ path('scholarship', {'tab': 'how'}) }}">"How To Sponsor"</a> tab </p>
+
+                    <p><strong>How do I ask for sponsors?</strong> It’s very easy! Just share your “Sponsor URL” link with your family and
+                    friends.</p>
+
+                    <p><strong>How do I find my “Sponsor URL” link?</strong> First, log into your GotChosen account and apply for the $20K
+                    scholarship, then look for your “Sponsor URL” link under the “My Scholarship Panel”.</p>
+
+                    <p><strong>How do I share my “Sponsor URL” link?</strong> Copy your “Sponsor URL” link then share with your family and
+                    friends over email or on your favorite social networking websites.</p>
+
+                    <p><strong>Hint:</strong> Tell everyone you know and ask them to tell everyone they know. There is no limit on the
+                    number of sponsors you can have and every sponsor is an additional chance for you to win!</p>
+
+                    <p><strong>Who is Eligible for the $20K Scholarship?</strong></p>
+                    <ul>
+                        <li>College students</li>
+                        <li>Anyone with current student loan debt</li>
+                        <li>Graduate students</li>
+                        <li>Parents of students</li>
+                        <li>Relatives of students</li>
+                        <li>Friends of students</li>
+                        <li>Public school students</li>
+                        <li>Private school students</li>
+                        <li>Technical school students</li>
+                        <li>Vocational school students</li>
+                        <li><strong>Virtually Anyone!</strong></li>
+                    </ul>
+                </div>
+
+                <!--
+                HOW TAB
+                -->
+
+                <div class="tab-pane" id="how">
+                <div class="alert alert-error">
+  <strong>This scholarship is now closed.  Please come back in November to apply for the next chance to win.</strong>
+
+</div>
+
+                    <p><strong>Sponsoring:</strong></p>
+
+                    <p>Sponsors enable participants to have more chances to win the scholarship. There is no cost or
+                        financial obligation to be a sponsor. Registration is required to authenticate entries.</p>
+
+                    <p><strong>There are three ways to sponsor someone:</strong></p>
+
+                    <ol>
+                        <li>Use the search field below to find the person you wish to sponsor. When their profile loads, click on the “Sponsor Me!” button.</li>
+                        <li>Log into your profile page, type in the e-mail address of the person you wish to sponsor in the “Search Members to Sponsor” field. When their profile loads, click on the “Sponsor Me!” button.</li>
+                        <li>Respond to an e-mail or social networking post from someone inviting you to sponsor them.</li>
+                    </ol>
+
+                    <p><strong>Sponsoring Bonus:</strong> The GotScholarship $20K Give Away is transferable so if you
+                        choose to apply for the scholarship and win you have the option to transfer the winnings to
+                        the person you are sponsoring (must be 18 years or older).</p>
+
+                    <form action="{{ path('user_search_email') }}" method="post" id="email_search_form">
+                        <label for="user_search">Search for Members to Sponsor:</label>
+                        <div class="input-append">
+                            <input id="user_search" type="text" name="search" data-placeholder="E-mail Address">
+                            <button type="submit" class="btn"><i class="icon-search"></i></button>
+                        </div>
+                            <span class="inline-error" id="empty_error"
+                                  style="display:none">Please enter an e-mail address.</span>
+                            <span class="inline-error" id="nonexist_error"
+                                  style="display:none">{{ 'search.email_does_not_exist'|trans }}</span>
+                    </form>
+                </div>
+
+                <!--
+                RULES TAB
+                -->
+
+                <div class="tab-pane" id="rules">
+                <div class="alert alert-error">
+ <strong>This scholarship is now closed.  Please come back in November to apply for the next chance to win.</strong>
+
+</div>
+
+                    {% include 'GotChosenSiteBundle::terms_40k.html.twig' %}
+                </div>
+
+                <!--
+                FAQ TAB
+                -->
+
+                <div class="tab-pane" id="faq">
+                <div class="alert alert-error">
+ <strong>This scholarship is now closed.  Please come back in November to apply for the next chance to win.</strong>
+
+</div>
+
+                    <p class="faqh">Who is GotChosen?</p>
+                    <p>GotChosen is an innovative startup in multimedia technology, advertising, and business development
+                        headquartered in Orlando, Florida. We are developing our proprietary technologies based on choice
+                        and privacy. Our technologies will provide an unparalleled informational exchange experience for
+                        users in ways that build new levels of involvement, brand loyalty, and profitability. Its
+                        proprietary technologies will begin to be rolled out in 2014.</p>
+
+                    <p class="faqh">What is the GotScholarship $20K Give Away drawing?</p>
+                    <p>Through the drawing, GotChosen will award one (1) very lucky winner a US $20,000 SCHOLARSHIP. Funds
+                    must be used for “educational expenses”; tuition, fees, books, supplies, equipment required for
+                    study, contribution to a 529 Plan or prepaid college program (529 plans and prepaid college program are in the US only), or towards repayment of
+                    outstanding student loans. This is not a loan and there is no payback. The GotScholarship $20K Give
+                    Away is a FREE Scholarship.</p>
+
+                    <p class="faqh">How do I enter the GotScholarship $20K Give Away drawing?</p>
+                    <p><strong>Existing GotChosen members</strong> simply need to Login, and click the “Apply” button
+                        in the “My Scholarship Panel” for the GotScholarship $20K Give Away scholarship.</p>
+
+                    <p><strong>New visitors</strong> to GotChosen must complete an on-line registration and then
+                        click on the “Apply” button in the “My Scholarship Panel” for the GotScholarship $20K Give Away scholarship.</p>
+
+                    <p>Participants, who do not have access to the internet, see instructions below for details on how to
+                    mail in a registration form. A valid email address is required to qualify for the GotChosen the $20K
+                    Give Away scholarship**.</p>
+
+                    <p class="faqh">How do I increase my chances to win?</p>
+                    <p>By inviting EVERYONE you know to sponsor you. Every sponsor equals another entry for you to win the
+                    GotScholarship $20K Give Away.</p>
+
+                    <p><strong>To be sponsored,</strong> you must register, and also have applied for the
+                        scholarship. To increase your
+                    chances of winning, invite your family and friends to register and sponsor you by sharing your
+                    “Sponsor URL” link.</p>
+
+                    <p class="faqh">How do I find my “Sponsor URL” link?</p>
+                    <p>Log into your GotChosen account and look for your “Sponsor URL” link under the “My Scholarship
+                    Panel”.</p>
+
+                    <p class="faqh">How do I share my “Sponsor URL” link?</p>
+                    <p>Copy your “Sponsor URL” link then share with your family and friends over email or on your favorite
+                    social networking websites.</p>
+
+                    <p class="faqh">How do I sponsor a participant?</p>
+                    <p>There are three ways to sponsor someone:</p>
+                    <ol>
+                        <li><a href="{{ path('scholarship', {'tab': 'how'}) }}">Click here</a>
+                            and use the “Search Members to Sponsor” field to find the person you wish to sponsor.
+                    When their profile loads, click on the “Sponsor Me!” button.</li>
+                        <li>Log into your profile page, type in the e-mail address of the person you wish to sponsor in the
+                    “Search Members to Sponsor” field. When their profile loads, click on the “Sponsor Me!” button.</li>
+                        <li>Respond to an e-mail or social networking post from someone inviting you to sponsor them.</li>
+                    </ol>
+                    <p>To sponsor someone, you must be registered and the person you sponsor must also be registered and
+                    have applied for the scholarship.  You can only sponsor one person, but you may be sponsored by an
+                    unlimited number of persons. A person cannot sponsor himself or herself.</p>
+
+                    <p class="faqh">How do I win?</p>
+                    <p>All you have to do is <a href="{{ path('fos_user_registration_register') }}">register</a>
+                        and apply for the GotScholarship $20K Give Away drawing. A random
+                    drawing from among all eligible entries received will be conducted in the U.S. under the direction
+                    of an independent audit.</p>
+
+                    <p class="faqh">What is the deadline to apply for the scholarship?</p>
+                    <p>The deadline is 11:59 PM Eastern Time on September 30, 2014.</p>
+
+                    <p class="faqh">What if I don’t win? Do I get another chance?</p>
+                    <p>Of course! There will be another GotScholarship $20K Give Away. You’ll be required to re-apply
+                        for another chance to win.</p>
+
+                    <p class="faqh">Who can register for the GotScholarship $20K Give Away drawing?</p>
+                    <p>The GotChosen Scholarship Drawing is open to United States and international students. All participants
+                        must be 18 years or older. Residents of New York state are NOT eligible to participate. </p>
+
+                    <p class="faqh">How many people can register for the scholarship?</p>
+                    <p>There are no limits to the number of registrants we can accept between July 1, 2014 and September 30, 2014.
+                    </p>
+
+                    <p class="faqh">How does the winner receive the scholarship winnings?</p>
+                    <p>The US $20,000 scholarship will be issued in one US $10,000 installment per year for two
+                    consecutive years (the winner must provide proof of legitimate educational expenditure from the
+                    prior year’s installment in order to receive a subsequent installment).</p>
+
+                    <p class="faqh">Can I register my underage son or daughter for the scholarship?</p>
+                    <p><strong>No</strong>, the winner of the scholarship must be 18 years or older. In the USA only, parents/guardians can
+                    apply and the winnings can be transferred to a 529 Plan for their underage son or daughter.</p>
+
+                    <p class="faqh">Is the GotScholarship $20K Give Away scholarship transferable?</p>
+                    <p><strong>YES</strong> – The prize is transferable and must be used for educational expenses or payment of outstanding
+                    student loan (person must be 18 years or older).</p>
+
+                    <p class="faqh">What if I don’t have any college debt, and I win, do I get the money?</p>
+                    <p><strong>NO</strong> – The winner must transfer the winning to someone who has “educational expenses” as described.</p>
+
+                    <p class="faqh">How much does it cost to enter the drawing?</p>
+                    <p>There is no cost to enter.</p>
+
+                    <p class="faqh">How many drawing entries can I get?</p>
+                    <p>The number is virtually unlimited if you get sponsors.</p>
+
+                    <p class="faqh">What are the odds of winning the GotScholarship $20K Give Away drawing?</p>
+                    <p>The odds of winning are unknown and conditioned upon the number of entries. However, the odds of
+                    winning are improved each time you get sponsored.</p>
+
+                    <p class="faqh">When will the winner be announced?</p>
+                    <p>The name of the winner will be announced by October 31, 2014 at
+                        <a href="{{ path('home') }}">http://www.gotchosen.com.</a></p>
+
+                    <p class="faqh">Do I have to be present to win?</p>
+                    <p><strong>NO</strong> – We will contact you using the email provided in your profile page.</p>
+
+                    <p class="faqh">Is the GotScholarship $20K Give Away scholarship considered income?</p>
+                    <p><strong>YES</strong> – All federal, state, and local taxes and any other costs and expenses not specifically stated
+                    herein as being awarded are the winner’s sole responsibility.</p>
+
+                    <p class="faqh">Are there any legal rules and regulations?</p>
+                    <p><strong>YES</strong> – These may be viewed in the <a href="{{ path('scholarship', {'tab': 'rules'}) }}">Rules</a>
+                        section of the website.</p>
+
+                    <p class="faqh">How do I get more information on GotChosen?</p>
+                    <p>Please visit <a href="{{ path('home') }}">www.gotchosen.com</a> and see the
+                        <a href="{{ path('about_us') }}">About Us</a> section.</p>
+
+                    <p class="faqh">What if I still have questions about the GotScholarship $20K Give Away drawing that aren't answered
+                    here?</p>
+                    <p>Please visit the <a href="{{ path('scholarship', {'tab': 'rules'}) }}">Rules</a>
+                        section of this website or send an email to
+                        <a href="mailto:info@gotchosen.com">info@gotchosen.com</a>.</p>
+
+                    <p>____________________________________</p>
+
+                    <p>**Participants, who do not have access to the internet may hand-print or type (in English only)
+                    their name, e-mail address, date of birth, street address, city, state, zip, phone number on a 3” x
+                    5” card and mail it in a first-class stamped envelope to:</p>
+
+                    <p>GotChosen $20K Give Away Contest<br />
+                    12472 Lake Underhill Road #397<br />
+                    Orlando, FL 32828 USA</p>
+
+                    <p>All mail in registrations must be postmarked no later than September 30, 2014 at 11:59 PM. Incomplete
+                    mail in registrations will be disregarded and you WILL NOT be eligible to participate in this
+                    drawing. GotChosen is not responsible for mailing costs. A valid email address is required to
+                    qualify for the GotScholarship $20K Give Away.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sb-block">
+                <a href="{{ path('monthly_scholarship') }}"><img src="{{ asset('bundles/gotchosensite/images/monthlyhome.png') }}" width="250" alt=""></a>
+            </div>
+            <div class="sb-block">
+                <a href="{{ path('eg_qualifier') }}"><img src="{{ asset('bundles/gotchosensite/images/evolution_scholarship_home.png') }}" width="250"></a>
+            </div>
+            <div class="sb-block">
+                <a href="{{ path('vs_videos') }}"><img
+                            src="{{ asset('bundles/gotchosensite/images/gotchosen_video_contest_home.png') }}"
+                            width="250" alt=""></a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+    $(function() {
+        var curTab = "{{ tab }}";
+        $('#scholarship-tabs').find('a#tab_' + curTab).tab('show');
+
+        $('a[data-toggle="tab"]').on('shown', function (e) {
+            _gaq.push([
+                '_trackPageview',
+                '/{{ app.request.locale }}/scholarship/' + e.target.id.replace('tab_', '')
+            ]);
+        });
+
+        var $searchForm = $('#email_search_form');
+        var $searchBox = $('#user_search');
+        var $emptyError = $('#empty_error');
+        var $nonExistError = $('#nonexist_error');
+
+        $searchForm.submit(function(e) {
+            var value = $searchBox.val();
+            e.preventDefault();
+
+            $nonExistError.hide();
+            $emptyError.hide();
+
+            // check if non-empty, and matches {whatever}@blah.x[.y]...
+            if ( value.length == 0 || !/^[^@]+@([a-z0-9_-]+\.)+[a-z0-9_-]+$/i.test(value) ) {
+                $emptyError.show();
+                return false;
+            }
+
+            emailSearch(value, function(json) {
+                if ( json.profileUrl.length == 0 ) {
+                    $nonExistError.show();
+                } else {
+                    window.location = json.profileUrl;
+                }
+            });
+
+            return false;
+        });
+
+        var emailSearch = function(email, fn) {
+            $.ajax('{{ path('ajax_search_email') }}', {
+                data: {search: email},
+                dataType: 'json',
+                success: fn
+            });
+        };
+    });
+    </script>
+
+{% endblock %}

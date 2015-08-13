@@ -1,0 +1,20 @@
+<html>
+<body>
+
+{% if user.properties is defined %}
+<p>Hello {{ user.properties.FirstName }},</p>
+{% else %}
+<p>Hello,</p>
+{% endif %}
+
+{{ body|raw }}
+
+<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee;">
+    <p>&copy; 2014 GotChosen, Inc.</p>
+    {% if unsubscribe_link %}
+    <p><a href="{{ unsubscribe_link }}">Unsubscribe from this newsletter</a></p>
+    {% endif %}
+</div>
+
+</body>
+</html>

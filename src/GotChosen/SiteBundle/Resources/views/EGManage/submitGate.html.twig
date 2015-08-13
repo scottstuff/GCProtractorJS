@@ -1,0 +1,153 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}submit{% endblock %}
+
+{% block eg_content %}
+<div class="alert alert-error">
+ <strong>Our first season of Evolution Games has ended. The next season will start in the Fall.</strong>
+</div>
+
+    <h1 class="title">Game Submission Requirements <span class="title-bar" style="width:585px;"></span></h1>
+
+    <p><em>Game Ownership Disclaimer: GotChosen does NOT take ownership and does NOT claim any rights of any games uploaded/submitted for the Evolution Games contest.</em></p>
+
+    <p>In order to be accepted into Evolution Games, your game must adhere to the following requirements:</p>
+
+    <ol>
+        <li><strong>Your game must</strong> not be larger than 650 MB.</li>
+        <li><strong>Your game must</strong> include a scoring mechanic so that players can reasonably receive a different ranking based on their scores.</li>
+        <li><strong>Your game must</strong> be a "single session" type of game. Each play session by a player must be a new game. </li>
+            <ul>
+                <li><strong>Your game must</strong> automatically send a score at the end of each session.</li>
+                <li><strong>Your game must not </strong>have a “Restart”, “Try again”, or “Play Again” mechanism when the player completes a play session.</li>
+                <li><strong>Do not </strong>store long-term session or state information on players.</li>
+            </ul>
+        <li><strong>Your game must</strong> comply with our <a href="{{ path('eg_rules_developers') }}" target="_blank">Rules and Regulations</a>.</li>
+        <li><strong>Your game must</strong> implement our API which uses your Secret Key based on the documentation linked below.</li>
+        <li><strong>Your game must</strong> be in one of our supported formats: <strong><em>Unity</em></strong> or <strong><em>Flash</em></strong></li>
+    </ol>
+
+    <div align="center" style="margin-top: 30px">
+        <a href="#" class="btn btn-large btn-primary" id="unity_button">Click here for the<br /><em>Unity</em> Integration Guide</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {# lol #}
+        <a href="#" class="btn btn-large btn-warning" id="flash_button">Click here for the<br /><em>Flash</em> Integration Guide</a>
+    </div>
+
+    <div style="margin-top: 30px">
+        <a href="{{ path('eg_submit') }}" class="btn btn-primary">Continue &raquo;</a> <span style="font-size: 14px">to submit your game information and access your “Manage Game” page to find your Secret Key.</span>
+    </div>
+
+    {% embed 'GotChosenSiteBundle:Components:modal.html.twig' with {id: 'unityModal'} %}
+        {% block header %}Unity Integration Guide{% endblock %}
+        {% block body %}
+            <div align="center" style="margin-bottom: 20px">
+                <a href="https://s3.amazonaws.com/ProdContent/IntegrationGuides/EvolutionGames-DeveloperIntegration.zip" target="_blank" class="btn btn-large btn-primary">
+                    Download Evolution Games Unity API Library
+                </a>
+            </div>
+            <p><em>The EvolutionGames.cs library and supplemental code for this document was created under the Unity3D version 4.3.1f1.</em></p>
+            <p>This document is a step-by-step guide on how to use the EvolutionGames.cs script to interface with the Evolution Games platform.</p>
+            <p>Above, you can find a link to download an archive containing the EvolutionGames.cs script file and a PDF copy of this guide. The
+               steps for integrating that file into your game project are below:</p>
+            <ol>
+                <li>Import EvolutionGames.cs to your Unity3D project.</li>
+                <li>Create an empty gameObject.</li>
+                <ol type="a">
+                    <li>GameObject ­> Create Empty</li>
+                </ol>
+                <li>Rename this new empty gameObject to "EvolutionGames"</li>
+                <li>Add (or drag) the EvolutionGames.cs script onto the EvolutionGames object.</li>
+                <li>Make this empty gameObject a Prefab (drag to the Prefab folder).</li>
+                <li>If not already done, Add the "EvolutionGames" Prefab to the very first scene.</li>
+                <li>Inside the first scene, add the code from the file "UnityStart-EvoGames.cs" to a script that is called at the start of the game.</li>
+                <li>You can find your secret key on the “Manage Game” tab after you submit your game info.</li>
+                <ol type="a">
+                    <li>No "Manage Game" tab? Make sure you’re logged in and have submitted your game info, so a Secret Key can be generated for you.</li>
+                </ol>
+                <li>Put your Secret Key in the code from the UnityStart-EvoGames.cs file in the place where it says "THISISWHEREYOUADDTHESECRETKEY"</li>
+            </ol>
+            <p>At this point, the Unity web player should be able to initialize properly in the web browser and receive data from the Evolution Games
+               platform.
+               </p>
+
+               <ul>
+                   <li>Your game must be a "single session" type of game. Each play session by a player must be a new game. </li>
+                   <li>Your game must automatically send a score at the end of each session.</li>
+                   <li>Your game must not have a “Restart”, “Try again”, or “Play Again” mechanism when the player completes a play session. </li>
+                   <li>Do not store long-term session or state information on players.</li>
+
+               </ul>
+
+               <p>At the end of a game session, you need to provide a score for the player for that play session. To do that, here are the steps:</p>
+            <ol>
+                <li>At the scene where you will be submitting the score, add the EvolutionGames Prefab to this scene.</li>
+                <li>In the script where you are ready to submit a score, add the code from the file "UnityEnd-EvoGames.cs".</li>
+                <li>You’re done!</li>
+            </ol>
+            <h3>Final Thoughts</h3>
+            <p>You should now be ready to upload your .unity3d file to the Evolution Games platform. Use the upload form on the “Manage Game” tab whenever
+               you want to upload and update your game on our website. Once your upload is complete, your game’s status will be set to “No API Connection”.
+               </p>
+               <p>
+               A web player will be provided at the bottom of the “Manage Game” page where you can play test your game to ensure that it’s working properly.
+               When you finish your playtesting and upon the first successful submission of a score to the API, the platform will automatically mark your
+               game as “Active”, entered into the Qualifier, and available for anyone to play.</p>
+            <p>If you need help with anything, feel free to e­mail <a href="mailto:developer@gotchosen.com">developer@gotchosen.com</a>. Include in the subject
+               that you’re a game developer uploading to Evolution Games. We’ll get back to you as soon as possible to try and help you get your game up on the website.</p>
+        {% endblock %}
+        {% block footer %}
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        {% endblock %}
+    {% endembed %}
+
+    {% embed 'GotChosenSiteBundle:Components:modal.html.twig' with {id: 'flashModal'} %}
+        {% block header %}Flash Integration Guide{% endblock %}
+        {% block body %}
+            <p>We're still looking for Flash Developers who are proficient in ActionScript to help us create the
+               integration library and guide for Flash-based games.</p>
+            <p>Here's the basic workflow:</p>
+            <ol>
+                <li>Accept a session id, api end point, and redirect url from flashvars.</li>
+                <li>Complete your game session every time a player finishes a game and earns a score.</li>
+                <li>Your game must be a "single session" type of game. Each play session by a player must be a new game. </li>
+                <li>Your game must automatically send a score at the end of each session.</li>
+                <li>Your game must not have a “Restart”, “Try again”, or “Play Again” mechanism when the player completes a play session. </li>
+                <li>Do not store long-term session or state information on players.</li>
+                <li>Send an HTTP request with a JSON payload to a method on the api end point. The payload will include the data:</li>
+                <ol type="a">
+                    <li>Session ID (from flashvars)</li>
+                    <li>Score (value generated by the game)</li>
+                    <li>Hash (The value "sessionId:score:secretKey" as a SHA1 encoded hash)</li>
+                </ol>
+                <li>Your Secret Key will be provided by the Evolution Games platform and is to be placed inside the ActionScript code for your game.</li>
+                <li>After the HTTP Request completes, redirect the page to the provided redirect url.</li>
+            </ol>
+            <p>If you think you have the ActionScript chops to help us get this library implemented and an integration guide written, please contact
+               us at <a href="mailto:developer@gotchosen.com">developer@gotchosen.com</a></p>
+        {% endblock %}
+        {% block footer %}
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            $unityButton = $('#unity_button');
+            $unityButton.click(function(e) {
+                $('#unityModal').modal();
+            });
+
+            $flashButton = $('#flash_button');
+            $flashButton.click(function(e) {
+                $('#flashModal').modal();
+            });
+        });
+    </script>
+{% endblock %}

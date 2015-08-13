@@ -1,0 +1,31 @@
+{% extends 'GotChosenSiteBundle::layout_eg.html.twig' %}
+
+{% block title %}EvolutionGames | {{ parent() }}{% endblock %}
+
+{% block active_tab %}manage{% endblock %}
+
+{% form_theme form _self %}
+{% block label_asterisk %}{% if required %}<span class="req">*</span>{% endif %}{% endblock %}
+
+{% block eg_content %}
+
+    <h1 class="title">Edit Your Game Screenshot <span class="title-bar" style="width:585px;"></span></h1>
+    
+    {% if currentScreenshot is not null %}
+        <div align="center">
+            <img src="{{ currentScreenshot }}" /><br />
+            Current Screenshot
+        </div>
+    {% endif %}
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {{ form_row(form.gameScreenshot, {'attr': {'class': 'span4'}}) }}
+
+    <div class="submit-row">
+        <input type="submit" class="btn btn-primary" value="Update Screenshot" />
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

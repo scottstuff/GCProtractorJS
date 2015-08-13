@@ -1,0 +1,90 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}About Us | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="main">
+            <h1 class="title">About GotChosen <span class="title-bar"></span></h1>
+
+            <p>GotChosen is an innovative startup in multimedia technology, advertising, and
+               business development headquartered in Orlando, Florida. We are developing our
+               proprietary technologies based on choice and privacy.</p>
+
+            <p>GotChosen’s philanthropic efforts are focused on scholarship programs. We
+                encourage you to register to benefit from our programs:
+                <a href="{{ path('scholarship') }}" target="_blank">GotScholarship $20K Give Away</a>,
+                <a href="{{ path('monthly_scholarship') }}" target="_blank">GotChosen
+                $1000 Every Month Scholarship</a>,
+                <a href="{{ path('video_scholarship') }}" target="_blank">The Lights,
+                Camera, Action Video Scholarship</a>, and
+                <a href="{{ path('evolution_games') }}" target="_blank">Evolution Games</a>.</p>
+
+            <p>Why is GotChosen giving away scholarships? Two reasons:</p>
+
+            <ol>
+                <li>We like helping people like you get started.</li>
+                <li>Build brand awareness and a web presence.</li>
+            </ol>
+
+            <p>What we are working on?</p>
+
+            <p>When you browse the internet today, you are being tagged, tracked and sold.
+                Big data algorithms designed to maximize advertising revenues are determining
+                what appears on your screens. We think there is a better way.</p>
+
+            <p>Our solution: GotChosen‘s new technology will give you control of the content on
+                your screen. The technology will provide you with a privacy-protected way of
+                interacting with the people and businesses that you choose.</p>
+
+            <p>We care about your privacy. We will never sell your data to anyone, ever.</p>
+
+            <p>It’s easy and free to <a href="{{ path('fos_user_registration_register') }}"
+               target="_blank">register</a> and apply to win.</p>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="sb-block">
+                <p><a href="{{ path('scholarship') }}"><img alt=""
+                    src="{{ asset('bundles/gotchosensite/images/20K_give_away_blue.png') }}"
+                    style="width: 250px;" /></a></p>
+            </div>
+
+            <div class="sb-block">
+                <h1 class="title">Follow Us <span class="title-bar orange" style="width:170px;"></span></h1>
+            </div>
+
+            <div class="sb-block">
+                <div id="fb-root"></div>
+                <script>(function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=190989744285875";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-like-box" data-href="http://www.facebook.com/GotChosen" data-width="292"
+                                 data-show-faces="true" data-stream="false" data-header="true"></div>
+            </div>
+
+            <div class="sb-block">
+                <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+                <script>
+                    new TWTR.Widget({
+                        version: 2, type: 'profile', rpp: 4, interval: 30000, width: 290, height: 300,
+                        theme: {
+                            shell: { background: '#003399', color: '#ffffff' },
+                            tweets: { background: '#ffffff', color: '#666666', links: '#ff9900' }
+                        },
+                        features: { scrollbar: false, loop: false, live: false, behavior: 'all' }
+                    }).render().setUser('GotChosen').start();
+                </script>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

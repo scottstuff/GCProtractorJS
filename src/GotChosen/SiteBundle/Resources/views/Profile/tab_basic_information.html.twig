@@ -1,0 +1,51 @@
+<div class="shadowed-box property-edit">
+    <h2 class="box-title">Basic Information <span style='float:right'>Privacy Settings</span></h2>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal ChosenTTForm'}}) }}
+
+        <div class="box-body form">
+
+            {{ form_row(form.email, {'error_type': 'inline', 'attr': {
+                'tabindex': 1,
+                'class': 'ChosenExistsCheck', 'data-path': path('check_email'),
+                'data-error': 'This e-mail already exists', 'data-success': '',
+                'title': 'Changing your e-mail will require your account to be reconfirmed'
+            }}) }}
+
+            {% for propkey in properties %}
+                <div id="form_{{ propkey }}_control_group" class="control-group">
+                    {{ form_label(form[propkey]) }}
+                    <div class="controls">
+
+                        {% if form["privacy_" ~ propkey] is defined %}
+                        {{ form_widget(form["privacy_" ~ propkey],
+                            {'attr': {'tabindex': loop.index * 2 + 1, 'class': 'privacy-setting'}}) }}
+                        {% endif %}
+
+                        {{ form_widget(form[propkey], {'attr': {'tabindex': loop.index * 2}}) }}
+
+                        {{ form_errors(form[propkey]) }}
+
+                        {% if fileInfos[propkey]|default(false) %}
+                        <span class="help-block">Currently:<br />
+                            <img src="{{ fileInfos[propkey] }}" style="height:100px;"><br />
+                            <a href="{{ path('user_profile_clear_property', {'property': propkey, 'tab': tab}) }}">Remove</a>
+                        </span>
+                        {% endif %}
+
+                    </div>
+                </div>
+            {% endfor %}
+
+            {{ form_rest(form) }}
+
+        </div>
+
+        <div class="box-footer submit">
+            <button tabindex="100" type="submit" class="btn btn-primary">Update Settings</button>
+            <span class="req-note"><strong>*</strong> Denotes required fields</span>
+        </div>
+
+    {{ form_end(form) }}
+
+</div>

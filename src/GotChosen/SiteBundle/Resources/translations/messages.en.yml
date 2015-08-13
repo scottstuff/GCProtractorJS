@@ -1,0 +1,5 @@
+'hello.%name%': Hello %name%!
+x.entries: '1 Entry|%count% Entries'
+
+search:
+    email_does_not_exist: 'That e-mail address does not exist in our system.'

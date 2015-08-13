@@ -1,0 +1,42 @@
+{% extends 'GotChosenSiteBundle::layout_front.html.twig' %}
+
+{% block navbar %}
+<div class="top-content-holder">
+    <div class="container">
+        <div class="content-nav">
+            <div class="logo">
+                <a href="{{ path('index') }}">
+                    <img src="{{ asset('bundles/gotchosensite/images/gotchosen_logo_se.png') }}" style="height:50px;margin-top:4px;margin-left:4px;">
+                </a>
+            </div>
+            <div class="nav-items">
+                <ul class="nav-login">
+                    {% if app.user %}
+                        <li>
+                            <a href="{{ path('user_my_profile') }}">{{ app.user.username }}</a>
+                            {% if gc_egContestActive() %}
+                                <a href="{{ path('eg_contest_gate') }}"><img src="http://placehold.it/16x16&text=T" alt="Tokens" /> {{ app.user.tokens }}</a>
+                            {% endif %}
+                        </li>
+                        {% if is_granted("ROLE_SUPER_ADMIN") %}<li><a href="{{ path('admin_home') }}">Admin</a></li>{% endif %}
+                        <li><a href="{{ path('user_profile_edit') }}">Settings</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+
+                {# links in reverse order since float: right is set #}
+                <ul class="nav-normal">
+                    <li><a href="{{ path('news') }}/winners">News</a></li>
+                    <li><a href="{{ path('vs_videos') }}">Video Scholarship</a></li>
+                    <li><a href="{{ path('monthly_scholarship') }}">Monthly Scholarship</a></li>
+                    <li><a href="{{ path('eg_qualifier') }}">Evolution Games</a></li>
+                    <li><a href="{{ path('scholarship') }}">GotScholarship</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

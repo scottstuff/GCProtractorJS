@@ -1,0 +1,247 @@
+{% extends 'GotChosenSiteBundle::layout_front_content.html.twig' %}
+
+{% block title %}Monthly Scholarship | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="content">
+
+    <div id="fb-root"></div>
+    <script> (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="main padded tabbed staticpage">
+        <ul class="nav nav-tabs" id="scholarship-tabs">
+            <li class="active"><a href="#about" id="tab_about" data-toggle="tab">About the Every Month Scholarship</a></li>
+            <li><a href="#rules" id="tab_rules" data-toggle="tab">Rules</a></li>
+            <li><a href="#faq" id="tab_faq" data-toggle="tab">FAQ</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+            <!--
+            ABOUT TAB
+            -->
+
+            <div class="tab-pane active" id="about">
+            <div class="alert alert-error">
+ <strong>This scholarship is now closed.  Please come back in November to apply for the next chance to win.</strong>
+</div>
+
+                <p><strong><span id="spanTab1OpenLine"></span></strong></p>
+
+                <p> Can you use an extra US $1000 this month for school? GotChosen is offering a recurring monthly scholarship to
+                    help college students. The GotChosen $1000 Every Month Scholarship is easy and free to enter. The scholarship is
+                    not awarded based on academic achievement or financial need. Instead, a new winner is selected every month by a
+                    random drawing. </p>
+
+                <p> Open to all fields of study, the US $1,000 must be used for educational expenses, this includes: tuition, fees,
+                    books, supplies, equipment required for study, or towards repayment of outstanding student loans. Virtually
+                    anyone 18 years old or older is eligible to participate. </p>
+
+                <p><span style="font-size: 14px;">Click&nbsp;</span><a
+                            href="{{ path('fos_user_registration_register') }}"><span
+                                style="font-size: 14px;">here</span></a><span style="font-size: 14px;"> to register or login to apply now! </span>
+                </p>
+
+                <p><img alt="" height="33" src="{{ asset('bundles/gotchosensite/images/notes_monthly2.jpg') }}"></p>
+                <ul>
+                    <li>Open to <span id="spanMonthlyTab1">United States and international students.</span></li>
+                    <li>No GPA, No Essay - No Long Forms to Fill - Just Register and Apply!</li>
+                    <li>You must apply for the GotChosen $1000 Every Month Scholarship each month to be eligible for the current
+                        month’s drawing.
+                    </li>
+                    <li>This is not a loan and there is no payback. This is a FREE scholarship.</li>
+                    <li>Privacy Disclosure: We respect your privacy. We will never sell your data to anyone, ever.</li>
+                    <li>Deadline: The last day of the month.</li>
+                    <li>NO FEE, AND NO PURCHASE IS NECESSARY TO ENTER OR WIN.</li>
+                </ul>
+                <p> If you would like GotChosen to offer more monthly scholarships then "Like" us on Facebook!</p>
+
+                <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false" data-width="200"
+                     data-show-faces="false"></div>
+            </div>
+
+            <!--
+            RULES TAB
+            -->
+
+            <div class="tab-pane" id="rules">
+            <div class="alert alert-error">
+ <strong>This scholarship is now closed.  Please come back in November to apply for the next chance to win.</strong>
+</div>
+
+                {% include 'GotChosenSiteBundle::terms_monthly.html.twig' %}
+            </div>
+
+            <!--
+            FAQ TAB
+            -->
+
+            <div class="tab-pane" id="faq">
+            <div class="alert alert-error">
+  <strong>This scholarship is now closed.  Please come back in November to apply for the next chance to win.</strong>
+
+</div>
+
+                <p><strong><span
+                                style="text-decoration: underline;">Who is GotChosen?</span></strong></p>
+
+                <p> GotChosen is an innovative startup in multimedia technology, advertising, and business development headquartered
+                    in Orlando, Florida. The company is developing an unparalleled informational exchange experience for users in
+                    ways that build new levels of involvement, brand loyalty, and profitability. Its proprietary technologies will
+                    begin to be rolled out in late 2013. </p>
+
+                <p><strong><span
+                                style="text-decoration: underline;">What is the GotChosen $1000 Every Month Scholarship drawing?</span></strong><br/>
+                    Through the drawing, GotChosen will award one (1) lucky winner a US $1000 SCHOLARSHIP every month. Funds must be
+                    used for educational expenses; tuition, fees, books, supplies, equipment required for study, or towards
+                    repayment of outstanding student loans. This is not a loan and there is no payback. The GotChosen US $1000 Every
+                    Month Scholarship is a FREE Scholarship. </p>
+
+                <p><strong><span style="text-decoration: underline;">How do I enter the GotChosen $1000 Every Month Scholarship drawing?</span></strong>
+                </p>
+
+                <p><strong>Existing GotChosen users</strong> simply need to Login, and click the &ldquo;Apply&rdquo; button in the
+                    Scholarship Panel for the GotChosen $1000 Every Month Scholarship.</p>
+
+                <p><strong> <br/> New visitors</strong> to GotChosen must complete an on-line registration and then click on the
+                    “Apply” button under the Scholarship Panel for the GotChosen $1000 Every Month Scholarship. </p>
+
+                <p> You must apply for the GotChosen $1000 Every Month Scholarship each month to be eligible for the current month’s
+                    drawing. </p>
+
+                <p><strong><span style="text-decoration: underline;">How do I win?</span></strong></p>
+
+                <p> A random drawing from among all eligible entries received in the current month will be conducted in the United
+                    States. </p>
+
+                <p><strong><span
+                                style="text-decoration: underline;">What if I don&rsquo;t win? Do I get another chance?</span></strong>
+                </p>
+
+                <p> Of course! There will be a new drawing every month. You must apply for the GotChosen $1000 Every Month
+                    Scholarship each month to be eligible for the current month’s drawing.</p>
+
+                <p><strong><span style="text-decoration: underline;">Who can participate in the GotChosen $1000 Every Month Scholarship drawing?</span></strong>
+                </p>
+
+                <p> The GotChosen Scholarship Drawing is open to <span id="spanMonthlyFAQ">United States and international students. All participants must be 18 years or older.</span>
+                    <br/></p>
+
+                <p><strong><span
+                                style="text-decoration: underline;">How many people can register for the scholarship?</span></strong>
+                </p>
+
+                <p> There are no limits to the number of registrants we can accept between the first and the last day day of the
+                    month.</p>
+
+                <p><strong><span
+                                style="text-decoration: underline;">How does the winner receive the scholarship winnings? </span></strong>
+                </p>
+
+                <p> The US $1,000 scholarship award will be issued after eligibility of the winner is confirmed.</p>
+
+                <p> Scholarship funds must be used for educational expenses; tuition, fees, books, supplies, equipment required for
+                    study, or towards repayment of outstanding student loans. </p>
+
+                <p><strong><span style="text-decoration: underline;">How much does it cost to enter the drawing?</span></strong></p>
+
+                <p> NO PURCHASE IS NECESSARY TO ENTER OR WIN. Simply register at <a
+                            href="{{ path('fos_user_registration_register') }}">
+                        www.gotchosen.com</a> then apply to enter the drawing for your chance to win the <em>GotChosen $1000 Every
+                        Month Scholarship</em> drawing.</p>
+
+                <p><strong><span style="text-decoration: underline;">How many drawing entries can I get?</span></strong></p>
+
+                <p> One entry per month.</p>
+
+                <p><strong><span style="text-decoration: underline;">What are the odds of winning the <em> GotChosen $1000 Every
+                                Month Scholarship </em>drawing?</span></strong></p>
+
+                <p> The odds of winning are unknown and conditioned upon the number of participants.</p>
+
+                <p><strong><span style="text-decoration: underline;">When does the <em>GotChosen $1000 Every Month Scholarship</em> registration start and end?</span></strong>
+                </p>
+
+                <p> The registration begins on the first of every month and ends at 11:59PM Eastern Time on the last day of the
+                    month.</p>
+
+                <p><strong><span style="text-decoration: underline;">When will the winner be announced?</span></strong></p>
+
+                <p> The name of the winner will be announced on 27th of the following month at http://www.gotchosen.com.</p>
+
+                <p><strong><span style="text-decoration: underline;">Do I have to be present to win?</span></strong></p>
+
+                <p> NO – We will contact you by the <b>email</b> provided in your user profile.</p>
+
+                <p></p>
+
+                <p><strong><span style="text-decoration: underline;">Is the <em>GotChosen $1000 Every Month Scholarship</em> scholarship considered income?</span></strong>
+                </p>
+
+                <p> YES – All federal, state, and local taxes and any other costs and expenses not specifically stated herein as
+                    being awarded are the winner’s sole responsibility.</p>
+
+                <p><strong><span style="text-decoration: underline;">How do I get more information on GotChosen?</span></strong></p>
+
+                <p> Please visit www.gotchosen.com and see the <a href="{{ path('about_us') }}">About Us</a> section.</p>
+
+                <p><strong><span style="text-decoration: underline;">What if I still have questions about the <em>GotChosen $1000
+                                Every Month Scholarship</em> drawing that aren't answered here?</span></strong></p>
+
+                <p> Please visit the <span style="text-decoration: underline;"><a href="{{ path('monthly_scholarship', {'tab': 'rules'}) }}">Rules</a></span> section of this
+                    website or send an email to info@gotchosen.com.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <div class="sb-block">
+            <a href="{{ path('scholarship') }}"><img
+                        src="{{ asset('bundles/gotchosensite/images/20K_give_away_blue.png') }}"
+                        width="250" alt=""></a>
+        </div>
+        <div class="sb-block">
+            <a href="{{ path('monthly_scholarship') }}"><img
+                        src="{{ asset('bundles/gotchosensite/images/monthlyhome.png') }}"
+                        width="250" alt=""></a>
+        </div>
+        <div class="sb-block">
+            <a href="{{ path('vs_videos') }}"><img
+                        src="{{ asset('bundles/gotchosensite/images/gotchosen_video_contest_home.png') }}"
+                        width="250" alt=""></a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            var curTab = "{{ tab }}";
+            $('#scholarship-tabs').find('a#tab_' + curTab).tab('show');
+
+            $('a[data-toggle="tab"]').on('shown', function (e) {
+                _gaq.push([
+                    '_trackPageview',
+                    '/{{ app.request.locale }}/monthly-scholarship/' + e.target.id.replace('tab_', '')
+                ]);
+            })
+        });
+    </script>
+
+{% endblock %}

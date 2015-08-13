@@ -1,0 +1,89 @@
+<div class="shadowed-box property-edit">
+    <h2 class="box-title">Scholarships</h2>
+
+    <form method="post" action="" class="form-horizontal">
+
+        <div class="box-body profile-scholarships">
+
+            {% for sship in scholarships %}
+                {% set rulesRoute = sship.rulesRoute %}
+                <div class="scholarship-item">
+                    {% if not app.user.hasApplied(sship) %}
+                        <div class="right-btn">
+                            <a class="btn btn-primary" href="{{ path('scholarship_apply', {'id': sship.id}) }}">APPLY!</a>
+                        </div>
+                    {% else %}
+                        <div class="right-btn">
+                            <a class="btn disabled" href="#">Applied</a>
+                        </div>
+                    {% endif %}
+
+                    <h3>{{ sship.scholarshipName|e|gc_autosuper }}</h3>
+                    {% if app.user.hasApplied(sship) %}
+
+                        <!-- <p>You have already applied for this scholarship.</p> -->
+                        {% if sship.is40K %}
+                            <p>{{ 'x.entries'|transchoice(sponsorCount + 1, {'%count%': sponsorCount + 1}) }}</p>
+                            <p>
+                                <label for="sponsor_url">Sponsorship URL:</label>
+                                <input type="text" id="sponsor_url" class="autoselect"
+                                       value="{{ app.request.scheme ~ '://' ~ app.request.host
+                                       ~ path('scholarship_sponsor', {'username': app.user.username}) }}">
+                            </p>
+                        {% endif %}
+                        {% if sship.isMonthly %}
+                            <p>{{ 'x.entries'|transchoice(1, {'%count%': 1}) }}</p>
+                        {% endif %}
+                        {% if sship.isVideo %}
+                            {% if not hasVideo %}
+                                <p>Click <a href="{{ path('vs_submit') }}">HERE</a> to submit your video entry.</p>
+                            {% endif%}
+                        {% endif %}
+                    {% else %}
+                        <p>By clicking "Apply" you agree to the
+                        <a href="#terms-{{ rulesRoute[0] }}" data-toggle="modal">rules and regulations</a>.</p>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="scholarship-item"><p>No scholarships are currently running.</p></div>
+            {% endfor %}
+
+        </div>
+
+
+    </form>
+
+</div>
+
+<div id="terms-scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+     aria-labelledby="scholarshipLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="scholarshipLabel">$20K Scholarship Rules &amp; Regulations</h3>
+    </div>
+    <div class="modal-body">
+        {% include 'GotChosenSiteBundle::terms_40k.html.twig' %}
+    </div>
+</div>
+
+<div id="terms-monthly_scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+     aria-labelledby="monthScholarshipLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="monthScholarshipLabel">Monthly Scholarship Rules &amp; Regulations</h3>
+    </div>
+    <div class="modal-body">
+        {% include 'GotChosenSiteBundle::terms_monthly.html.twig' %}
+    </div>
+</div>
+
+    <div id="terms-video_scholarship" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="modalLabel">VideoScholarship Rules &amp; Regulations</h3>
+        </div>
+        <div class="modal-body">
+            {% include 'GotChosenSiteBundle::terms_video.html.twig' %}
+        </div>
+    </div>

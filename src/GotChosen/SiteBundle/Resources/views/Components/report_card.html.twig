@@ -1,0 +1,21 @@
+{% if card %}
+<div class="shadowed-box">
+    <h2 class="box-title">Player Report Card
+        {% if gc_egContestActive() and card.rank and card.rank != 0 -%}
+            - <span style="color:blue">Rank: #{{ card.rank|number_format }} of {{ card.maxRank|number_format }}</span>
+        {%- endif %}
+        <br /><small style="font-size: 10px; color:black">(Current Round)</small></h2>
+    <div class="box-body">
+        Total Qualifier Plays: <strong>{{ card.qualifierPlays }}</strong><br />
+        {% if gc_egContestActive() %}
+            Total Contest Plays: <strong>{{ card.contestPlays }}</strong><br />
+            Total Wins: <strong>{{ card.wins }}</strong><br />
+            Total Feedbacks Rated: <strong>{{ card.feedbacksRated }}</strong><br />
+            Total Points from Winning Games: <strong>{{ card.pointsWinning }}</strong><br />
+            Total Points from Winning Different Games: <strong>{{ card.pointsBonus }}</strong><br />
+            Total Points from Feedback: <strong>{{ card.pointsFeedback }}</strong><br />
+            <strong>Total Points: {{ card.pointsTotal }}</strong>
+        {% endif %}
+    </div>
+</div>
+{% endif %}

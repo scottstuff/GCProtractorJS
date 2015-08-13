@@ -1,0 +1,39 @@
+
+<div class="shadowed-box property-edit">
+    <h2 class="box-title">General E-mail Notifications</h2>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal slide-left'}}) }}
+
+        <div class="box-body message" style="text-align: center; font-weight: bold">
+            Don't worry! GotChosen does NOT send advertising to its members' e-mails.
+        </div>
+
+        <div class="box-body form">
+
+
+
+            {% for el in form if '[EG]' not in el.vars.label %}
+            {{ form_row(el) }}
+            {% endfor %}
+
+        </div>
+
+
+    <h2 class="box-title inner" style="display:none">Evolution Games Notifications</h2>
+
+        <div class="box-body form" style="display:none">
+            {# oh my god this is lol #}
+            {% for el in form if '[EG]' in el.vars.label %}
+            {{ form_row(el, {'label': el.vars.label|replace({'[EG]': ''})}) }}
+            {% endfor %}
+        </div>
+
+        {{ form_rest(form) }}
+
+        <div class="box-footer submit">
+            <button type="submit" class="btn btn-primary">Update Settings</button>
+        </div>
+
+    {{ form_end(form) }}
+
+</div>

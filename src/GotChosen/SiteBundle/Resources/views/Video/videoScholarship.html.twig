@@ -1,0 +1,56 @@
+{% extends 'GotChosenSiteBundle::layout_alt_vs_landing.html.twig' %}
+
+{% block title %}Video Scholarship | {{ parent() }}{% endblock %}
+
+{% block active_tab %}about{% endblock %}
+
+{% block vs_content %}
+    <div class="tab-content">
+        <div class="alert alert-error">
+         <strong>Season 3 is finished.  Season 4 will begin in the Fall.</strong>
+        </div>
+
+        <p>The Lights Camera Action Video Scholarship Contest is now closed.</p>
+        <p>Please enjoy all the winners videos on by clicking on the Past Seasons Tab.</p>
+        <p>We look forward to launching our Season 4 Lights, Camera, Action, Video Scholarship
+            contest in the Fall. Stay tuned for more details coming soon. </p>
+
+        <div class="fb-like" data-href="https://www.facebook.com/GotChosen" data-send="false"
+        data-width="200" data-show-faces="false"></div>
+    </div>
+{% endblock %}
+
+{% block vs_sidebar %}
+
+    <h4 style="margin-bottom:0px;">Videos</h4>
+    <ul style="display:inline-block; width:305px; margin: 0px 0px 5px -5px;">
+    {% if videos|length > 0 %}
+        {% for video in videos %}
+        <li style="display:inline-block;">
+            <div class="vid-entry" style="width:290px;padding: 5px; line-height:12px;">
+                <a href="{{ path('vs_video', {'id': video.id}) }}">
+                    <img src="https://img.youtube.com/vi/{{ video.youtubeURL }}/0.jpg" alt="{{ video.title }}" style="float:left; padding-right:5px;width:120px;display:block;" />
+                </a>
+                <p class="vidHead" style=" line-height:12px;"><span style="font-size:11px;">
+                <a href="{{ path('vs_video', {'id': video.id}) }}">{{ video.title|length > 55 ? video.title[:55] ~ '...' : video.title }}</a></span><br/>
+                    <span class="vidCat" style="font-size:11px;">Cat: {{ video.category.categoryName }}<br/>
+                        By: <em><a href="{{ path('user_profile', {'username': video.user.username}) }}">{{ video.user.fullName }}</a></em></span>
+                        </p>
+                            <div class="vote-btn">
+                                 <a class="btn btn-success" style="padding-bottom:0px; padding-top:0px;"
+                                    href="{{ path('vs_video', {'id': video.id}) }}" id="vote_button_{{ video.id }}">
+                                     <strong>Click to View!</strong>
+                                 </a>
+                             </div>
+
+            </div>
+        </li>
+        {% endfor %}
+     {% else %}
+        <p>No videos found.</p>
+     {% endif %}
+    </ul>
+    {% if videos|length > 0 %}
+    <div><p><a href="{{ path('vs_videos') }}">See more videos...</a></p></div>
+    {% endif %}
+{% endblock %}
